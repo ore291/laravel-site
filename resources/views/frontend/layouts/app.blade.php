@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/favicon.png')}}">
-    <link rel="icon" type="image/png" href="{{asset('img/favicon.png')}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>@yield('title') | {{ config('app.name') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,8 +14,8 @@
     @include('frontend.includes.meta')
 
     <!-- Shortcut Icon -->
-    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
-    <link rel="icon" type="image/ico" href="{{asset('img/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
+    <link rel="icon" type="image/ico" href="{{ asset('img/favicon.png') }}" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -23,6 +23,51 @@
     @stack('before-styles')
 
     <link rel="stylesheet" href="{{ mix('css/frontend.css') }}">
+    <script src="https://kit.fontawesome.com/fe20a09b13.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/owl.theme.default.min.css') }}">
+    <style>
+        .blink_me,
+        #ball {
+            animation: blinker 3s linear infinite;
+        }
+
+        .owl-nav {
+            position: absolute;
+            inset: 0;
+        }
+
+        .owl-dots {
+            display: none;
+        }
+
+        .left-arrow {
+            display: block !important;
+            height: 30px;
+            width: 30px;
+            position: absolute;
+
+            cursor: pointer;
+            left: 40px;
+            top: 40%;
+        }
+
+        .right-arrow {
+
+            display: block !important;
+
+            height: 30px;
+            width: 30px;
+            position: absolute;
+
+            cursor: pointer;
+            top: 40%;
+            right: 40px
+        }
+    </style>
+
+
+
 
     @stack('after-styles')
 
@@ -46,6 +91,23 @@
 @stack('before-scripts')
 
 <script src="{{ mix('js/frontend.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".owl-carousel").owlCarousel({
+            items: 1,
+            margin: 15,
+            loop: true,
+            nav: true,
+            autoplay: true,
+            navText: [
+                '<div class="left-arrow"><img src="/img/left-arrow.png" alt="left-arrow" /></i></div>',
+                '<div class="right-arrow"><img src="/img/right-arrow.png" alt="right-arrow" /></i></div>'
+            ]
+        });
+    });
+</script>
+<script type="text/javascript" src="{{ URL::asset('js/owl.carousel.min.js') }}"></script>
 
 @stack('after-scripts')
 

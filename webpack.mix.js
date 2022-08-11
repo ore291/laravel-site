@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 
 
+
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
@@ -18,9 +19,9 @@ mix.js('resources/js/app.js', 'public/js')
  */
 // jquery and icon fonts
 mix.copy("node_modules/jquery/dist/jquery.min.js", "public/js/jquery.min.js")
-    .copy("node_modules/@fortawesome/fontawesome-free/webfonts/*", "public/webfonts")
-    .copy('node_modules/@coreui/icons/fonts', 'public/fonts')
-    .copy('node_modules/@coreui/icons/sprites', 'public/fonts');
+    // .copy("node_modules/@fortawesome/fontawesome-free/webfonts/*", "public/webfonts")
+    // .copy('node_modules/@coreui/icons/fonts', 'public/fonts')
+    // .copy('node_modules/@coreui/icons/sprites', 'public/fonts');
 
 
 /**
@@ -30,12 +31,13 @@ mix.copy("node_modules/jquery/dist/jquery.min.js", "public/js/jquery.min.js")
  * -----------------------------------------------------------------------------
  */
 mix.js('resources/js/frontend.js', 'public/js')
+    .vue() 
     .postCss('resources/css/frontend.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
         require('autoprefixer'),
     ]
-    );
+    )
 
 
 /**
@@ -47,7 +49,7 @@ mix.js('resources/js/frontend.js', 'public/js')
 // Build Backend SASS
 mix.sass("resources/sass/backend.scss", "public/css/backend-theme.css");
 
-// Backend CSS
+// // Backend CSS
 mix.styles(
     [
         "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
@@ -73,7 +75,10 @@ mix.scripts(
     "public/js/backend.js"
 );
 
+mix.browserSync('http://127.0.0.1:8000');
+
 
 if (mix.inProduction()) {
     mix.version();
 }
+

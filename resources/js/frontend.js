@@ -1,7 +1,24 @@
 require('./bootstrap');
-
+import { createApp } from 'vue'
 import Alpine from 'alpinejs';
 import collapse from '@alpinejs/collapse';
+
+import Tabs from './components/Tabs.vue';
+import Football from "./components/Football.vue";
+import SlideUpDown from 'vue3-slide-up-down'
+
+const app = createApp({});
+
+const app2 = createApp({});
+
+app.component('pred-tabs', Tabs);
+
+app2.component('Football', Football);
+app2.component('slide-up-down', SlideUpDown)
+
+app.mount('#vue-div');
+
+app2.mount('#football-pred');
 
 Alpine.plugin(collapse);
 

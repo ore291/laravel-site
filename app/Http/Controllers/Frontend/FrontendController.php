@@ -20,6 +20,58 @@ class FrontendController extends Controller
     }
 
     /**
+     * Show the application pricing page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function pricing()
+    {
+        $body_class = '';
+
+        // return view('dashboard', compact('body_class'));
+        return view('frontend.pricing', compact('body_class'));
+    }
+
+    /**
+     * Show the application pricing page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function contact()
+    {
+        $body_class = '';
+
+        // return view('dashboard', compact('body_class'));
+        return view('frontend.contact', compact('body_class'));
+    }
+
+    /**
+     * Show the application pricing page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function howtopay()
+    {
+        $body_class = '';
+
+        // return view('dashboard', compact('body_class'));
+        return view('frontend.howtopay', compact('body_class'));
+    }
+
+    /**
+     * Show the application pricing page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function predictions()
+    {
+        $body_class = '';
+
+        // return view('dashboard', compact('body_class'));
+        return view('frontend.predictions', compact('body_class'));
+    }
+
+    /**
      * Privacy Policy Page.
      *
      * @return \Illuminate\Http\Response

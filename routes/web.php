@@ -30,8 +30,14 @@ Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index'
 Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.'], function () {
     Route::get('/', 'FrontendController@index')->name('index');
     Route::get('home', 'FrontendController@index')->name('home');
+    Route::get('pricing', 'FrontendController@pricing')->name('pricing');
+    Route::get('how-to-pay', 'FrontendController@howtopay')->name('howtopay');
+    Route::view('how-to-pay2', 'frontend.howtopay2')->name('howtopay2');
+    Route::view('how-to-pay3', 'frontend.howtopay3')->name('howtopay3');
+    Route::get('contact-us', 'FrontendController@contact')->name('contact');
     Route::get('privacy', 'FrontendController@privacy')->name('privacy');
     Route::get('terms', 'FrontendController@terms')->name('terms');
+    Route::get('predictions', 'FrontendController@predictions')->name('predictions');
 
     Route::group(['middleware' => ['auth']], function () {
         /*

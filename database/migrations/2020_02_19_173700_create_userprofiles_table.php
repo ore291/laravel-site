@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
+            $table->string('country')->nullable();
             $table->string('gender')->nullable();
 
             $table->string('url_website')->nullable();

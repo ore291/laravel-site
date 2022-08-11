@@ -1,0 +1,13 @@
+{
+    "name": "Predictions",
+    "alias": "predictions",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Predictions\\Providers\\PredictionsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
