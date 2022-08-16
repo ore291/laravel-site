@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('sport_category', function (Blueprint $table) {
            $table->integer('sport');
+           $table->string('sport_name')->default('Football')->nullable();
         });
     }
 

@@ -53,6 +53,7 @@ class PredictionApiController extends Controller
                 'category' => $prediction['cat'],
                 'emblem' => $league->emblem,
                 'country' => $league->name,
+                'sport_name' => 'Football'
             ]);
         }
 

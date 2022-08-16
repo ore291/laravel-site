@@ -19,9 +19,9 @@ mix.js('resources/js/app.js', 'public/js')
  */
 // jquery and icon fonts
 mix.copy("node_modules/jquery/dist/jquery.min.js", "public/js/jquery.min.js")
-    // .copy("node_modules/@fortawesome/fontawesome-free/webfonts/*", "public/webfonts")
-    // .copy('node_modules/@coreui/icons/fonts', 'public/fonts')
-    // .copy('node_modules/@coreui/icons/sprites', 'public/fonts');
+    .copy("node_modules/@fortawesome/fontawesome-free/webfonts/*", "public/webfonts")
+    .copy('node_modules/@coreui/icons/fonts', 'public/fonts')
+    .copy('node_modules/@coreui/icons/sprites', 'public/fonts');
 
 
 /**
@@ -75,7 +75,7 @@ mix.scripts(
     "public/js/backend.js"
 );
 
-mix.browserSync('http://127.0.0.1:8000');
+// mix.browserSync('http://127.0.0.1:8000');
 
 
 if (mix.inProduction()) {

@@ -63,6 +63,14 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function subscription()
+    {
+        return $this->hasMany('App\Models\Subscription');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function userprofile()
     {
         return $this->hasOne('App\Models\Userprofile');

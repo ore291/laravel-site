@@ -88,6 +88,13 @@
                             class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
                             CONTACT
                         </a>
+
+                        @auth
+                            <a href="/dashboard"
+                                class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                                DASHBOARD
+                            </a>
+                        @endauth
                         {{-- <a href="{{ route('frontend.posts.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
                             {{__('Posts')}}
                         </a>

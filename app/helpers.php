@@ -529,3 +529,6 @@ if (! function_exists('language_direction')) {
         return 'ltr';
     }
 }
+
+// image helper
+

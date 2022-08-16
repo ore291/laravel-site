@@ -10,6 +10,8 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Userprofile;
 use App\Models\UserProvider;
+use App\Models\Subscription;
+use App\Models\Plan;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -90,7 +92,7 @@ class UserController extends Controller
         if ($$module_name_singular) {
             $userprofile = Userprofile::where('user_id', $id)->first();
         } else {
-            Log::error('UserProfile Exception for Username: '.$username);
+            Log::error('UserProfile Exception for Username: ' . $username);
             abort(404);
         }
 
@@ -99,6 +101,92 @@ class UserController extends Controller
         $meta_page_type = 'profile';
 
         return view("frontend.$module_name.profile", compact('module_name', 'module_name_singular', "$module_name_singular", 'module_icon', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+    }
+    /**
+     * Display Profile Details of Logged in user.
+     *
+     * @param  Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard(Request $request)
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+        $module_action = 'Dashboard';
+
+        $id = $request->session()->get('user_id');
+
+        $$module_name_singular = $module_model::findOrFail($id);
+
+        if ($$module_name_singular) {
+            $userprofile = Userprofile::where('user_id', $id)->first();
+            $userSub = Subscription::where('user_id', $id)->whereIn('plan_id', [1, 2, 3, 4])->first();
+            $rolloverSub = Subscription::where('user_id', $id)->where('plan_id', 6)->first();
+            $smsSub = Subscription::where('user_id', $id)->where('plan_id', 5)->first();
+        } else {
+            Log::error('UserProfile Exception for Username: ' . $username);
+            abort(404);
+        }
+
+        $body_class = 'dashboard-page';
+
+        $meta_page_type = 'dashboard';
+
+        return view("frontend.$module_name.dashboard", compact('module_name', 'userSub', 'rolloverSub', 'smsSub', 'module_name_singular', "$module_name_singular", 'module_icon', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+    }
+
+    public function payment(Request $request)
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+        $module_action = 'Make Payment';
+
+        $id = $request->session()->get('user_id');
+
+        $ip = '102.129.36.0'; //For static IP address get
+        //$ip = request()->ip(); //Dynamic IP address get
+        $location = \Location::get($ip); 
+
+        $$module_name_singular = $module_model::findOrFail($id);
+        $nplans = Plan::where('id', "!=", 1)->get();
+       
+
+
+        if ($$module_name_singular) {
+            $userprofile = Userprofile::where('user_id', $id)->first();
+            // $userSub = Subscription::where('user_id', $id)->whereIn('plan_id', [1, 2, 3, 4])->first();
+            // $rolloverSub = Subscription::where('user_id', $id)->where('plan_id', 6)->first();
+            // $smsSub = Subscription::where('user_id', $id)->where('plan_id', 5)->first();
+        } else {
+            Log::error('UserProfile Exception for Username: ' . $username);
+            abort(404);
+        }
+
+        $body_class = 'payment-page';
+
+        $meta_page_type = 'payment';
+        
+        $africa = array("Ghana", "Rwanda", "Cameroon", "South Africa", "Zambia", "Zimbabwe", "Uganda", "Kenya", "Tanzania", "Cote D'ivoire", "Burkina Faso", "Senegal", "Mali", "Gabon", "Mauritius");
+
+        if($location->countryName == "Nigeria"){
+            return view("frontend.$module_name.payment", compact('module_name', 'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+        }else if(in_array($location->countryName, $africa))
+        {
+            return view("frontend.$module_name.eastpayment", compact('module_name', 'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+        }else{
+             return view("frontend.$module_name.dollarpayment", compact('module_name', 'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+        }
+
+       
     }
 
     /**
@@ -121,9 +209,9 @@ class UserController extends Controller
         $module_action = 'Edit Profile';
 
         $page_heading = ucfirst($module_title);
-        $title = $page_heading.' '.ucfirst($module_action);
+        $title = $page_heading . ' ' . ucfirst($module_action);
 
-        if (! auth()->user()->can('edit_users')) {
+        if (!auth()->user()->can('edit_users')) {
             $id = auth()->user()->id;
         }
 
@@ -172,7 +260,7 @@ class UserController extends Controller
         $module_name = $this->module_name;
         $module_name_singular = Str::singular($this->module_name);
 
-        if (! auth()->user()->can('edit_users')) {
+        if (!auth()->user()->can('edit_users')) {
             $id = auth()->user()->id;
             $username = auth()->user()->username;
         }
@@ -194,7 +282,7 @@ class UserController extends Controller
 
         $data_array = $request->except('avatar');
         $data_array['avatar'] = $$module_name_singular->avatar;
-        $data_array['name'] = $request->first_name.' '.$request->last_name;
+        $data_array['name'] = $request->first_name . ' ' . $request->last_name;
 
         $user_profile = Userprofile::where('user_id', '=', $$module_name_singular->id)->first();
         $user_profile->update($data_array);
@@ -357,7 +445,7 @@ class UserController extends Controller
         $user_provider_id = $request->user_provider_id;
         $user_id = $request->user_id;
 
-        if (! $user_provider_id > 0 || ! $user_id > 0) {
+        if (!$user_provider_id > 0 || !$user_id > 0) {
             flash('Invalid Request. Please try again.')->error();
 
             return redirect()->back();
@@ -367,7 +455,7 @@ class UserController extends Controller
             if ($user_id == $user_provider->user->id) {
                 $user_provider->delete();
 
-                flash('<i class="fas fa-exclamation-triangle"></i> Unlinked from User, "'.$user_provider->user->name.'"!')->success();
+                flash('<i class="fas fa-exclamation-triangle"></i> Unlinked from User, "' . $user_provider->user->name . '"!')->success();
 
                 return redirect()->back();
             } else {
@@ -388,9 +476,9 @@ class UserController extends Controller
     {
         if ($id != auth()->user()->id) {
             if (auth()->user()->hasAnyRole(['administrator', 'super admin'])) {
-                Log::info(auth()->user()->name.' ('.auth()->user()->id.') - User Requested for Email Verification.');
+                Log::info(auth()->user()->name . ' (' . auth()->user()->id . ') - User Requested for Email Verification.');
             } else {
-                Log::warning(auth()->user()->name.' ('.auth()->user()->id.') - User trying to confirm another users email.');
+                Log::warning(auth()->user()->name . ' (' . auth()->user()->id . ') - User trying to confirm another users email.');
 
                 abort('404');
             }
@@ -400,7 +488,7 @@ class UserController extends Controller
 
         if ($user) {
             if ($user->email_verified_at == null) {
-                Log::info($user->name.' ('.$user->id.') - User Requested for Email Verification.');
+                Log::info($user->name . ' (' . $user->id . ') - User Requested for Email Verification.');
 
                 // Send Email To Registered User
                 $user->sendEmailVerificationNotification();
@@ -409,9 +497,9 @@ class UserController extends Controller
 
                 return redirect()->back();
             } else {
-                Log::info($user->name.' ('.$user->id.') - User Requested but Email already verified at.'.$user->email_verified_at);
+                Log::info($user->name . ' (' . $user->id . ') - User Requested but Email already verified at.' . $user->email_verified_at);
 
-                flash($user->name.', You already confirmed your email address at '.$user->email_verified_at->isoFormat('LL'))->success()->important();
+                flash($user->name . ', You already confirmed your email address at ' . $user->email_verified_at->isoFormat('LL'))->success()->important();
 
                 return redirect()->back();
             }

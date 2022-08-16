@@ -196,11 +196,13 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+       
 
         /*
          * Package Service Providers...
          */
 
+        Stevebauman\Location\LocationServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -209,6 +211,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
 
     ],
 
@@ -225,6 +228,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Menu' => Lavary\Menu\Facade::class,
+        'Location' => 'Stevebauman\Location\Facades\Location',
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

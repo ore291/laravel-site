@@ -48,6 +48,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
         */
         $module_name = 'users';
         $controller_name = 'UserController';
+        Route::get('dashboard', ['as' => "$module_name.dashboard", 'uses' => "$controller_name@dashboard"]);
+        Route::get('payment', ['as' => "$module_name.payment", 'uses' => "$controller_name@payment"]);
         Route::get('profile/{id}', ['as' => "$module_name.profile", 'uses' => "$controller_name@profile"]);
         Route::get('profile/{id}/edit', ['as' => "$module_name.profileEdit", 'uses' => "$controller_name@profileEdit"]);
         Route::patch('profile/{id}/edit', ['as' => "$module_name.profileUpdate", 'uses' => "$controller_name@profileUpdate"]);

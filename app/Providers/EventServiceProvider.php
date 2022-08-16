@@ -19,6 +19,7 @@ class EventServiceProvider extends ServiceProvider
         // ],
         'App\Events\Backend\UserCreated' => [
             'App\Listeners\Backend\UserCreated\UserCreatedProfileCreate',
+            'App\Listeners\Backend\UserCreated\UserCreatedSubscriptionCreate',
             'App\Listeners\Backend\UserCreated\UserCreatedNotifySuperUser',
         ],
         'App\Events\Backend\UserUpdated' => [
@@ -33,6 +34,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Frontend\UserRegistered' => [
             'App\Listeners\Frontend\UserRegistered\UserRegisteredListener',
             'App\Listeners\Frontend\UserRegistered\UserRegisteredProfileCreate',
+            'App\Listeners\Frontend\UserRegistered\UserRegisteredSubscriptionCreate',
         ],
         'App\Events\Frontend\UserUpdated' => [
             'App\Listeners\Frontend\UserUpdated\UserUpdatedNotifyUser',
