@@ -76,14 +76,18 @@
 
 <body>
 
-    @include('frontend.includes.header')
+ 
+        @include('frontend.includes.header')
 
 
-    <main>
-        @yield('content')
-    </main>
+        <main>
+            @yield('content')
+        </main>
 
-    @include('frontend.includes.footer')
+        @include('frontend.includes.footer')
+    
+
+
 
 </body>
 

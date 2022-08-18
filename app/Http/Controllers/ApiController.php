@@ -4,23 +4,43 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Models\Team;
-use App\Http\Resources\TeamResource;
-use App\Http\Resources\TeamCollection;
+use App\Models\Plan;
+use App\Http\Resources\PlanResource;
+use App\Models\Subscription;
 
 class ApiController extends Controller
 {
-     /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
      */
-    public function search(Request $request)
+    public function plans(Request $request)
     {
-        $searchQuery = $request->query('term');
-        // return new TeamCollection(Team::where('name','LIKE',"%{$name}%")->get());
-        return TeamResource::collection(Team::where('name','LIKE',"%{$searchQuery}%")->get());
-        // return Team::where('name','LIKE',"%{$name}%")->get();
-        // return $name;
+
+        return PlanResource::collection(Plan::where("id", "!=", 1)->get());
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  Request  $request
+     */
+    public function subs(Request $request, $id)
+    {
+
+
+
+        $userSub = Subscription::where('user_id', $id)->whereIn('plan_id', [1, 2, 3, 4])->first();
+        $rolloverSub = Subscription::where('user_id', $id)->where('plan_id', 6)->first();
+        $smsSub = Subscription::where('user_id', $id)->where('plan_id', 5)->first();
+
+        $data = [
+            "sub" => $userSub,
+            "rollover" => $rolloverSub,
+            "sms" => $smsSub,
+        ];
+
+        return $data;
     }
 }

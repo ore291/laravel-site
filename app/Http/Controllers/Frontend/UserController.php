@@ -157,7 +157,7 @@ class UserController extends Controller
         $location = \Location::get($ip); 
 
         $$module_name_singular = $module_model::findOrFail($id);
-        $nplans = Plan::where('id', "!=", 1)->get();
+        $plans = Plan::where('id', "!=", 1)->get();
        
 
 
@@ -178,12 +178,12 @@ class UserController extends Controller
         $africa = array("Ghana", "Rwanda", "Cameroon", "South Africa", "Zambia", "Zimbabwe", "Uganda", "Kenya", "Tanzania", "Cote D'ivoire", "Burkina Faso", "Senegal", "Mali", "Gabon", "Mauritius");
 
         if($location->countryName == "Nigeria"){
-            return view("frontend.$module_name.payment", compact('module_name', 'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+            return view("frontend.$module_name.payment", compact('module_name','plans', 'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
         }else if(in_array($location->countryName, $africa))
         {
-            return view("frontend.$module_name.eastpayment", compact('module_name', 'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+            return view("frontend.$module_name.eastpayment", compact('module_name', 'plans', 'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
         }else{
-             return view("frontend.$module_name.dollarpayment", compact('module_name', 'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+             return view("frontend.$module_name.dollarpayment", compact('module_name','plans',  'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
         }
 
        

@@ -19,9 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/ore', function (Request $request) {
-    return 'ore';
-});
 
-
-Route::get('/teams', 'App\Http\Controllers\ApiController@search');
+Route::get('/plans', 'App\Http\Controllers\ApiController@plans');
+Route::get('/subs/{id}', 'App\Http\Controllers\ApiController@subs');
