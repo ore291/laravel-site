@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/predictions', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/predictions', function (Request $request) {
+//     return $request->user();
+// });
 
 
 // Route::post('predictions/bulk', function (Request $request)){
@@ -24,3 +24,5 @@ Route::middleware('auth:api')->get('/predictions', function (Request $request) {
 // };
 
 Route::post('/predictions/bulk', 'Modules\Predictions\Http\Controllers\PredictionApiController@bulkInsert');
+
+Route::post('/predictions/{id}', 'Modules\Predictions\Http\Controllers\PredictionApiController@index');

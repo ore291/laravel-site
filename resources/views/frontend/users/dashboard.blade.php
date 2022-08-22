@@ -65,7 +65,8 @@
                 <div class="bg-[whitesmoke] border border-black rounded-t-md p-2 py-3 flex flex-col divide-y space-y-2">
                     <div class="flex items-center justify-between font-medium ">
                         <span>Subscription</span>
-                        <div class="px-5 h-8 flex items-center justify-center rounded-full text-white bg-red-600">
+                        <div
+                            class="px-5 h-8 flex items-center text-sm justify-center rounded-full text-white bg-red-600 whitespace-nowrap">
                             {{ $userSub->plan_name }}
                         </div>
                     </div>
@@ -84,9 +85,12 @@
                     @if (isset($rolloverSub))
                         <div class="flex items-center justify-between font-medium ">
                             <span>Rollover</span>
-                            {{-- <div class="px-5 h-8 flex items-center justify-center rounded-full text-white bg-red-600">
-                                Free Plan
-                            </div> --}}
+                            @if (Carbon\Carbon::now()->between($rolloverSub->start_date, $rolloverSub->end_date))
+                                <p class="text-green-600">Active</p>
+                            @else
+                                <p class="text-red-600">Expired</p>
+                            @endif
+
                         </div>
                         <div class="flex items-center justify-between font-medium ">
                             <span>Expires On</span>
@@ -118,9 +122,11 @@
                     @if (isset($smsSub))
                         <div class="flex items-center justify-between font-medium ">
                             <span>SMS</span>
-                            {{-- <div class="px-5 h-8 flex items-center justify-center rounded-full text-white bg-red-600">
-                            Free Plan
-                        </div> --}}
+                            @if (Carbon\Carbon::now()->between($smsSub->start_date, $rolloverSub->end_date))
+                                <p class="text-green-600">Active</p>
+                            @else
+                                <p class="text-red-600">Expired</p>
+                            @endif
                         </div>
                         <div class="flex items-center justify-between font-medium ">
                             <span>Expires On</span>

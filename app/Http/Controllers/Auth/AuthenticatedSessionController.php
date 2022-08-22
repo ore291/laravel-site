@@ -37,7 +37,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->put('user_id', $id);
 
-       
+        if (auth()->user()->can('view_backend')) {
+            return redirect('/admin/dashboard');
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

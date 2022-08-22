@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/plans', 'App\Http\Controllers\ApiController@plans');
 Route::get('/subs/{id}', 'App\Http\Controllers\ApiController@subs');
+Route::post('/upgrade-package/{id}', 'App\Http\Controllers\ApiController@upgradePackage');

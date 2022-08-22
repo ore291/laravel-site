@@ -7,7 +7,7 @@
 @section('content')
     <script>
         window.user = @json($user);
-        localStorage.setItem("currency", "NGN");
+        window.country_code = @json($country_code);
     </script>
     <div class="parent md:grid md:grid-cols-6">
         @include('frontend.includes.sidebar')

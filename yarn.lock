@@ -6115,13 +6115,6 @@
     "hash-sum" "^2.0.0"
     "loader-utils" "^2.0.0"
 
-"vue-paystack@^2.0.4":
-  "integrity" "sha512-EwIvuWpQ5MuvKjqv3AZ0NqHdFHZrUGynUn6aCAi1pj62mazBCVUZk/I0ISnPKVIM39weUUUIDUEXIKhJcezT7w=="
-  "resolved" "https://registry.npmjs.org/vue-paystack/-/vue-paystack-2.0.4.tgz"
-  "version" "2.0.4"
-  dependencies:
-    "vue" "^2.6.7"
-
 "vue-style-loader@^4.1.3":
   "integrity" "sha512-sFuh0xfbtpRlKfm39ss/ikqs9AbKCoXZBpHeVZ8Tx650o0k0q/YCM7FRvigtxpACezfq6af+a7JeqVTWvncqDg=="
   "resolved" "https://registry.npmjs.org/vue-style-loader/-/vue-style-loader-4.1.3.tgz"
@@ -6138,7 +6131,7 @@
     "@vue/compiler-sfc" "2.7.8"
     "csstype" "^3.1.0"
 
-"vue@^3.0.0", "vue@^3.0.0 || ^2.0.0", "vue@^3.2.36", "vue@3.2.36":
+"vue@^3.0.0", "vue@^3.0.0 || ^2.0.0", "vue@^3.0.5", "vue@^3.2.36", "vue@3.2.36":
   "integrity" "sha512-5yTXmrE6gW8IQgttzHW5bfBiFA6mx35ZXHjGLDmKYzW6MMmYvCwuKybANRepwkMYeXw2v1buGg3/lPICY5YlZw=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.36.tgz"
   "version" "3.2.36"
@@ -6148,6 +6141,11 @@
     "@vue/runtime-dom" "3.2.36"
     "@vue/server-renderer" "3.2.36"
     "@vue/shared" "3.2.36"
+
+"vue3-paystack@^0.0.5":
+  "integrity" "sha512-S+gobeLWQlRZ+xowuVrO7un/3CDQ7Bhrdvao4Mf/0YVDSRYDOJ93gf75qFEKt/6IgBKNBXKAz1DEHC6NcB8Slw=="
+  "resolved" "https://registry.npmjs.org/vue3-paystack/-/vue3-paystack-0.0.5.tgz"
+  "version" "0.0.5"
 
 "vue3-slide-up-down@^1.2.5":
   "integrity" "sha512-ZdrJjlU5Wk9ZUMa7P61afvh4mEBse/FqEULNQ1HgAXFnMUSDuT4cf682RbesEDkiyXn2Wt0JgQvbkOz9dn8cJQ=="

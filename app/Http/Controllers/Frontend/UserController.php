@@ -152,13 +152,13 @@ class UserController extends Controller
 
         $id = $request->session()->get('user_id');
 
-        $ip = '102.129.36.0'; //For static IP address get
+        $ip = '69.162.81.155'; //For static IP address get
         //$ip = request()->ip(); //Dynamic IP address get
-        $location = \Location::get($ip); 
+        $location = \Location::get($ip);
 
         $$module_name_singular = $module_model::findOrFail($id);
         $plans = Plan::where('id', "!=", 1)->get();
-       
+
 
 
         if ($$module_name_singular) {
@@ -174,19 +174,19 @@ class UserController extends Controller
         $body_class = 'payment-page';
 
         $meta_page_type = 'payment';
-        
+
         $africa = array("Ghana", "Rwanda", "Cameroon", "South Africa", "Zambia", "Zimbabwe", "Uganda", "Kenya", "Tanzania", "Cote D'ivoire", "Burkina Faso", "Senegal", "Mali", "Gabon", "Mauritius");
 
-        if($location->countryName == "Nigeria"){
-            return view("frontend.$module_name.payment", compact('module_name','plans', 'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
-        }else if(in_array($location->countryName, $africa))
-        {
-            return view("frontend.$module_name.eastpayment", compact('module_name', 'plans', 'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
-        }else{
-             return view("frontend.$module_name.dollarpayment", compact('module_name','plans',  'module_name_singular', "$module_name_singular", 'module_icon','location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+        if ($location->countryName == "Nigeria") {
+            $country_code = "ng";
+            return view("frontend.$module_name.payment", compact('module_name', 'country_code', 'plans', 'module_name_singular', "$module_name_singular", 'module_icon', 'location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+        } else if (in_array($location->countryName, $africa)) {
+            $country_code = "ea";
+            return view("frontend.$module_name.payment", compact('module_name', 'plans', 'module_name_singular', "$module_name_singular", 'module_icon', 'country_code', 'location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
+        } else {
+            $country_code = "int";
+            return view("frontend.$module_name.payment", compact('module_name', 'plans',  'module_name_singular', "$module_name_singular", 'country_code', 'module_icon', 'location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
         }
-
-       
     }
 
     /**

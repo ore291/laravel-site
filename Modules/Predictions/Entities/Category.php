@@ -18,6 +18,11 @@ class Category extends Model
      * @var string
      */
     protected $table = 'sport_category';
+
+    public function predictions()
+    {
+        return $this->hasMany(Prediction::class, "category");
+    }
     
     // protected static function newFactory()
     // {

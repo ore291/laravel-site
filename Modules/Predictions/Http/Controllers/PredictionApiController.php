@@ -2,22 +2,35 @@
 
 namespace Modules\Predictions\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use Carbon\Carbon;
+use App\Models\League;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Contracts\Support\Renderable;
 use Modules\Predictions\Entities\Prediction;
-use App\Models\League;
+use Modules\Predictions\Transformers\PredictionResource;
 
 class PredictionApiController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * @return Renderable
+      * @param Request $request
+      * @param int $id
      */
-    public function index()
+    public function index(Request $request, int $id)
     {
-        return view('predictions::index');
+
+        $days = $request->days;
+        $today = Carbon::today();
+ 
+        $query_date = $today->addDays($days)->toDateString();
+
+        return PredictionResource::collection(Prediction::whereRelation('cat', 'tier', 1)->where('sport_id', $id)->whereDate('date_t',  $query_date)
+        ->take($request->limit)->get());
     }
+
+
 
     /**
      * Show the form for creating a new resource.
