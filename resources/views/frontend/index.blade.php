@@ -111,7 +111,7 @@
             <h2 class="font-bold text-2xl text-black p-2">
                 Today's Football Popular Predictions
             </h2>
-            <table class="table-auto w-full">
+            <table class="table-auto w-full border-spacing-2 ">
                 <thead class="border-b border-b-black font-semibold text-black">
                     <tr class="p-2 px-5">
                         <th class="text-start  p-2 ml-1">Event</th>
@@ -121,38 +121,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @forelse ($trending_pred as $pred)
+                    <tr class="even:bg-white odd:bg-[#F2F2F2]">
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <span>Estudiantes vs Deportivo Madryn</span>
+                                <span class="text-sm font-medium">{{$pred->team_a . " vs " . $pred->team_b }}</span>
                                 <div class="flex items-center justify-between space-x-1">
-
-                                    <span>Primera Division</span>
+                                    <img src="/svg/{{$pred->emblem}}" alt="logo" class="w-5 h-5" />
+                                    <span>{{$pred->country}}</span>
                                 </div>
                             </div>
                         </td>
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-bold text-sm  ">
-                                    1x
+                                <span class="font-semibold text-sm uppercase ">
+                                    {{$pred->tips}}
                                 </span>
                             </div>
                         </td>
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-bold text-sm ">
-                                    1.30
+                                <span class="font-medium text-sm ">
+                                    {{$pred->odds}}
                                 </span>
                             </div>
                         </td>
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-bold text-sm ">
-                                    19:35
+                                <span class=" text-sm ">
+                                    {{date('g:i A', strtotime($pred->time_t))}}
                                 </span>
                             </div>
                         </td>
                     </tr>
+                    @empty
+                    <p>No Predictions available for Today</p>
+                    @endforelse
+                   
 
                 </tbody>
             </table>
@@ -170,42 +175,47 @@
                         <th class="text-start  p-2 ml-1">Event</th>
                         <th class="text-start p-2">Tips</th>
                         <th class="text-start p-2 mr-1">Odds</th>
-                        <th class="text-start p-2 mr-1">Time</th>
+                        <th class="text-start p-2 mr-1">Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @forelse ($upcoming_pred as $pred)
+                    <tr class="even:bg-white odd:bg-[#F2F2F2]">
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <span>Estudiantes vs Deportivo Madryn</span>
+                                <span class="text-sm font-medium">{{$pred->team_a . " vs " . $pred->team_b }}</span>
                                 <div class="flex items-center justify-between space-x-1">
-
-                                    <span>Primera Division</span>
+                                    <img src="/svg/{{$pred->emblem}}" alt="logo" class="w-5 h-5" />
+                                    <span>{{$pred->country}}</span>
                                 </div>
                             </div>
                         </td>
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-bold text-sm  ">
-                                    1x
+                                <span class="font-semibold text-sm uppercase ">
+                                    {{$pred->tips}}
                                 </span>
                             </div>
                         </td>
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-bold text-sm ">
-                                    1.30
+                                <span class="font-medium text-sm ">
+                                    {{$pred->odds}}
                                 </span>
                             </div>
                         </td>
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-bold text-sm ">
-                                    19:35
+                                <span class="text-sm ">
+                                    {{$pred->date_t}}
                                 </span>
                             </div>
                         </td>
                     </tr>
+                    @empty
+                    <p>No Predictions available </p>
+                    @endforelse
+                   
 
                 </tbody>
             </table>
@@ -416,9 +426,9 @@
         </div>
         <div class="w-full bg-white shadow ">
 
-            <table class="table-auto w-full">
+            <table class="table-fixed w-full">
                 <thead class="border-b border-b-black font-semibold text-black">
-                    <tr class="p-2 px-5">
+                    <tr class="p-2 px-5 text-center">
                         <th class="text-start  p-2 ml-1">Event</th>
                         <th class="text-start p-2">Prediction</th>
                         <th class="text-start p-2 mr-1">Date</th>
@@ -426,118 +436,149 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @forelse ($results_pred as $pred)
+                    <tr class="even:bg-white odd:bg-[#F2F2F2]">
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <span>Estudiantes vs Deportivo Madryn</span>
+                                <span class="text-sm font-medium">{{$pred->team_a . " vs " . $pred->team_b }}</span>
                                 <div class="flex items-center justify-between space-x-1">
-
-                                    <span>Primera Division</span>
+                                    <img src="/svg/{{$pred->emblem}}" alt="logo" class="w-5 h-5" />
+                                    <span>{{$pred->country}}</span>
                                 </div>
                             </div>
                         </td>
+                       
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <div class="rounded px-1 py-0.5  flex items-center justify-center bg-[#0D6EFD]">
-                                    <span class="font-semibold text-sm  text-white">
-                                       Tips: 1x
-                                    </span>
-                                </div>
-
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-bold text-sm ">
-                                    2022-08-01
+                                <span class="font-medium text-sm ">
+                                    {{$pred->tips}}
                                 </span>
                             </div>
                         </td>
                         <td>
                             <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-semibold text-sm ">
-                                    1 - 1
+                                <span class="text-sm ">
+                                    {{$pred->date_t}}
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex flex-col items-start justify-center pl-2">
+                                <span class="font-semibold text-sm uppercase ">
+                                    {{$pred->score_a . ' - ' . $pred->score_b}}
                                 </span>
                             </div>
                         </td>
                     </tr>
+                    @empty
+                    <p class="p-2">No Results available </p>
+                    @endforelse
 
                 </tbody>
             </table>
         </div>
     </section>
-    
-    <section class="my-20 max-w-6xl mx-auto">
+
+    <section class="my-20 p-1 lg:p-0 max-w-6xl mx-auto">
         <img src="/img/1xbet2.jpeg" class="w-full object-cover" alt="">
     </section>
-    <section class="my-5 max-w-6xl mx-auto">
+    <section class="my-5 p-1 lg:p-0 max-w-6xl mx-auto">
         <div class="container">
             <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
-            <div class="section-title mb-2">
-            <h1 class="text-5xl font-bold text-center text-black">FREE FOOTBALL PREDICTION SITE</h1>
-            </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 ">
-            <p class="text-justify">
-            <b style="color: green;">{{ app_name() }}</b> is the best free Soccer prediction site in the world and the site that predicts Soccer matches correctly. We are the most accurate Soccer prediction site providing our users with the most accurate Soccer predictions around the world.
-            
-            We provide the best Soccer predictions and sport betting tips daily. We select the most reliable Soccer betting tips and we carefully analyze our predictions especially our Sure 2, Banker, Sure 3, Sure 5, Combo, BTS and more to give you the best.
-            
-            We provide our subscribers with the best and most accurate Soccer predictions making us the best Soccer prediction site in the world.
-            </p>
-            <p class="text-justify">
-            Not everyone has what it takes to be a successful punter. Which, therefore, has raised a lot of questions from soccer fans all over the world to find perfect solution by searching the best prediction site that provides 100% guaranteed Soccer predictions.. Many Soccer fans all over the world are tired of losing their bets as a result of not seeking guidance from reliable Soccer prediction site like ours.
-            </p>
-            <p class="text-justify">
-            But don't worry, you're one of the luckiest Soccer fan for using {{ app_name() }}.com as your best guide to Soccer betting and predictions.
-            
-            As one of the best Soccer prediction site in the world, we offer our visitors and subscribers with sure Soccer predictions and the most accurate Soccer predictions everyday to maximize profits.
-            </p>
-            
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
-            <div class="section-title mb-2">
-            <h2 class="font-extrabold text-5xl text-center text-black">ACCURATE SOCCER PREDICTION - HOW IS THIS POSSIBLE?</h2>
-            </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 ">
-            <p class="text-justify">
-            <b style="color: green;">{{ app_name() }}.com</b> understands the attraction of this league and provides expert analysis and Soccer betting tips, to ensure you come out tops with your wagers.
-            
-            <b style="color: green;">{{ app_name() }}.com</b> works round the clock to grow your Soccer betting tips bankroll. When you engage with our platform, you can rest assure that you see things from the lens of our informed experts. You need not waste your time and resources in endless searches for Fixed matches or Fixed games, because none exist. All you need to do is tune in to our daily list of best Soccer betting predictions and smile to the land of consistent winnings.
-            
-            
-            </p>
-            <p class="text-justify">
-            You can check our Pricing Plans to see our pricing for our best winning Soccer prediction categories.
-            
-            To learn more on how to win with sure Soccer predictions, visit our how to win page and learn more.
-            
-            Thank you for choosing {{ app_name() }}.com as the best Soccer prediction site. We hope our team have served you better? Contact us for any enquries below.
-            <br>Email : <b style="color:green;">contact@sportverified.com</b>
-            </p>
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
-            <div class="section-title mb-2">
-            <h2 class="font-extrabold text-5xl text-center text-black" style="text-transform: uppercase;">Best Prediction Site In The World</h2>
-            </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 ">
-            <p class="text-justify">{{ app_name() }}.com is the best prediction site in the world. Our website works to help you win with the best Soccer tips in the industry. Both Amateur and Professional tipsters can get fast, reliable and efficient Soccer betting tips from our site. We understands the attraction of league and provides expert analysis and Soccer betting tips, to ensure you come out tops with your wagers.</p>
-            <p class="text-justify">
-                At <b style="color: green;">{{ app_name() }}</b>, we offer the best betting tips and guide on how to make money steadily from Soccer betting. Example of scheme offered is Soccer investment scheme where we unveil the world of Soccer investment and guide you on how to increase your profits immediately! Our investment tracker shows our recent performance as we encourage transparency in Soccer investments and also Rollover Bet which serves as a cash builder. This differs them from us all other forecasting platform across the world. Our platform also gives punters the heads up by predicting sure Soccer predictions for tomorrow with our Upcoming Tips. We also have a store where punters can use in making selections for Soccer predictions/tips for the weekend.
-                </p>
-            </div>
-            </div>
-            
-            
-            </div>
-    </section>
+                <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
+                    <div class="section-title mb-2">
+                        <h1 class="text-5xl font-bold text-center text-black">FREE FOOTBALL PREDICTION SITE</h1>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 ">
+                    <p class="text-justify">
+                        <b style="color: green;">{{ app_name() }}</b> is the best free Soccer prediction site in the
+                        world and the site that predicts Soccer matches correctly. We are the most accurate Soccer
+                        prediction site providing our users with the most accurate Soccer predictions around the world.
 
-    
+                        We provide the best Soccer predictions and sport betting tips daily. We select the most reliable
+                        Soccer betting tips and we carefully analyze our predictions especially our Sure 2, Banker, Sure 3,
+                        Sure 5, Combo, BTS and more to give you the best.
+
+                        We provide our subscribers with the best and most accurate Soccer predictions making us the best
+                        Soccer prediction site in the world.
+                    </p>
+                    <p class="text-justify">
+                        Not everyone has what it takes to be a successful punter. Which, therefore, has raised a lot of
+                        questions from soccer fans all over the world to find perfect solution by searching the best
+                        prediction site that provides 100% guaranteed Soccer predictions.. Many Soccer fans all over the
+                        world are tired of losing their bets as a result of not seeking guidance from reliable Soccer
+                        prediction site like ours.
+                    </p>
+                    <p class="text-justify">
+                        But don't worry, you're one of the luckiest Soccer fan for using {{ app_name() }}.com as your
+                        best guide to Soccer betting and predictions.
+
+                        As one of the best Soccer prediction site in the world, we offer our visitors and subscribers with
+                        sure Soccer predictions and the most accurate Soccer predictions everyday to maximize profits.
+                    </p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
+                    <div class="section-title mb-2">
+                        <h2 class="font-extrabold text-5xl text-center text-black">ACCURATE SOCCER PREDICTION - HOW IS THIS
+                            POSSIBLE?</h2>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 ">
+                    <p class="text-justify">
+                        <b style="color: green;">{{ app_name() }}.com</b> understands the attraction of this league and
+                        provides expert analysis and Soccer betting tips, to ensure you come out tops with your wagers.
+
+                        <b style="color: green;">{{ app_name() }}.com</b> works round the clock to grow your Soccer
+                        betting tips bankroll. When you engage with our platform, you can rest assure that you see things
+                        from the lens of our informed experts. You need not waste your time and resources in endless
+                        searches for Fixed matches or Fixed games, because none exist. All you need to do is tune in to our
+                        daily list of best Soccer betting predictions and smile to the land of consistent winnings.
+
+
+                    </p>
+                    <p class="text-justify">
+                        You can check our Pricing Plans to see our pricing for our best winning Soccer prediction
+                        categories.
+
+                        To learn more on how to win with sure Soccer predictions, visit our how to win page and learn more.
+
+                        Thank you for choosing {{ app_name() }}.com as the best Soccer prediction site. We hope our team
+                        have served you better? Contact us for any enquries below.
+                        <br>Email : <b style="color:green;">contact@sportverified.com</b>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
+                    <div class="section-title mb-2">
+                        <h2 class="font-extrabold text-5xl text-center text-black" style="text-transform: uppercase;">Best
+                            Prediction Site In The World</h2>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 ">
+                    <p class="text-justify">{{ app_name() }}.com is the best prediction site in the world. Our website
+                        works to help you win with the best Soccer tips in the industry. Both Amateur and Professional
+                        tipsters can get fast, reliable and efficient Soccer betting tips from our site. We understands the
+                        attraction of league and provides expert analysis and Soccer betting tips, to ensure you come out
+                        tops with your wagers.</p>
+                    <p class="text-justify">
+                        At <b style="color: green;">{{ app_name() }}</b>, we offer the best betting tips and guide on
+                        how to make money steadily from Soccer betting. Example of scheme offered is Soccer investment
+                        scheme where we unveil the world of Soccer investment and guide you on how to increase your profits
+                        immediately! Our investment tracker shows our recent performance as we encourage transparency in
+                        Soccer investments and also Rollover Bet which serves as a cash builder. This differs them from us
+                        all other forecasting platform across the world. Our platform also gives punters the heads up by
+                        predicting sure Soccer predictions for tomorrow with our Upcoming Tips. We also have a store where
+                        punters can use in making selections for Soccer predictions/tips for the weekend.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
 @endsection

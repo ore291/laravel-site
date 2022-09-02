@@ -54,9 +54,7 @@
                             <th>
                                 Name
                             </th>
-                            <th>
-                                Category
-                            </th>
+                            
                             <th class="text-end">
                                 Action
                             </th>
@@ -109,10 +107,7 @@
                 data: 'name',
                 name: 'name'
             },
-            {
-                data: 'category_name',
-                name: 'category_name'
-            },
+          
             {
                 data: 'action',
                 name: 'action',

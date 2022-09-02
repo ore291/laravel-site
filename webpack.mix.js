@@ -47,33 +47,33 @@ mix.js('resources/js/frontend.js', 'public/js')
 * -----------------------------------------------------------------------------
 */
 // Build Backend SASS
-// mix.sass("resources/sass/backend.scss", "public/css/backend-theme.css");
+mix.sass("resources/sass/backend.scss", "public/css/backend-theme.css");
 
 // // Backend CSS
-// mix.styles(
-//     [
-//         "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-//         "node_modules/@coreui/icons/css/all.css",
-//         "node_modules/simplebar/dist/simplebar.css",
-//         // "resources/vendors/coreui/dist/css/style.min.css",
-//         "public/css/backend-theme.css",
-//     ],
-//     "public/css/backend.css"
-// );
+mix.styles(
+    [
+        "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+        "node_modules/@coreui/icons/css/all.css",
+        "node_modules/simplebar/dist/simplebar.css",
+        // "resources/vendors/coreui/dist/css/style.min.css",
+        "public/css/backend-theme.css",
+    ],
+    "public/css/backend.css"
+);
 
 // Backend JS
-// mix.scripts(
-//     [
-//         "node_modules/jquery/dist/jquery.min.js",
-//         // "node_modules/bootstrap/dist/js/bootstrap.min.js",
-//         "node_modules/@coreui/coreui/dist/js/coreui.bundle.js",
-//         "node_modules/simplebar/dist/simplebar.min.js",
-//         // "node_modules/@coreui/utils/dist/coreui-utils.js",
-//         "resources/js/laravel.js",
-//         "resources/js/backend-custom.js"
-//     ],
-//     "public/js/backend.js"
-// );
+mix.scripts(
+    [
+        "node_modules/jquery/dist/jquery.min.js",
+        // "node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "node_modules/@coreui/coreui/dist/js/coreui.bundle.js",
+        "node_modules/simplebar/dist/simplebar.min.js",
+        // "node_modules/@coreui/utils/dist/coreui-utils.js",
+        "resources/js/laravel.js",
+        "resources/js/backend-custom.js"
+    ],
+    "public/js/backend.js"
+);
 
 mix.browserSync('http://127.0.0.1:8000');
 

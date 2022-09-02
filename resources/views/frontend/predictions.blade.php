@@ -6,6 +6,13 @@
 
 @section('content')
 
+<script>
+    window.user = @json($user);
+    window.subs = @json($subs);
+    window.cats = @json($sport_categories);
+ 
+</script>
+
 <div id="football-pred">
     <Football/>
 </div>

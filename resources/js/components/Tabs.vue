@@ -139,20 +139,30 @@
               <th class="text-start pb-2 mr-1">Score</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="even:bg-white odd:bg-[#F2F2F2] text-xs !px-3" v-for="game in formed_games" :key="game.id">
+           <tbody class="w-full p-2" v-if="o_loading">
+            <p>Loading...</p>
+          </tbody>
+          <tbody class="w-full p-2 text-red-600" v-if="!o_loading && other_predictions.length < 1">
+            <p>No Predictions available for the selected Date</p>
+          </tbody>
+          <tbody v-if="!o_loading && other_predictions.length > 0">
+            <tr class="even:bg-white odd:bg-[#F2F2F2] text-xs !px-3" v-for="game in other_predictions" :key="game.id">
               <td class="py-2 flex space-x-1 items-center">
                 <div class="flex items-center space-x-1.5 ml-2">
                   <span>
-                    <img :src="`/img/emblem/${game.emblem.emblem}`" alt="" class="w-5 h-5" />
+
+                    <img v-if="game.sport_name === 'basketball'" src="/img/Basketball-1.png" alt="" class="w-5 h-5" />
+                    <img v-if="game.sport_name === 'tennis'" src="/img/Tennis-1.png" alt="" class="w-5 h-5" />
+                    <img v-if="game.sport_name === 'boxing'" src="/img/boxing.png" alt="" class="w-5 h-5" />
+                    <img v-if="game.sport_name === 'ice hockey'" src="/img/Ice-hockey-1.png" alt="" class="w-5 h-5" />
                   </span>
-                  <span>{{ game.country_code }}</span>
-                  <span>{{ `(${game.league})` }}</span>
+                  <!-- <span>{{ game.league.country.substring(0, 3).toUpperCase() }}</span> -->
+                  <span>{{ `(${game.league_name})` }}</span>
                 </div>
                 <div class="ml-3">
                   <div class="flex">
                     <span>
-                      {{ game.vs }}
+                      {{ `${game.team_a} vs ${game.team_b}` }}
                     </span>
                   </div>
                 </div>
@@ -186,7 +196,7 @@
                     rounded
                   ">Odds: {{ game.odds }}</span>
               </td>
-              <td class="py-2">{{ game.score }}</td>
+              <td class="py-2">{{ `${game.score_a} - ${game.score_b}` }}</td>
             </tr>
           </tbody>
         </table>
@@ -202,11 +212,20 @@ import moment from "moment";
 import axios from "axios";
 export default {
   created() {
-    this.getFreePredictions(1, 0)
+    this.getFreePredictions(1, 0);
+    if (localStorage.getItem('other_sport') === null) {
+      localStorage.setItem('other_sport', 2)
+      this.getFreeOtherPredictions(2, 0)
+    } else {
+      this.getFreeOtherPredictions(parseInt(localStorage.getItem('other_sport')), 0)
+    }
+
   },
   methods: {
     setOtherSport(id) {
       this.activeSport = id;
+      localStorage.setItem('other_sport',this.other_sportz[id].sport)
+      this.getFreeOtherPredictions(this.other_sportz[id].sport, this.otherActiveDay)
     },
     getFreePredictions(id, days) {
       this.loading = true;
@@ -214,10 +233,24 @@ export default {
         days: days,
         limit: 7
       }).then(res => {
-        console.log(res)
         if (res.status === 200) {
           this.loading = false;
           this.predictions = res.data.data;
+        }
+
+      }).catch((err) => {
+        console.log(err)
+      })
+    },
+    getFreeOtherPredictions(id, days) {
+      this.o_loading = true;
+      axios.post(`/api/other_sports/${id}`, {
+        days: days,
+        limit: 7
+      }).then(res => {
+        if (res.status === 200) {
+          this.o_loading = false;
+          this.other_predictions = res.data.data;
         }
 
       }).catch((err) => {
@@ -237,7 +270,9 @@ export default {
     },
     setOtherActiveDate(n) {
       this.otherActiveDay = n;
+      this.getFreeOtherPredictions(parseInt(localStorage.getItem('other_sport')), n)
     },
+
 
   },
   computed: {
@@ -246,7 +281,9 @@ export default {
   data() {
     return {
       predictions: [],
+      other_predictions: [],
       loading: false,
+      o_loading: false,
       activeDay: 0,
       activeSport: 0,
       otherActiveDay: 0,
@@ -254,18 +291,22 @@ export default {
         {
           id: 0,
           name: "BasketBall",
+          sport: 2
         },
         {
           id: 1,
           name: "Tennis",
+          sport: 3
         },
         {
           id: 2,
           name: "Boxing",
+          sport: 4
         },
         {
           id: 3,
           name: "Hockey",
+          sport: 5
         },
       ],
       days: [-3, -2, -1, 0, 1, 2, 3],

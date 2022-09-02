@@ -55,19 +55,19 @@
 
                                 <li class=""><a
                                         class=" bg-gray-200 hover:bg-red-400 hover:text-white py-2 px-4 block whitespace-no-wrap"
-                                        href="#">BASKETBALL PREDICTIONS</a></li>
+                                        href="/basketball">BASKETBALL PREDICTIONS</a></li>
 
                                 <li class=""><a
                                         class=" bg-gray-200 hover:bg-red-400 hover:text-white py-2 px-4 block whitespace-no-wrap"
-                                        href="#">BOXING PREDICTIONS</a></li>
+                                        href="/boxing">BOXING PREDICTIONS</a></li>
 
                                 <li class=""><a
                                         class="bg-gray-200 hover:bg-red-400 hover:text-white py-2 px-4 block whitespace-no-wrap"
-                                        href="#">TENNIS PREDICTIONS</a></li>
+                                        href="/tennis">TENNIS PREDICTIONS</a></li>
 
                                 <li class=""><a
                                         class="rounded-b bg-gray-200 hover:bg-red-400 hover:text-white py-2 px-4 block whitespace-no-wrap"
-                                        href="#">ICE HOCKEY PREDICTIONS</a></li>
+                                        href="/ice-hockey">ICE HOCKEY PREDICTIONS</a></li>
 
 
 
@@ -93,6 +93,11 @@
                             <a href="/dashboard"
                                 class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
                                 DASHBOARD
+                            </a>
+
+                            <a href="/live"
+                                class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                                LIVE EVENTS
                             </a>
                         @endauth
                         {{-- <a href="{{ route('frontend.posts.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
@@ -197,22 +202,47 @@
             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
             x-transition:leave="transition ease-in duration-75 transform" x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-95">
-            <div class="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg rounded-md ring-1 ring-black ring-opacity-5">
-                <a href="{{ route('frontend.posts.index') }}"
-                    class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
-                    {{ __('Posts') }}
+            <div class="px-2 pt-2 pb-3 space-y-0.5 bg-white shadow-lg rounded-md ring-1 ring-black ring-opacity-5">
+
+                <a href="/" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
+                    HOME
                 </a>
-                <a href="{{ route('frontend.categories.index') }}"
+                @auth
+                    <a href="/dashboard" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
+                        DASHBOARD
+                    </a>
+                    <a href="/live" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
+                        LIVE EVENTS
+                    </a>
+                @endauth
+                <a href="{{ route('frontend.predictions') }}"
                     class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
-                    {{ __('Categories') }}
+                    Football Predictions
                 </a>
-                <a href="{{ route('frontend.tags.index') }}"
+                <a href="{{ route('frontend.basketball') }}"
                     class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
-                    {{ __('Tags') }}
+                    Basketball Predictions
                 </a>
-                <a href="{{ route('frontend.comments.index') }}"
+                <a href="{{ route('frontend.tennis') }}"
                     class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
-                    {{ __('Comments') }}
+                    Tennis Predictions
+                </a>
+                <a href="{{ route('frontend.boxing') }}"
+                    class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
+                    Boxing Predictions
+                </a>
+                <a href="{{ route('frontend.iceHockey') }}"
+                    class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
+                    Ice Hockey Predictions
+                </a>
+                <a href="/pricing" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
+                    Pricing
+                </a>
+                <a href="/how-to-pay" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
+                    How to Pay
+                </a>
+                <a href="/contact-us" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
+                    Contact Us
                 </a>
 
                 @can('view_backend')

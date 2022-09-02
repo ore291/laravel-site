@@ -38,6 +38,10 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
     Route::get('privacy', 'FrontendController@privacy')->name('privacy');
     Route::get('terms', 'FrontendController@terms')->name('terms');
     Route::get('predictions', 'FrontendController@predictions')->name('predictions');
+    Route::get('basketball', 'FrontendController@basketball')->name('basketball');
+    Route::get('tennis', 'FrontendController@tennis')->name('tennis');
+    Route::get('boxing', 'FrontendController@boxing')->name('boxing');
+    Route::get('ice-hockey', 'FrontendController@iceHockey')->name('iceHockey');
 
     Route::group(['middleware' => ['auth']], function () {
         /*
@@ -59,6 +63,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
         Route::delete("$module_name/userProviderDestroy", ['as' => "$module_name.userProviderDestroy", 'uses' => "$controller_name@userProviderDestroy"]);
     });
 });
+
+
 
 /*
 *

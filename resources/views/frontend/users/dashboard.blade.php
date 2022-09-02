@@ -71,10 +71,15 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between font-medium ">
-                        <span>Expires On</span>
-                        <div class="">
-                            {{ date('D, M d Y', strtotime($userSub->end_date)) }}
-                        </div>
+                        @if (Carbon\Carbon::now()->between($userSub->start_date, $userSub->end_date))
+                            <span>Expires On</span>
+                            <div class="">
+                                {{ date('D, M d Y', strtotime($userSub->end_date)) }}
+                            </div>
+                        @else
+                            <p class="text-red-600">Expired</p>
+                        @endif
+
                     </div>
                     <div class="py-2">
                         <div
@@ -93,6 +98,7 @@
 
                         </div>
                         <div class="flex items-center justify-between font-medium ">
+
                             <span>Expires On</span>
                             <div class="">
                                 {{ date('D, M d Y', strtotime($rolloverSub->end_date)) }}
@@ -122,7 +128,7 @@
                     @if (isset($smsSub))
                         <div class="flex items-center justify-between font-medium ">
                             <span>SMS</span>
-                            @if (Carbon\Carbon::now()->between($smsSub->start_date, $rolloverSub->end_date))
+                            @if (Carbon\Carbon::now()->between($smsSub->start_date, $smsSub->end_date))
                                 <p class="text-green-600">Active</p>
                             @else
                                 <p class="text-red-600">Expired</p>
@@ -155,7 +161,9 @@
                         </div>
                     @endif
 
-
+                    <p class="my-2 p-1 animate-pulse  text-green-500 text-left font-medium text-sm">
+                        Upgrade to any of our regular plans to gain access to our VIP section
+                    </p>
                 </div>
             </div>
         </main>

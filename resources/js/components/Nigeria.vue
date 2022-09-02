@@ -219,11 +219,11 @@ export default {
     components: {
         paystack,
     },
-      created() {
+    created() {
         this.user = window.user;
-    
 
-      },
+
+    },
     computed: {
         reference() {
             let text = "";
@@ -402,10 +402,11 @@ export default {
                 this.nextStep();
 
             } else {
+
+                window.location.assign('/how-to-pay');
                 this.payment_option = value;
                 this.selectCard = false;
                 this.payment_method = null;
-                this.nextStep();
             }
         },
         selectPaymentMethod(value) {

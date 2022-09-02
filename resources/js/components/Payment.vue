@@ -5,7 +5,7 @@
   <div v-if="country === 'int'">
     <International :plans="plans" :subs="subs" />
   </div>
-  <div v-else>
+  <div v-if="country === 'ea'">
     <Africa :plans="plans" :subs="subs" />
   </div>
 </template>

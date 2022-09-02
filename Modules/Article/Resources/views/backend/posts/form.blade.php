@@ -1,5 +1,5 @@
 <div class="row mb-3">
-    <div class="col-5">
+    <div class="col-12">
         <div class="form-group">
             <?php
             $field_name = 'name';
@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div class="col">
+    {{-- <div class="col">
         <div class="form-group">
             <?php
             $field_name = 'slug';
@@ -36,7 +36,7 @@
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
         </div>
-    </div>
+    </div> --}}
 </div>
 <div class="row mb-3">
     <div class="col-12">
@@ -108,8 +108,8 @@
             $required = "required";
             $select_options = [
                 'Article' => 'Article',
-                'Feature' => 'Feature',
-                'News' => 'News',
+                // 'Feature' => 'Feature',
+                // 'News' => 'News',
             ];
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
@@ -133,7 +133,7 @@
         </div>
     </div>
 </div>
-<div class="row mb-3">
+{{-- <div class="row mb-3">
     <div class="col">
         <div class="form-group">
             <?php
@@ -150,7 +150,7 @@
                 )->class('form-control select2-tags')->attributes(["$required"]) }}
         </div>
     </div>
-</div>
+</div> --}}
 <div class="row mb-3">
     <div class="col-6">
         <div class="form-group">
@@ -192,7 +192,7 @@
         </div>
     </div>
 </div>
-<div class="row mb-3">
+{{-- <div class="row mb-3">
     <div class="col-5">
         <div class="form-group">
             <?php
@@ -229,8 +229,8 @@
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
-</div>
-<div class="row mb-3">
+</div> --}}
+{{-- <div class="row mb-3">
     <div class="col-12 col-sm-6">
         <div class="form-group">
             <?php
@@ -269,7 +269,7 @@
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
-</div>
+</div> --}}
 <div></div>
 
 

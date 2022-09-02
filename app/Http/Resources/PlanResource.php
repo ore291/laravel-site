@@ -18,7 +18,7 @@ class PlanResource extends JsonResource
      */
     public function toArray($request)
     {
-        $ip = '102.134.131.255'; //For static IP address get 
+        $ip = '102.135.32.0'; //For static IP address get 
         //$ip = request()->ip(); //Dynamic IP address get
         $location = \Location::get($ip);
 

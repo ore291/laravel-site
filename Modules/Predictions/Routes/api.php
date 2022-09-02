@@ -25,4 +25,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/predictions/bulk', 'Modules\Predictions\Http\Controllers\PredictionApiController@bulkInsert');
 
+
+Route::post('/predictions/football', 'Modules\Predictions\Http\Controllers\PredictionApiController@football');
+
 Route::post('/predictions/{id}', 'Modules\Predictions\Http\Controllers\PredictionApiController@index');
+
+

@@ -15,20 +15,43 @@ class PredictionApiController extends Controller
 {
     /**
      * Display a listing of the resource.
-      * @param Request $request
-      * @param int $id
+     * @param Request $request
+     * @param int $id
      */
     public function index(Request $request, int $id)
     {
 
         $days = $request->days;
         $today = Carbon::today();
- 
+
         $query_date = $today->addDays($days)->toDateString();
 
-        return PredictionResource::collection(Prediction::whereRelation('cat', 'tier', 1)->where('sport_id', $id)->whereDate('date_t',  $query_date)
-        ->take($request->limit)->get());
+        return PredictionResource::collection(Prediction::whereRelation('cat', 'tier', 1)->where('sport_id', $id)->whereNotIn('category', [21, 22])->whereDate('date_t',  $query_date)
+            ->take($request->limit)->get());
     }
+
+    /**
+     * Display a listing of the resource.
+     * @param Request $request
+     * @param int $id
+     */
+    public function football(Request $request)
+    {
+
+        $days = $request->days;
+        $category = $request->category;
+        $today = Carbon::today();
+
+        $query_date = $today->addDays($days)->toDateString();
+
+        if (isset($request->userId)) {
+            return PredictionResource::collection(Prediction::where('sport_id', 1)->where('category', $category)->whereDate('date_t',  $query_date)->get());
+        } else {
+            return PredictionResource::collection(Prediction::where('sport_id', 1)->where('category', $category)->whereDate('date_t',  $query_date)->get());
+        }
+    }
+
+
 
 
 
