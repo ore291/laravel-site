@@ -3,10 +3,10 @@
   <div class="max-w-6xl mx-auto bg-gray-100 p-1 md:p-5 py-14">
     <h1 class="text-center text-3xl font-semibold mb-8">FOOTBALL</h1>
     <div class="flex justify-between bg-white mx-2 items-center px-1 md:px-2">
-      <h4 class="font-semibold text-2xl" id="infoTable">{{ cats[category - 1].name }} Predictions</h4>
+      <h4 class="font-semibold text-sm md:text-2xl" id="infoTable">{{ cats[category - 1].name }} Predictions</h4>
       <div class="cat-toggle p-1">
-        <button class="btn btn-sm btn-primary" style="background: #000; color: #ee5253; border-color: #000"
-          @click="() => (show = !show)">
+        <button class="btn btn-sm btn-primary flex items-center space-x-1"
+          style="background: #000; color: #ee5253; border-color: #000" @click="() => (show = !show)">
           <i class="fa fa-bars"></i> <small>Categories</small>
         </button>
       </div>
@@ -21,9 +21,11 @@
         ">
         <div v-for="cat in cats" :key="cat.id">
           <div @click="changeCategory(cat.id)" v-if="cat.tier === 1" :class="{ '!bg-black': category === cat.id }"
+
+          :style="{backgroundColor : category === cat.id ? '#000' : '#666666'}"
             class="
-          
-           bg-[#666666]
+        
+        
            hover:bg-black
             text-white
             p-1
@@ -36,10 +38,10 @@
             <p class="text-sm font-medium">{{ cat.name }}</p>
             <span class="text-xs font-semibold"> Free </span>
           </div>
-          <div @click="changeCategory(cat.id)" :class="[category === cat.id ? '!bg-black' : '', getColor(cat.tier)]"
-            class="
+          <div @click="changeCategory(cat.id)"
+            :style="{ backgroundColor: category === cat.id ? '#000' : cat.plan.color }" class="
           
-            hover:bg-black
+            hover:!bg-black
             text-white
             hover:text-red-600
             p-1
@@ -78,10 +80,10 @@
             <small class="text-[9px] text-[gold] font-medium lowercase first-letter:uppercase">
               {{ cat.plan_name.replace(" PLAN", "") }} </small>
           </div>
-          <div @click="changeCategory(cat.id)" :class="[category === cat.id ? '!bg-black' : '', getColor(cat.tier)]"
-            class="
+          <div @click="changeCategory(cat.id)"
+            :style="{ backgroundColor: category === cat.id ? '#000' : cat.plan.color }" class="
           
-            hover:bg-black
+            hover:!bg-black
             text-white
             hover:text-red-600
             p-1
@@ -148,12 +150,13 @@
               <th class="text-start pb-2 ml-1">Events</th>
               <th class="text-start pb-2">Predictions</th>
               <th class="text-start pb-2">Date</th>
-              <th class="text-start pb-2 mr-1">Score</th>
+              <th class="text-start pb-2 ">Score</th>
+              <th class="text-start pb-2 ">&nbsp;</th>
             </tr>
           </thead>
-          <tbody class="font-medium p-2 text-lg" v-if="loading">
+          <div class="font-medium p-2 text-lg" v-if="loading">
             Loading...
-          </tbody>
+          </div>
           <tbody v-else-if="predictions.length > 0">
             <tr class="
                 even:bg-white
@@ -221,14 +224,36 @@
               </td>
               <td>{{ game.date_t }}</td>
               <td class="py-2">{{ `${game.score_a} - ${game.score_b}` }}</td>
+              <td class="py-2"><span v-if="game.status == 0"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-2 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                  </svg>
+                </span>
+                <span v-else-if="game.status == 1"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-6 h-6 stroke-2 text-green-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+                </span>
+                <span v-else-if="game.status == 2"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+
+                </span></td>
             </tr>
 
           </tbody>
 
 
-          <tbody class="text-red-500 font-medium p-2 text-lg" v-else>
+          <div class="text-red-500 font-medium p-2 text-sm" v-else>
             No predictions available for selected date.
-          </tbody>
+          </div>
         </table>
       </div>
     </div>
@@ -256,7 +281,7 @@ export default {
   methods: {
     async getPredictions(cat, d, tier) {
       this.loading = true;
-      console.log(tier);
+
       const data = {
         userId: this.user ? this.user.id : null,
         days: d,
@@ -292,6 +317,7 @@ export default {
         }
       } else {
         if (cat <= 3) {
+          console.log('what is happening here', data)
           const res = await axios.post("/api/predictions/football", data);
           this.predictions = res.data.data;
           this.loading = false;
@@ -355,25 +381,24 @@ export default {
       return this.emblems.find((emblem) => emblem.country === country);
     },
     getColor(tier) {
-
       switch (tier) {
         case 1:
-          return "bg-[#666666]";
+          return "gray-bg";
           break;
         case 2:
-          return "bg-blue-600";
+          return "blue-bg";
           break;
         case 3:
-          return "bg-green-800";
+          return "green-bg";
           break;
         case 4:
-          return "bg-red-700";
+          return "red-bg";
           break;
         case 6:
-          return "bg-red-700";
+          return "red-bg";
           break;
         case 5:
-          return "bg-red-700";
+          return "red-bg";
           break;
 
       }
@@ -385,7 +410,7 @@ export default {
     today() {
       return moment();
     },
-    
+
 
   },
   data() {
@@ -419,12 +444,31 @@ export default {
         },
       ],
       days: [-3, -2, -1, 0, 1, 2, 3],
-     
-     
+
+
     };
   },
 };
 </script>
 
-<style>
+<style scoped>
+.gray-bg {
+  background-color: #666666;
+}
+
+.red-bg {
+  background-color: #b91c1c
+}
+
+.blue-bg {
+  background-color: #2563eb
+}
+
+.green-bg {
+  background-color: #065f46
+}
+
+.black-bg {
+  background-color: #000
+}
 </style>

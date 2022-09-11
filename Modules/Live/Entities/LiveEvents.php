@@ -9,7 +9,7 @@ class LiveEvents extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['event', 'booking_no', 'live_streaming_link', 'time', 'created_at', 'updated_at'];
+    protected $fillable = ['event', 'booking_no', 'live_streaming_link', 'time','date', 'tips', 'odds', 'created_at', 'updated_at'];
     
    
 }

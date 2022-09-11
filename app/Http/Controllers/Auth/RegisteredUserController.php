@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Events\Frontend\UserRegistered;
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use App\Models\Plan;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Auth\Events\Registered;
+use App\Events\Frontend\UserRegistered;
+use App\Providers\RouteServiceProvider;
 
 class RegisteredUserController extends Controller
 {
@@ -60,6 +63,18 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
         event(new UserRegistered($user));
+
+        $userSub = new Subscription();
+
+        $plan = Plan::findOrFail(1);
+
+        $userSub->user_id = $user->id;
+        $userSub->plan_id = 1;
+        $userSub->plan_name = $plan->name;
+        $userSub->start_date = Carbon::now();
+        $userSub->end_date = new Carbon('first day of January 2050');
+
+        $userSub->save();
 
       
 

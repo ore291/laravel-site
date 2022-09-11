@@ -36,7 +36,7 @@ $meta_page_type = 'website';
 
 <!-- Facebook Meta -->
 <meta property="og:url" content="{{url()->full()}}" />
-<meta property="og:title" content="@yield('title') | {{ config('app.name') }}" />
+<meta property="og:title" content="@yield('title') | {{setting('app_name')  }}" />
 <meta property="og:site_name" content="{{setting('meta_site_name')}}" />
 <meta property="og:description" content="{{ setting('meta_description') }}" />
 <meta property="og:image" content="{{ asset(setting('meta_image')) }}" />
@@ -48,11 +48,11 @@ $meta_page_type = 'website';
 <meta name="twitter:site" content="{{ setting('meta_twitter_site') }}">
 <meta name="twitter:url" content="{{url()->full()}}" />
 <meta name="twitter:creator" content="{{ setting('meta_twitter_creator') }}">
-<meta name="twitter:title" content="@yield('title') | {{ config('app.name') }}">
+<meta name="twitter:title" content="@yield('title') | {{setting('app_name')  }}">
 <meta name="twitter:description" content="{{ setting('meta_description') }}">
 <meta name="twitter:image" content="{{ asset(setting('meta_image')) }}">
 
 <!--canonical link-->
 <link type="text/plain" rel="author" href="{{asset('humans.txt')}}" />
-<meta name="generator" content="Laravel Starter - A CMS like modular Laravel starter project." />
+<meta name="generator" content={{setting('meta_description')  }} />
 <link rel="canonical" href="{{url()->full()}}">

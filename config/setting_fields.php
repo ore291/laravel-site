@@ -19,21 +19,49 @@ return [
             [
                 'type'  => 'text', // input fields type
                 'data'  => 'string', // data type, string, int, boolean
-                'name'  => 'footer_text', // unique name for field
-                'label' => 'Footer Text', // you know what label it is
-                'rules' => 'required|min:2', // validation rule of laravel
+                'name'  => 'address', // unique name for field
+                'label' => 'Address', // you know what label it is
+                'rules' => 'required|max:255', // validation rule of laravel
                 'class' => '', // any class for input
-                'value' => '<a href="https://github.com/nasirkhan/laravel-starter/">Built with ♥ from Bangladesh</a>', // default value if you want
+                'value' => '##########', // default value if you want
             ],
             [
-                'type'  => 'checkbox', // input fields type
-                'data'  => 'text', // data type, string, int, boolean
-                'name'  => 'show_copyright', // unique name for field
-                'label' => 'Show Copyright', // you know what label it is
-                'rules' => '', // validation rule of laravel
+                'type'  => 'file', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'site_logo', // unique name for field
+                'label' => 'Site Logo', // you know what label it is
+                'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // validation rule of laravel
                 'class' => '', // any class for input
-                'value' => '1', // default value if you want
+                 // default value if you want
             ],
+            [
+                'type'  => 'file', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'site_favicon', // unique name for field
+                'label' => 'Site Favicon', // you know what label it is
+                'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // validation rule of laravel
+                'class' => '', // any class for input
+                 // default value if you want
+            ],
+            
+            // [
+            //     'type'  => 'text', // input fields type
+            //     'data'  => 'string', // data type, string, int, boolean
+            //     'name'  => 'footer_text', // unique name for field
+            //     'label' => 'Footer Text', // you know what label it is
+            //     'rules' => 'required|min:2', // validation rule of laravel
+            //     'class' => '', // any class for input
+            //     'value' => '<a href="https://github.com/nasirkhan/laravel-starter/">Built with ♥ from Bangladesh</a>', // default value if you want
+            // ],
+            // [
+            //     'type'  => 'checkbox', // input fields type
+            //     'data'  => 'text', // data type, string, int, boolean
+            //     'name'  => 'show_copyright', // unique name for field
+            //     'label' => 'Show Copyright', // you know what label it is
+            //     'rules' => '', // validation rule of laravel
+            //     'class' => '', // any class for input
+            //     'value' => '1', // default value if you want
+            // ],
         ],
     ],
     'email' => [
@@ -54,6 +82,96 @@ return [
         ],
 
     ],
+    'bank' => [
+        'title' => 'Bank Settings',
+        'desc'  => 'Bank settings for app',
+        'icon'  => 'fas fa-building',
+
+        'elements' => [
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'fw_key', // unique name for field
+                'label' => 'FlutterWave API Key', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => 'FLWSECK_TEST-e482ebb4d6add3df13f04170fcdcc4cf-X', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'paystack_key', // unique name for field
+                'label' => 'Paystack API key', // you know what label it is
+                'rules' => 'required|nullable|max:255', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => 'pk_test_9da36d88c1d36b3beaab17754e6a92d2ad64ccaf', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'paystack_secret_key', // unique name for field
+                'label' => 'Paystack Secret key', // you know what label it is
+                'rules' => 'required|nullable|max:255', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => 'sk_test_5dbaccf801146c4e853762c6d634bbbfb83bcee4', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'ng_bank_acct', // unique name for field
+                'label' => 'Nigerian Bank Account', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '##########', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'ng_bank_name', // unique name for field
+                'label' => 'Nigerian Bank Name', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'ng_bank_user', // unique name for field
+                'label' => 'Account Holder Name', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'mpesa_bank_acct', // unique name for field
+                'label' => 'Mpesa Bank Account', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '##########', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'mpesa_user_name', // unique name for field
+                'label' => 'Mpesa Account Holder Name', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'transfer_comfirm_number', // unique name for field
+                'label' => 'Number to Comfirm Bank Transers', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
+            ],
+        ],
+
+    ],
     'social' => [
         'title' => 'Social Profiles',
         'desc'  => 'Link of all the social profiles.',
@@ -63,8 +181,26 @@ return [
             [
                 'type'  => 'text', // input fields type
                 'data'  => 'string', // data type, string, int, boolean
-                'name'  => 'facebook_url', // unique name for field
-                'label' => 'Facebook Page URL', // you know what label it is
+                'name'  => 'telegram_url', // unique name for field
+                'label' => 'Telegram Group URL', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'ng_whatsapp', // unique name for field
+                'label' => 'Nigerian Call and Whatsapp', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'kenya_whatsapp', // unique name for field
+                'label' => 'Kenya Call and Whatsapp', // you know what label it is
                 'rules' => 'required|nullable|max:191', // validation rule of laravel
                 'class' => '', // any class for input
                 'value' => '#', // default value if you want
@@ -99,8 +235,8 @@ return [
             [
                 'type'  => 'text', // input fields type
                 'data'  => 'string', // data type, string, int, boolean
-                'name'  => 'youtube_url', // unique name for field
-                'label' => 'Youtube Channel URL', // you know what label it is
+                'name'  => 'facebook_url', // unique name for field
+                'label' => 'Facebook Group URL', // you know what label it is
                 'rules' => 'required|nullable|max:191', // validation rule of laravel
                 'class' => '', // any class for input
                 'value' => '#', // default value if you want

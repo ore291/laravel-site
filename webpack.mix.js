@@ -18,10 +18,10 @@ mix.js('resources/js/app.js', 'public/js')
  * -----------------------------------------------------------------------------
  */
 // jquery and icon fonts
-// mix.copy("node_modules/jquery/dist/jquery.min.js", "public/js/jquery.min.js")
-//     .copy("node_modules/@fortawesome/fontawesome-free/webfonts/*", "public/webfonts")
-//     .copy('node_modules/@coreui/icons/fonts', 'public/fonts')
-//     .copy('node_modules/@coreui/icons/sprites', 'public/fonts');
+mix.copy("node_modules/jquery/dist/jquery.min.js", "public/js/jquery.min.js")
+    .copy("node_modules/@fortawesome/fontawesome-free/webfonts/*", "public/webfonts")
+    .copy('node_modules/@coreui/icons/fonts', 'public/fonts')
+    .copy('node_modules/@coreui/icons/sprites', 'public/fonts');
 
 
 /**
@@ -65,7 +65,7 @@ mix.styles(
 mix.scripts(
     [
         "node_modules/jquery/dist/jquery.min.js",
-        // "node_modules/bootstrap/dist/js/bootstrap.min.js",
+         "node_modules/bootstrap/dist/js/bootstrap.min.js",
         "node_modules/@coreui/coreui/dist/js/coreui.bundle.js",
         "node_modules/simplebar/dist/simplebar.min.js",
         // "node_modules/@coreui/utils/dist/coreui-utils.js",

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    {{ app_name() }}
+    {{ 'Home' }}
 @endsection
 
 @section('content')
@@ -35,7 +35,7 @@
 
         </section>
 
-        <section class="py-20 max-w-6xl mx-auto ">
+        <section class="py-5 md:py-20 max-w-6xl mx-auto ">
             <div class="grid grid-cols-1 md:grid-cols-2 md:divide-x ">
                 <div class="w-full text-black">
                     <h4 class="text-center font-semibold text-2xl">
@@ -103,63 +103,67 @@
     </div>
 
 
-    <section class="mt-20 mb-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
+    <section class="mt-5  md:mt-20 mb-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
         <div class="w-full bg-black rounded flex justify-start items-center text-white  py-3 pl-5">
             <h3 class="text-sm font-semibold mb-0">TRENDING PREDICTIONS</h3>
         </div>
         <div class="w-full bg-white shadow ">
-            <h2 class="font-bold text-2xl text-black p-2">
+            <h2 class="font-bold text-sm md:text-2xl text-black p-2">
                 Today's Football Popular Predictions
             </h2>
             <table class="table-auto w-full border-spacing-2 ">
                 <thead class="border-b border-b-black font-semibold text-black">
-                    <tr class="p-2 px-5">
+                    <tr class="p-2 md:px-5">
                         <th class="text-start  p-2 ml-1">Event</th>
                         <th class="text-start p-2">Tips</th>
                         <th class="text-start p-2 mr-1">Odds</th>
                         <th class="text-start p-2 mr-1">Time</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @forelse ($trending_pred as $pred)
-                    <tr class="even:bg-white odd:bg-[#F2F2F2]">
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="text-sm font-medium">{{$pred->team_a . " vs " . $pred->team_b }}</span>
-                                <div class="flex items-center justify-between space-x-1">
-                                    <img src="/svg/{{$pred->emblem}}" alt="logo" class="w-5 h-5" />
-                                    <span>{{$pred->country}}</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-semibold text-sm uppercase ">
-                                    {{$pred->tips}}
-                                </span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-medium text-sm ">
-                                    {{$pred->odds}}
-                                </span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class=" text-sm ">
-                                    {{date('g:i A', strtotime($pred->time_t))}}
-                                </span>
-                            </div>
-                        </td>
-                    </tr>
-                    @empty
-                    <p>No Predictions available for Today</p>
-                    @endforelse
-                   
+                @if (count($trending_pred) < 1)
+                    <tbody class="text-sm">No Predictions available for Today</tbody>
+                @else
+                    <tbody>
+                        @foreach ($trending_pred as $pred)
+                            <tr class="even:bg-white odd:bg-[#F2F2F2]">
+                                <td>
+                                    <div class="flex flex-col items-start justify-center pl-2">
+                                        <span
+                                            class="text-sm font-medium">{{ $pred->team_a . ' vs ' . $pred->team_b }}</span>
+                                        <div class="flex items-center justify-between space-x-1">
+                                            <img src="/svg/{{ $pred->emblem }}" alt="logo" class="w-5 h-5" />
+                                            <span>{{ $pred->country }}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex flex-col items-start justify-center pl-2">
+                                        <span class="font-semibold text-sm uppercase ">
+                                            {{ $pred->tips }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex flex-col items-start justify-center pl-2">
+                                        <span class="font-medium text-sm ">
+                                            {{ $pred->odds }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex flex-col items-start justify-center pl-2">
+                                        <span class=" text-sm ">
+                                            {{ date('g:i A', strtotime($pred->time_t)) }}
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
 
-                </tbody>
+
+                    </tbody>
+                @endif
+
             </table>
         </div>
     </section>
@@ -180,48 +184,48 @@
                 </thead>
                 <tbody>
                     @forelse ($upcoming_pred as $pred)
-                    <tr class="even:bg-white odd:bg-[#F2F2F2]">
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="text-sm font-medium">{{$pred->team_a . " vs " . $pred->team_b }}</span>
-                                <div class="flex items-center justify-between space-x-1">
-                                    <img src="/svg/{{$pred->emblem}}" alt="logo" class="w-5 h-5" />
-                                    <span>{{$pred->country}}</span>
+                        <tr class="even:bg-white odd:bg-[#F2F2F2]">
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="text-sm font-medium">{{ $pred->team_a . ' vs ' . $pred->team_b }}</span>
+                                    <div class="flex items-center justify-between space-x-1">
+                                        <img src="/svg/{{ $pred->emblem }}" alt="logo" class="w-5 h-5" />
+                                        <span>{{ $pred->country }}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-semibold text-sm uppercase ">
-                                    {{$pred->tips}}
-                                </span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-medium text-sm ">
-                                    {{$pred->odds}}
-                                </span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="text-sm ">
-                                    {{$pred->date_t}}
-                                </span>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="font-semibold text-sm uppercase ">
+                                        {{ $pred->tips }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="font-medium text-sm ">
+                                        {{ $pred->odds }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="text-sm ">
+                                        {{ $pred->date_t }}
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
                     @empty
-                    <p>No Predictions available </p>
+                        <p>No Predictions available </p>
                     @endforelse
-                   
+
 
                 </tbody>
             </table>
         </div>
     </section>
-    <section class="my-2 max-w-6xl mx-auto">
+    {{-- <section class="my-2 max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 gap-x-10 py-20">
             <div class="bg-black flex flex-col items-center justify-center text-white font-semibold p-5">
                 <span class="text-lg font-bold">
@@ -419,59 +423,59 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="my-2 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
         <div class="w-full bg-black rounded flex justify-start items-center text-white  py-3 pl-5">
             <h3 class="text-sm font-semibold mb-0">LATEST RESULTS</h3>
         </div>
         <div class="w-full bg-white shadow ">
 
-            <table class="table-fixed w-full">
+            <table class="table-auto w-full">
                 <thead class="border-b border-b-black font-semibold text-black">
                     <tr class="p-2 px-5 text-center">
                         <th class="text-start  p-2 ml-1">Event</th>
-                        <th class="text-start p-2">Prediction</th>
+                        <th class="text-start p-2">Tips</th>
                         <th class="text-start p-2 mr-1">Date</th>
                         <th class="text-start p-2 mr-1">Score</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($results_pred as $pred)
-                    <tr class="even:bg-white odd:bg-[#F2F2F2]">
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="text-sm font-medium">{{$pred->team_a . " vs " . $pred->team_b }}</span>
-                                <div class="flex items-center justify-between space-x-1">
-                                    <img src="/svg/{{$pred->emblem}}" alt="logo" class="w-5 h-5" />
-                                    <span>{{$pred->country}}</span>
+                        <tr class="even:bg-white odd:bg-[#F2F2F2]">
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="text-sm font-medium">{{ $pred->team_a . ' vs ' . $pred->team_b }}</span>
+                                    <div class="flex items-center justify-between space-x-1">
+                                        <img src="/svg/{{ $pred->emblem }}" alt="logo" class="w-5 h-5" />
+                                        <span>{{ $pred->country }}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                       
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-medium text-sm ">
-                                    {{$pred->tips}}
-                                </span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="text-sm ">
-                                    {{$pred->date_t}}
-                                </span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col items-start justify-center pl-2">
-                                <span class="font-semibold text-sm uppercase ">
-                                    {{$pred->score_a . ' - ' . $pred->score_b}}
-                                </span>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="font-medium text-sm ">
+                                        {{ $pred->tips }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="text-sm ">
+                                        {{ $pred->date_t }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="font-semibold text-sm uppercase ">
+                                        {{ $pred->score_a . ' - ' . $pred->score_b }}
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
                     @empty
-                    <p class="p-2">No Results available </p>
+                        <p class="p-2">No Results available </p>
                     @endforelse
 
                 </tbody>
@@ -487,12 +491,12 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
                     <div class="section-title mb-2">
-                        <h1 class="text-5xl font-bold text-center text-black">FREE FOOTBALL PREDICTION SITE</h1>
+                        <h1 class="text-3xl md:text-5xl font-bold text-center text-black">FREE FOOTBALL PREDICTION SITE</h1>
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 ">
                     <p class="text-justify">
-                        <b style="color: green;">{{ app_name() }}</b> is the best free Soccer prediction site in the
+                        <b style="color: green;">{{setting('app_name')  }}</b> is the best free Soccer prediction site in the
                         world and the site that predicts Soccer matches correctly. We are the most accurate Soccer
                         prediction site providing our users with the most accurate Soccer predictions around the world.
 
@@ -511,7 +515,7 @@
                         prediction site like ours.
                     </p>
                     <p class="text-justify">
-                        But don't worry, you're one of the luckiest Soccer fan for using {{ app_name() }}.com as your
+                        But don't worry, you're one of the luckiest Soccer fan for using {{setting('app_name')  }}.com as your
                         best guide to Soccer betting and predictions.
 
                         As one of the best Soccer prediction site in the world, we offer our visitors and subscribers with
@@ -523,16 +527,16 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
                     <div class="section-title mb-2">
-                        <h2 class="font-extrabold text-5xl text-center text-black">ACCURATE SOCCER PREDICTION - HOW IS THIS
+                        <h2 class="font-extrabold text-3xl md:text-5xl text-center text-black">ACCURATE SOCCER PREDICTION - HOW IS THIS
                             POSSIBLE?</h2>
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 ">
                     <p class="text-justify">
-                        <b style="color: green;">{{ app_name() }}.com</b> understands the attraction of this league and
+                        <b style="color: green;">{{setting('app_name')  }}</b> understands the attraction of this league and
                         provides expert analysis and Soccer betting tips, to ensure you come out tops with your wagers.
 
-                        <b style="color: green;">{{ app_name() }}.com</b> works round the clock to grow your Soccer
+                        <b style="color: green;">{{setting('app_name')  }}</b> works round the clock to grow your Soccer
                         betting tips bankroll. When you engage with our platform, you can rest assure that you see things
                         from the lens of our informed experts. You need not waste your time and resources in endless
                         searches for Fixed matches or Fixed games, because none exist. All you need to do is tune in to our
@@ -546,27 +550,27 @@
 
                         To learn more on how to win with sure Soccer predictions, visit our how to win page and learn more.
 
-                        Thank you for choosing {{ app_name() }}.com as the best Soccer prediction site. We hope our team
+                        Thank you for choosing {{setting('app_name')  }} as the best Soccer prediction site. We hope our team
                         have served you better? Contact us for any enquries below.
-                        <br>Email : <b style="color:green;">contact@sportverified.com</b>
+                        <br>Email : <b style="color:green;">{{setting('email')  }}</b>
                     </p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
                     <div class="section-title mb-2">
-                        <h2 class="font-extrabold text-5xl text-center text-black" style="text-transform: uppercase;">Best
+                        <h2 class="font-extrabold text-3xl md:text-5xl text-center text-black" style="text-transform: uppercase;">Best
                             Prediction Site In The World</h2>
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 ">
-                    <p class="text-justify">{{ app_name() }}.com is the best prediction site in the world. Our website
+                    <p class="text-justify">{{setting('app_name')  }} is the best prediction site in the world. Our website
                         works to help you win with the best Soccer tips in the industry. Both Amateur and Professional
                         tipsters can get fast, reliable and efficient Soccer betting tips from our site. We understands the
                         attraction of league and provides expert analysis and Soccer betting tips, to ensure you come out
                         tops with your wagers.</p>
                     <p class="text-justify">
-                        At <b style="color: green;">{{ app_name() }}</b>, we offer the best betting tips and guide on
+                        At <b style="color: green;"> {{setting('app_name')  }}</b>, we offer the best betting tips and guide on
                         how to make money steadily from Soccer betting. Example of scheme offered is Soccer investment
                         scheme where we unveil the world of Soccer investment and guide you on how to increase your profits
                         immediately! Our investment tracker shows our recent performance as we encourage transparency in

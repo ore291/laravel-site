@@ -21,16 +21,16 @@
             <div class="flex-1 flex items-center justify-center content-center sm:items-stretch sm:justify-start">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/">
-                        <img class="block lg:hidden h-10 w-auto" src="{{ asset('img/bet-logo.png') }}"
+                        <img class="block lg:hidden !w-[120px] h-10 object-contain" src="{{ asset(setting('site_logo')) }}"
                             alt="{{ app_name() }}">
                     </a>
                     <a href="/">
-                        <img class="hidden lg:block h-12 w-auto" src="{{ asset('img/bet-logo.png') }}"
+                        <img class="hidden lg:block h-12 !w-[120px] object-contain" src="{{ asset(setting('site_logo')) }}"
                             alt="{{ app_name() }}">
                     </a>
                 </div>
                 <div class="hidden sm:block sm:ml-6">
-                    <div class="flex space-x-4">
+                    <div class="flex space-x-2">
                         <a href="/"
                             class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
                             HOME
@@ -88,18 +88,22 @@
                             class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
                             CONTACT
                         </a>
+                        <a href="/blog"
+                            class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                            BLOG
+                        </a>
+                        <a href="/live-scores"
+                            class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                            LIVE SCORES
+                        </a>
 
                         @auth
                             <a href="/dashboard"
                                 class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
                                 DASHBOARD
                             </a>
-
-                            <a href="/live"
-                                class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
-                                LIVE EVENTS
-                            </a>
                         @endauth
+
                         {{-- <a href="{{ route('frontend.posts.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
                             {{__('Posts')}}
                         </a>
@@ -205,14 +209,17 @@
             <div class="px-2 pt-2 pb-3 space-y-0.5 bg-white shadow-lg rounded-md ring-1 ring-black ring-opacity-5">
 
                 <a href="/" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
-                    HOME
+                    Home
+                </a>
+                <a href="/blog" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
+                    Blog
+                </a>
+                <a href="/live-scores" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
+                    Live Scores
                 </a>
                 @auth
                     <a href="/dashboard" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
-                        DASHBOARD
-                    </a>
-                    <a href="/live" class="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">
-                        LIVE EVENTS
+                       Dashboard
                     </a>
                 @endauth
                 <a href="{{ route('frontend.predictions') }}"

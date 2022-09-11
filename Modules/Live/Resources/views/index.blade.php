@@ -65,6 +65,18 @@
                                 <th>
                                     Live Streaming Link
                                 </th>
+                                <th>
+                                   Tips
+                                </th>
+                                <th>
+                                   Odds
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                   Time
+                                </th>
                               
 
 
@@ -128,6 +140,26 @@
                 {
                     data: 'live_streaming_link',
                     name: 'live_streaming_link',
+                    
+                },
+                {
+                    data: 'tips',
+                    name: 'tips',
+                    
+                },
+                {
+                    data: 'odds',
+                    name: 'odds',
+                    
+                },
+                {
+                    data: 'date',
+                    name: 'date',
+                    
+                },
+                {
+                    data: 'time',
+                    name: 'time',
                     
                 },
                 {

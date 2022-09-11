@@ -17,6 +17,10 @@ class EventServiceProvider extends ServiceProvider
         // Registered::class => [
         //     SendEmailVerificationNotification::class,
         // ],
+        'App\Events\TipPostEvent' => [
+            'App\Listeners\SendTipsLister',
+            
+        ],
         'App\Events\Backend\UserCreated' => [
             'App\Listeners\Backend\UserCreated\UserCreatedProfileCreate',
             'App\Listeners\Backend\UserCreated\UserCreatedSubscriptionCreate',

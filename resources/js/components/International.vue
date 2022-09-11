@@ -156,6 +156,7 @@ export default {
     },
     created() {
         this.user = window.user;
+        this.site_name = window.app_name;
 
 
     },
@@ -259,7 +260,7 @@ export default {
                     })
                 },
                 customizations: {
-                    title: 'My store',
+                    title: this.site_name,
                     description: 'Upgrade Plan',
                     logo: 'https://sportverified.com/logo.png'
                 }
@@ -304,7 +305,7 @@ export default {
 
     data() {
         return {
-
+            site_name : "",
             user: null,
             selectedPlan: {},
             selectedDuration: "",

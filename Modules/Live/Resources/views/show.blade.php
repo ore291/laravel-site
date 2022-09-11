@@ -43,6 +43,10 @@
                     <h2 class="my-2">{{ $$module_name_singular->event }}</h2>
                     <p>Booking Number : {{$$module_name_singular->booking_no}}</p>
                     <p>Live Streaming Link: {{$$module_name_singular->live_streaming_link}}</p>
+                    <p>Tips : {{$$module_name_singular->tips }}</p>
+                    <p>Odds : {{$$module_name_singular->odds}}</p>
+                    <p>Date : {{$$module_name_singular->date}}</p>
+                    <p>Time : {{$$module_name_singular->time}}</p>
                 </div>
             </div>
         </div>

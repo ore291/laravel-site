@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    {{ app_name() }}
+  {{setting('app_name')  }}
 @endsection
 
 @section('content')
@@ -299,12 +299,12 @@
                         PAY VIA BANK DEPOSIT </h1>
                     <p>You can activate or upgrade your Sport Verified account by making the appropriate payments to our
                         bank account. Find our bank account details below.</p>
-                    <p> <b> Account Name : Verified Games &amp; Services </b></p>
-                    <p> <b> Account Number : 1015373789 </b></p>
-                    <p> <b> Bank : Zenith Bank Plc </b></p>
+                    <p> <b> Account Name : {{setting('ng_bank_user')  }} </b></p>
+                    <p> <b> Account Number : {{setting('ng_bank_acct')  }} </b></p>
+                    <p> <b> Bank : {{setting('ng_bank_name')  }} </b></p>
 
                     <p> After making deposits, ensure you send your Name, Teller number, E-Mail address, and the name of the
-                        bank to +234 812 483 9413. <br> Your Sport Verified account will be upgraded before close of
+                        bank to {{setting('transfer_comfirm_number')  }}. <br> Your Sport Verified account will be upgraded before close of
                         business hours. </p>
 
                     <h1
@@ -341,12 +341,12 @@
                     <p>If you are having problems with any of the above payment method, you can make a mobile banking
                         transfer or atm transfer to any of the following bank account.
                         <br>
-                        <b>Verified Games &amp; Services
+                        <b>{{setting('ng_bank_user')  }}
                             <br>
-                            1015373789
+                            {{setting('ng_bank_acct')  }}
                             <br>
-                            Zenith Bank Plc </b><br> After making the transfer, Send your email address, name and location
-                        to any of this numbers +234 812 483 9413 and your account will be upgraded before end of the day.
+                            {{setting('ng_bank_name')  }} </b><br> After making the transfer, Send your email address, name and location
+                        to any of this numbers {{setting('transfer_comfirm_number')  }}and your account will be upgraded before end of the day.
                     </p>
 
                 </div>

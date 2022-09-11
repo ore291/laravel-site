@@ -6,7 +6,7 @@
 *
 * --------------------------------------------------------------------
 */
-Route::group(['namespace' => '\Modules\Article\Http\Controllers\Frontend', 'as' => 'frontend.', 'middleware' => ['web', 'auth', 'premium'], 'prefix' => ''], function () {
+Route::group(['namespace' => '\Modules\Article\Http\Controllers\Frontend', 'as' => 'frontend.', 'middleware' => ['web',], 'prefix' => ''], function () {
 
     /*
      *
@@ -16,7 +16,7 @@ Route::group(['namespace' => '\Modules\Article\Http\Controllers\Frontend', 'as' 
      */
     $module_name = 'posts';
     $controller_name = 'PostsController';
-    Route::get("vip-posts", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
+    Route::get("blog", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
     Route::get("$module_name/{id}/{slug?}", ['as' => "$module_name.show", 'uses' => "$controller_name@show"]);
 
     /*

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    {{ app_name() }}
+{{setting('app_name')  }}
 @endsection
 
 @section('content')
@@ -13,7 +13,106 @@
                         style="font-size: 20px; text-align: center; font-family: arial black; font-style: NORMAL; color: green;">
                         PRICING LIST</h1>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                    @foreach ($plans as $plan)
+                        <div class="border border-black">
+                            <div class="w-full bg-green-700 text-white h-8 flex items-center justify-center">
+                                <h2 class="text-center font-bold text-xl">
+                                    {{ $plan->name }}
+                                </h2>
+                            </div>
+                            <div class="p-2">{!! $plan->content !!}</div>
+                            <br>
+                            @if ($plan->id !== 1)
+                                <ul class="p-2">
+                                    @if ($plan->sms_plan === 1 && $country_code === 'ng')
+                                        <li><span class="glyphicon glyphicon-ok"></span> &nbsp;
+
+                                            <b class="pricez">
+                                                <x-money amount="{{ $plan->n_weekly }}" currency="NGN" convert />-
+                                                Weekly
+                                            </b>
+
+                                        </li>
+                                    @endif
+
+
+
+
+                                    <li><span class="glyphicon glyphicon-ok"></span> &nbsp; @if ($country_code === 'ng')
+                                            <b class="pricez">
+                                                <x-money amount="{{ $plan->n_per_month }}" currency="NGN" convert />-
+                                                Monthly
+                                            </b>
+                                        @elseif ($country_code === 'ea')
+                                            <b class="pricez">
+                                                <x-money amount="{{ $plan->k_per_month }}" currency="KES" convert />-
+                                                Monthly
+                                            </b>
+                                        @else
+                                            <b class="pricez">
+                                                <x-money amount="{{ $plan->d_per_month }}" currency="USD" convert />-
+                                                Monthly
+                                            </b>
+                                        @endif
+                                    </li>
+
+                                    @if ($plan->id !== 6)
+                                        <li><span class="glyphicon glyphicon-ok"></span> &nbsp; @if ($country_code === 'ng')
+                                                <b class="pricez">
+                                                    <x-money amount="{{ $plan->n_per_6months }}" currency="NGN" convert />-
+                                                    6 Months
+                                                </b>
+                                            @elseif ($country_code === 'ea')
+                                                <b class="pricez">
+                                                    <x-money amount="{{ $plan->k_per_6months }}" currency="KES" convert />-
+                                                    6 Months
+                                                </b>
+                                            @else
+                                                <b class="pricez">
+                                                    <x-money amount="{{ $plan->d_per_6months }}" currency="USD" convert />-
+                                                    6 Months
+                                                </b>
+                                            @endif
+                                        </li>
+                                    @endif
+                                    @if ($plan->id !== 6)
+                                       
+                                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; @if ($country_code === 'ng')
+                                                    <b class="pricez">
+                                                        <x-money amount="{{ $plan->n_per_year }}" currency="NGN" convert />-
+                                                        1 year
+                                                    </b>
+                                                @elseif ($country_code === 'ea')
+                                                    <b class="pricez">
+                                                        <x-money amount="{{ $plan->k_per_year }}" currency="KES" convert />
+                                                        -
+                                                        1 year
+                                                    </b>
+                                                @else
+                                                    <b class="pricez">
+                                                        <x-money amount="{{ $plan->d_per_year }}" currency="USD" convert />
+                                                        -
+                                                        1 year
+                                                    </b>
+                                                @endif
+                                            </li>
+                                      
+                                    @endif
+                                </ul>
+                            @endif
+
+                            <br>
+                            <div style="text-align: left;" class="p-2"><a href="/register"><button
+                                style="text-align: center; background-color: green; border:none; font-size: 14px; width: 100%; color:white;border-radius: 10px;">Sign
+                                Up</button></a></div>
+                        </div>
+                    @endforeach
+
+                </div>
+                {{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
 
                     <div class="col-md-4">
                         <div class="col-md-12"
@@ -224,7 +323,7 @@
 
 
 
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

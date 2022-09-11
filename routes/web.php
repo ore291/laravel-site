@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Auth Routes
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // Language Switch
 Route::get('language/{language}', [LanguageController::class, 'switch'])->name('language.switch');
 
 Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index')->name('dashboard');
+
+
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 /*
 *
 * Frontend Routes
@@ -42,8 +49,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
     Route::get('tennis', 'FrontendController@tennis')->name('tennis');
     Route::get('boxing', 'FrontendController@boxing')->name('boxing');
     Route::get('ice-hockey', 'FrontendController@iceHockey')->name('iceHockey');
+    Route::get('live-scores', 'FrontendController@liveScores')->name('liveScores');
 
-    Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['auth', 'verified']], function () {
         /*
         *
         *  Users Routes
@@ -52,7 +60,16 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
         */
         $module_name = 'users';
         $controller_name = 'UserController';
-        Route::get('dashboard', ['as' => "$module_name.dashboard", 'uses' => "$controller_name@dashboard"]);
+
+        Route::group(['middleware' => ['verified']], function () {
+            $module_name = 'users';
+            $controller_name = 'UserController';
+            /**
+             * Dashboard Routes
+             */
+            Route::get('dashboard', ['as' => "$module_name.dashboard", 'uses' => "$controller_name@dashboard"]);
+        });
+        // Route::get('dashboard', ['as' => "$module_name.dashboard", 'uses' => "$controller_name@dashboard"]);
         Route::get('payment', ['as' => "$module_name.payment", 'uses' => "$controller_name@payment"]);
         Route::get('profile/{id}', ['as' => "$module_name.profile", 'uses' => "$controller_name@profile"]);
         Route::get('profile/{id}/edit', ['as' => "$module_name.profileEdit", 'uses' => "$controller_name@profileEdit"]);

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use Carbon\Carbon;
+use App\Models\Plan;
 use App\Models\User;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Stevebauman\Location\Location;
 use App\Http\Controllers\Controller;
 use Modules\Predictions\Entities\Category;
 use Modules\Predictions\Entities\Prediction;
@@ -45,8 +47,35 @@ class FrontendController extends Controller
     {
         $body_class = '';
 
-        // return view('dashboard', compact('body_class'));
-        return view('frontend.pricing', compact('body_class'));
+        $plans = Plan::where('is_disabled', 0)->get();
+        $ip = '102.135.32.0'; //For static IP address get
+        //$ip = request()->ip(); //Dynamic IP address get
+        $location = \Location::get($ip);
+
+        $africa = array("Ghana", "Rwanda", "Cameroon", "South Africa", "Zambia", "Zimbabwe", "Uganda", "Kenya", "Tanzania", "Cote D'ivoire", "Burkina Faso", "Senegal", "Mali", "Gabon", "Mauritius");
+
+        if ($location->countryName == "Nigeria") {
+            $country_code = "ng";
+        } else if (in_array($location->countryName, $africa)) {
+            $country_code = "ea";
+        } else {
+            $country_code = "int";
+        }
+
+        return view('frontend.pricing', compact('body_class', 'plans', 'country_code'));
+    }
+    /**
+     * Show the application pricing page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function liveScores()
+    {
+        $body_class = '';
+
+      
+
+        return view('frontend.live_scores', compact('body_class'));
     }
 
     /**
@@ -102,7 +131,9 @@ class FrontendController extends Controller
             ];
         }
 
-        $sport_categories = Category::where('sport', 1)->where('id', '<', 21)->get();
+        $sport_categories = Category::where('sport', 1)->where('id', '!=', 22)->whereRelation('plan', 'is_disabled', 0)->with('plan')->get();
+
+      
 
 
 

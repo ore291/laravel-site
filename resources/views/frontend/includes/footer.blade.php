@@ -6,24 +6,24 @@
                 <div class="md:col-span-2 px-2  md:px-14">
                     <div class="about-widget">
                         <a class="logo" href="/">
-                            <img src="{{ asset('img/bet-logo.png') }}" alt="{{ app_name() }}">
+                            <img src="{{ asset(setting('site_logo')) }}" alt="{{ app_name() }}">
                         </a>
                         <p class="text-[#ccc] text-[16px] leading-[26px] my-2 font-semibold uppercase">
-                            SPORTVERIFIED YOUR NO 1 GUIDE TO FOOTBALL BETTING AND PREDICTION.
+                            {{setting('app_name')  }} YOUR NO 1 GUIDE TO FOOTBALL BETTING AND PREDICTION.
                         </p>
                         <div class="social">
                             <ul class="list-none">
                                 <li class="list-none flex space-x-4 items-center ">
-                                    <a href="#" class="social-icon">
+                                    <a href="{{setting('facebook_url')  }}" class="social-icon">
                                         <i class="fab fa-facebook"></i>
                                     </a>
-                                    <a href="" class="social-icon">
+                                    <a href="{{setting('twitter_url')  }}" class="social-icon">
                                         <i class="fab fa-twitter"></i>
                                     </a>
-                                    <a href="" class="social-icon">
+                                    <a href="{{setting('instagram_url')  }}" class="social-icon">
                                         <i class="fab fa-instagram"></i>
                                     </a>
-                                    <a href="" class="social-icon">
+                                    <a href="{{setting('linkedin_url')  }}" class="social-icon">
                                         <i class="fab fa-linkedin"></i>
                                     </a>
                                 </li>
@@ -38,7 +38,7 @@
                                     <span class="text flex flex-col space-y-2">
                                         <span class="footer-mail ml-2">Mail Us</span>
                                         <span
-                                            class="descr ml-2 opacity-30 text-sm text-[#ddd]">contact@sportverified.com</span>
+                                            class="descr ml-2 opacity-30 text-sm text-[#ddd]">{{setting('email')  }}</span>
                                     </span>
                                 </li>
                                 <br>
@@ -51,10 +51,10 @@
                                         <span class="descr text-white opacity-30 text-sm ml-2">
                                             Calls &amp; WhatsApp:
 
-                                            0812 483 9413 (Nigeria), 0703200262 (Kenya) <br>
+                                            {{setting('ng_whatsapp')  }} (Nigeria), {{setting('kenya_whatsapp')  }} (Kenya) <br>
                                             <i class="fab fa-whatsapp" style="color:#32CD32;"></i>
                                             <a class="section-title2"
-                                                href="https://api.whatsapp.com/send?phone=2348124839413"
+                                                href="https://api.whatsapp.com/send?phone={{setting('ng_whatsapp')}}"
                                                 style="color:#32CD32;">Click here to contact us via
                                                 WhatApp(Nigeria).</a>
                                             <br>
@@ -70,14 +70,14 @@
                         <h3 class="text-lg text-[#ddd] uppercase mb-[15px] font-medium">Useful links</h3>
                         <ul class="list-none footer-ul">
                             @guest
-                                <li><a href="register.php" class="footer-links" id="session_out_register">Register</a></li>
+                                <li><a href="/register" class="footer-links" id="session_out_register">Register</a></li>
                             @endguest
                             @auth
-                                <li><a href="account.php" class="footer-links" id="session_in_account">My Account</a></li>
+                                <li><a href="/dashboard" class="footer-links" id="session_in_account">My Account</a></li>
                             @endauth
-                            <li><a href="pricing.php" class="footer-links">Pricing Plan</a></li>
-                            <li><a href="howto.php" class="footer-links">How to Pay</a></li>
-                            <li><a href="about.php" class="footer-links">About Us</a></li>
+                            <li><a href="/pricing" class="footer-links">Pricing Plan</a></li>
+                            <li><a href="/how-to-pay" class="footer-links">How to Pay</a></li>
+                          
                         </ul>
                     </div>
                 </div>
@@ -87,10 +87,10 @@
                         <ul class="list-none footer-ul">
 
                             <li><a href="#" class="footer-links">Mail Update</a></li>
-                            <li><a href="faq.php" class="footer-links">FAQs</a></li>
-                            <li><a href="contact.php" class="footer-links">Contact Us</a></li>
-                            <li><a href="terms.php" class="footer-links">Terms and Conditions</a></li>
-                            <li><a href="terms" class="footer-links">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-links">FAQs</a></li>
+                            <li><a href="/contact-us" class="footer-links">Contact Us</a></li>
+                            <li><a href="#" class="footer-links">Terms and Conditions</a></li>
+                            <li><a href="#" class="footer-links">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                 <div class="flex flex-col md:flex-row space-y-2 items-center justify-between">
                     <div class="md:flex block align-center">
                         <p class="copyright-text">
-                            <a href="/">{{ app_name() }}</a> ©
+                            <a href="/">{{setting('app_name')  }}</a> ©
                             <script>
                                 var d = new Date();
                                 var n = d.getFullYear();

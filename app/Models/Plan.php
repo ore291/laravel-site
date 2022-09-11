@@ -11,7 +11,7 @@ class Plan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','n_only','sms_plan', 'n_weekly', 'n_per_month', 'n_per_6months', 'd_per_month', 'd_per_6months', 'd_per_year', 'k_per_month', 'k_per_6months', 'k_per_year'];
+    protected $fillable = ['name','n_only','sms_plan', 'n_weekly', 'n_per_month', 'n_per_6months', 'd_per_month', 'd_per_6months', 'd_per_year', 'k_per_month', 'k_per_6months', 'k_per_year', 'is_disabled', 'color'];
 
     //  /**
     //  * format currency.

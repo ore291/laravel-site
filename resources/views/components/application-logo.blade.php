@@ -1,1 +1,1 @@
-<img src="{{asset('img/bet-logo.png')}}" style="height: 50px;">
+<img src="{{asset(setting('site_logo'))}}" style="height: 50px;">

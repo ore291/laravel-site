@@ -68,6 +68,9 @@
                                 <th>
                                     Price Per Month (Dollar)
                                 </th>
+                                <th>
+                                    Status
+                                </th>
 
 
                                 <th class="text-end">
@@ -160,6 +163,19 @@
                     render: function(data) {
 
                         return formatData('USD', data);
+                    }
+                },
+                {
+                    data: 'is_disabled',
+                    name: 'is_disabled',
+                    render: function(data) {
+                      
+                        if (data == 0) {
+                            return "ACTIVE"
+                        } else {
+                            return "DISABLED"
+                        }
+
                     }
                 },
                 {

@@ -119,17 +119,17 @@
                     searchable: false
                 },
                 {
-                    data: 'user_id.name',
+                    data: 'user.name',
                     name: 'name',
 
                 },
                 {
-                    data: 'user_id.mobile',
+                    data: 'user.mobile',
                     name: 'mobile',
 
                 },
                 {
-                    data: 'user_id.email',
+                    data: 'user.email',
                     name: 'email',
 
                 },

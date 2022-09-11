@@ -70,7 +70,7 @@ class PlansController extends Controller
 
         $module_action = 'List';
 
-        $$module_name = $module_model::select('id', 'name', 'n_per_month', 'n_per_6months', 'n_per_year', 'd_per_month', 'd_per_6months', 'd_per_year', 'k_per_month', 'k_per_6months', 'k_per_year', 'updated_at');
+        $$module_name = $module_model::select('id', 'name','is_disabled', 'n_per_month', 'n_per_6months', 'n_per_year', 'd_per_month', 'd_per_6months', 'd_per_year', 'k_per_month', 'k_per_6months', 'k_per_year', 'updated_at');
 
         // $data = $$module_name->each(function ($item, $key) {
         //     $item->n_per_month =  Money::NGN($item->n_per_month, true);

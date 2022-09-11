@@ -30,7 +30,7 @@ app2.component('Football', Football);
 app2.component('slide-up-down', SlideUpDown)
 
 app3.component('Payment', Payment);
-app3.use(Flutterwave, { publicKey: 'FLWPUBK_TEST-3b100333c526f8573b7e7c85ee5310b8-X' })
+app3.use(Flutterwave, { publicKey:  window.flutter_key })
 
 app3.mount("#payment-div")
 

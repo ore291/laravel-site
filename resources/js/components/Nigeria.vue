@@ -182,23 +182,52 @@
                             </button>
                         </div>
 
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div v-show="currentStep === 3 && payment_option === 1 && selectCard === false">
+            <div class="w-full">
 
 
+                <h1
+                    style="font-size: 20px; dtext-align: center; font-family: arial black; font-style: italic; color: Green;">
+                </h1>
+                <div class="w-full" style="dheight: 300px; dborder:solid; border-width: thin; padding-top: 20px;">
+                    <div class="w-full"
+                        style="background-color: green; height: 40px; margin-top: 30px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px; color: white;">
+                        Continue Payment Process <span style="font-size: 15px;"></span></div>
+                    <div class="w-full"
+                        style="background-color: white; border:solid; border-width: thin;  border-top: none;   margin-top: 0px; padding: 4px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px;">
+
+                        <p class="text-left font-normal p-2 mb-2">You can activate or upgrade your account by making the appropriate payments to
+                            our bank account. Find our bank account details below.
+
+                            <br> Account Name : {{ng_bank_user}}
+
+                            <br> Account Number : {{ng_bank_acct}}
+
+                            <br> Bank : {{ng_bank_name}}
+
+                            <br><b> After making deposits, ensure you send your : <br> Plan, Name, Teller number, E-Mail
+                                address, and the name of the bank to {{con_trans}}. </b>
+                            <br> Your {{site_name}} account will be upgraded before close of business hours.
+                        </p>
+                        <ul style="text-align: left; font-size: 20px; font-weight: 400; font-family: calibri;">
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp;{{ selectedPlan.name }}</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; {{ getDurationText }}</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp;<b id="email">{{ user.email }}</b>
+                            </li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; {{ getAmount.b }}</li>
+                        </ul>
+                        <!--</form>---->
 
 
 
 
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
 
             </div>
         </div>
@@ -221,8 +250,62 @@ export default {
     },
     created() {
         this.user = window.user;
+        this.publicKey = window.paystack_key;
+        this.ng_bank_user = window.ng_bank_user
+        this.ng_bank_name = window.ng_bank_name;
+        this.ng_bank_acct = window.ng_bank_acct;
+        this.con_trans = window.con_trans;
+        this.site_name = window.app_name
 
 
+    },
+     data() {
+        return {
+            publicKey: "",
+            site_name : "",
+            ng_bank_user : "",
+            ng_bank_name : "",
+            ng_bank_acct : "",
+            con_trans : "",
+            user: null,
+            selectedPlan: {},
+            selectedDuration: "",
+            totalSteps: 3,
+            selectCard: false,
+            currentStep: 0,
+            payment_option: null,
+            payment_method: null,
+            //   subs: [],
+            //   plans: [],
+            steps: [
+                "payment_method"
+            ],
+            ng_payment_options: [
+                {
+                    name: "Pay with Card",
+                    image: "/img/guy_card2.jpg",
+                    value: 0
+                },
+                {
+                    name: "Pay via ATM or Bank Transfer",
+                    image: "/img/ATM.jpg",
+                    value: 1
+                }
+            ],
+            ng_payment_methods: [
+                {
+                    name: "Pay using Flutterwave",
+                    image: "/img/guy_card2.jpg",
+                    value: 0
+                },
+                {
+                    name: "Pay using Paystack",
+                    image: "/img/guy_card2.jpg",
+                    value: 1
+                },
+
+            ]
+        }
     },
     computed: {
         reference() {
@@ -323,9 +406,9 @@ export default {
                     })
                 },
                 customizations: {
-                    title: 'My store',
+                    title: this.site_name,
                     description: 'Upgrade Plan',
-                    logo: 'https://sportverified.com/logo.png'
+                 
                 }
             })
         },
@@ -402,11 +485,10 @@ export default {
                 this.nextStep();
 
             } else {
-
-                window.location.assign('/how-to-pay');
                 this.payment_option = value;
                 this.selectCard = false;
                 this.payment_method = null;
+                this.nextStep();
             }
         },
         selectPaymentMethod(value) {
@@ -418,49 +500,7 @@ export default {
 
     },
 
-    data() {
-        return {
-            publicKey: "pk_test_9da36d88c1d36b3beaab17754e6a92d2ad64ccaf",
-            user: null,
-            selectedPlan: {},
-            selectedDuration: "",
-            totalSteps: 3,
-            selectCard: false,
-            currentStep: 0,
-            payment_option: null,
-            payment_method: null,
-            //   subs: [],
-            //   plans: [],
-            steps: [
-                "payment_method"
-            ],
-            ng_payment_options: [
-                {
-                    name: "Pay with Card",
-                    image: "/img/guy_card2.jpg",
-                    value: 0
-                },
-                {
-                    name: "Pay via ATM or Bank Transfer",
-                    image: "/img/ATM.jpg",
-                    value: 1
-                }
-            ],
-            ng_payment_methods: [
-                {
-                    name: "Pay using Flutterwave",
-                    image: "/img/guy_card2.jpg",
-                    value: 0
-                },
-                {
-                    name: "Pay using Paystack",
-                    image: "/img/guy_card2.jpg",
-                    value: 1
-                },
-
-            ]
-        }
-    },
+   
 }
 </script>
 

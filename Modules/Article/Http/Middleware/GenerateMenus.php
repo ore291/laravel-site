@@ -18,7 +18,7 @@ class GenerateMenus
         \Menu::make('admin_sidebar', function ($menu) {
 
             // Articles Dropdown
-            $articles_menu = $menu->add('<i class="nav-icon fas fa-file-alt"></i> '.__('Vip Section'), [
+            $articles_menu = $menu->add('<i class="nav-icon fas fa-file-alt"></i> '.__('Blog'), [
                 'class' => 'nav-group',
             ])
             ->data([

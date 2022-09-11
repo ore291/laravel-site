@@ -29,6 +29,7 @@ class PredictionResource extends JsonResource
             'sport_name'    =>  $this->sport_name,
             'category' => $this->cat,
             'league' => $this->leag,
+            'status' => $this->status
         ];
     }
 }

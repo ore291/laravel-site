@@ -157,7 +157,7 @@ class UserController extends Controller
         $location = \Location::get($ip);
 
         $$module_name_singular = $module_model::findOrFail($id);
-        $plans = Plan::where('id', "!=", 1)->get();
+        $plans = Plan::where('id', "!=", 1)->where('is_disabled', 0)->get();
 
 
         if ($$module_name_singular) {
@@ -238,6 +238,11 @@ class UserController extends Controller
      */
     public function profileUpdate(Request $request, $id)
     {
+
+        $id2 = decode_id($id);
+
+        
+
         $module_title = $this->module_title;
         $module_name = $this->module_name;
         $module_path = $this->module_path;
@@ -246,7 +251,7 @@ class UserController extends Controller
         $module_name_singular = Str::singular($module_name);
         $module_action = 'Profile Update';
 
-        if ($id != auth()->user()->id) {
+        if ($id2 != auth()->user()->id) {
             return redirect()->route('frontend.users.profile', $id);
         }
 
@@ -259,12 +264,12 @@ class UserController extends Controller
         $module_name = $this->module_name;
         $module_name_singular = Str::singular($this->module_name);
 
-        if (!auth()->user()->can('edit_users')) {
-            $id = auth()->user()->id;
-            $username = auth()->user()->username;
-        }
+        // if (!auth()->user()->can('edit_users')) {
+        //     $id = auth()->user()->id;
+        //     $username = auth()->user()->username;
+        // }
 
-        $$module_name_singular = $module_model::findOrFail($id);
+        $$module_name_singular = $module_model::findOrFail($id2);
 
         // Handle Avatar upload
         if ($request->hasFile('avatar')) {
@@ -288,7 +293,7 @@ class UserController extends Controller
 
         event(new UserProfileUpdated($user_profile));
 
-        return redirect()->route('frontend.users.profile', $$module_name_singular->id)->with('flash_success', 'Update successful!');
+        return redirect()->route('frontend.users.profile', $id)->with('flash_success', 'Update successful!');
     }
 
     /**

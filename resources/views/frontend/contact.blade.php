@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    {{ app_name() }}
+{{setting('app_name')  }}
 @endsection
 
 @section('content')
@@ -68,7 +68,7 @@
                     <div class="contact-information" style="background:#000;">
                         <div class="about-site">
                             <h6 style="color:#ee5253;">Site Name</h6>
-                            <h5 class="text-white">Sportverified.</h5>
+                            <h5 class="text-white">{{setting('app_name')  }}</h5>
                         </div>
                         <ul class="info-list mt-0">
                             <div>
@@ -78,15 +78,13 @@
                                 <span class="icon">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </span>
-                                <small class="text text-white">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx.</small>
+                                <small class="text text-white">{{setting('address')  }}</small>
                             </li>
                             <li>
                                 <span class="icon">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </span>
-                                <small class="text text-white">
-                                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
-                                </small>
+                               
                             </li>
                             <li>
                                 <span class="icon">
@@ -95,7 +93,7 @@
                                 <small class="text text-white">
                                     Calls &amp;WhatsApp:
 
-                                    0812 483 9413 (Nigeria), 0703200262 (Kenya)
+                                    {{setting('ng_whatsapp')  }} (Nigeria), {{setting('kenya_whatsapp')  }} (Kenya)
                                 </small>
                             </li>
 
@@ -108,7 +106,7 @@
                                     <i class="far fa-envelope"></i>
                                 </span>
                                 <span class="text">
-                                    contact@sportverified.com
+                                    {{setting('email')  }}
                                 </span>
                             </li>
                             <li>
@@ -116,7 +114,7 @@
                                     <i class="fab fa-whatsapp" style="color:#090;"></i>
                                 </span>
                                 <small class="text">
-                                    <a class="section-title2" href="https://api.whatsapp.com/send?phone=2348124839413"
+                                    <a class="section-title2" href="https://api.whatsapp.com/send?phone={{setting('ng_whatsapp')  }}"
                                         style="color:#090;">Click here to contact us via WhatApp.</a>
                                 </small>
                             </li>
@@ -124,8 +122,8 @@
                                 <span class="icon">
                                     <i class="fab fa-telegram" style="color:dodgerblue;"></i>
                                 </span>
-                                <small class="text text-white"><a href="https://t.me/sportverified"
-                                        style="color:#fff;">https://t.me/sportverified</a></small>
+                                <small class="text text-white"><a href="{{setting('telegram_url')  }}"
+                                        style="color:#fff;">{{setting('telegram_url')  }}</a></small>
                             </li>
                         </ul>
                         <ul class="info-list mt-0">
@@ -137,7 +135,7 @@
                                     <i class="fas fa-envelope"></i>
                                 </span>
                                 <span class="text">
-                                    advert@sportverified.com
+                                    {{setting('email')  }}
                                 </span>
                             </li>
                         </ul>
@@ -148,23 +146,23 @@
 
 
                             <li>
-                                <a href="#https://twitter.com/">
+                                <a href="{{setting('twitter_url')  }}">
                                     <i class="fab fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#https://www.instagram.com//">
+                                <a href="{{setting('instagram_url')  }}">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#https://www.linkedin.com/in//">
+                                <a href="{{setting('linkedin_url')  }}">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#https://www.youtube.com/channel/">
-                                    <i class="fab fa-youtube"></i>
+                                <a href="{{setting('facebook_url')  }}">
+                                    <i class="fab fa-facebook"></i>
                                 </a>
                             </li>
                         </ul>

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    {{ app_name() }}
+{{setting('app_name')  }}
 @endsection
 
 @section('content')
@@ -10,6 +10,8 @@
     window.user = @json($user);
     window.subs = @json($subs);
     window.cats = @json($sport_categories);
+
+  
  
 </script>
 

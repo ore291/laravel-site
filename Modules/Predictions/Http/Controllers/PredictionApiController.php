@@ -4,6 +4,7 @@ namespace Modules\Predictions\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\League;
+use App\Events\TipPostEvent;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Database\Eloquent\Builder;
@@ -91,6 +92,10 @@ class PredictionApiController extends Controller
                 'country' => $league->name,
                 'sport_name' => 'Football'
             ]);
+
+            if($pred_save->category == 11){
+                event(new TipPostEvent($pred_save));
+            }
         }
 
         return response()->json([

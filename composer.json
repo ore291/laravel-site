@@ -32,6 +32,7 @@
         "lavary/laravel-menu": "^1.8",
         "livewire/livewire": "^2.10",
         "mews/purifier": "^3.3",
+        "mhmiton/laravel-modules-livewire": "^1.5",
         "nwidart/laravel-modules": "^9.0",
         "nyholm/psr7": "^1.5",
         "php-http/curl-client": "^2.2",

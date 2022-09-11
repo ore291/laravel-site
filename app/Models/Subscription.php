@@ -17,23 +17,23 @@ class Subscription extends Model
      */
     protected $guarded = ['id'];
 
-    /**
-     * Get the user of a UserProvider.
-     */
+    // /**
+    //  * Get the user of a UserProvider.
+    //  */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get the user's first name.
-     *
-     * @return \Illuminate\Database\Eloquent\Casts\Attribute
-     */
-    protected function userId(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => User::find($value),
-        );
-    }
+    // /**
+    //  * Get the user's first name.
+    //  *
+    //  * @return \Illuminate\Database\Eloquent\Casts\Attribute
+    //  */
+    // protected function userId(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value) => User::find($value),
+    //     );
+    // }
 }

@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/favicon.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset(setting('site_favicon')) }}">
+    <link rel="icon" type="image/png" href="{{ asset(setting('site_favicon')) }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>@yield('title') | {{ config('app.name') }}</title>
+    {{-- <title>@yield('title') | {{ setting('app_name') }}</title> --}}
+    <title>@yield('title') | {{ setting('app_name') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{{ setting('meta_description') }}">
     <meta name="keyword" content="{{ setting('meta_keyword') }}">
@@ -14,8 +15,8 @@
     @include('frontend.includes.meta')
 
     <!-- Shortcut Icon -->
-    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
-    <link rel="icon" type="image/ico" href="{{ asset('img/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset(setting('site_favicon')) }}">
+    <link rel="icon" type="image/ico" href="{{ asset(setting('site_favicon')) }}" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -26,6 +27,7 @@
     <script src="https://kit.fontawesome.com/fe20a09b13.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/owl.theme.default.min.css') }}">
+
     <style>
         .blink_me,
         #ball {
@@ -76,16 +78,16 @@
 
 <body>
 
- 
-        @include('frontend.includes.header')
+
+    @include('frontend.includes.header')
 
 
-        <main>
-            @yield('content')
-        </main>
+    <main>
+        @yield('content')
+    </main>
 
-        @include('frontend.includes.footer')
-    
+    @include('frontend.includes.footer')
+
 
 
 
@@ -96,6 +98,7 @@
 
 <script src="{{ mix('js/frontend.js') }}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $(document).ready(function() {
         $(".owl-carousel").owlCarousel({

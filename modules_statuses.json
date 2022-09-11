@@ -1,7 +1,7 @@
 {
     "Article": true,
-    "Tag": false,
-    "Comment": false,
+    "Tag": true,
+    "Comment": true,
     "Predictions": true,
     "Live": true,
     "OtherSports": true

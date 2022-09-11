@@ -47,7 +47,7 @@ class SettingController extends Controller
 
         $$module_name = $module_model::paginate();
 
-        Log::info(label_case($module_title.' '.$module_action).' | User:'.Auth::user()->name.'(ID:'.Auth::user()->id.')');
+        Log::info(label_case($module_title . ' ' . $module_action) . ' | User:' . Auth::user()->name . '(ID:' . Auth::user()->id . ')');
 
         return view(
             "backend.$module_path.index",
@@ -58,7 +58,20 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $rules = Setting::getValidationRules();
+    
         $data = $this->validate($request, $rules);
+
+        if ($request->has('site_logo')) {
+            $imageName = time() . '.' . $request->site_logo->extension();
+            $request->site_logo->move(public_path('img'), $imageName);
+            $data['site_logo'] = 'img/'. $imageName;
+        }
+
+        if ($request->has('site_favicon')) {
+            $imageName = time() . '.' . $request->site_favicon->extension();
+            $request->site_favicon->move(public_path('img'), $imageName);
+            $data['site_favicon'] = 'img/'. $imageName;
+        }
 
         $validSettings = array_keys($rules);
 
@@ -67,6 +80,8 @@ class SettingController extends Controller
                 Setting::add($key, $val, Setting::getDataType($key));
             }
         }
+
+      
 
         return redirect()->back()->with('status', 'Settings has been saved.');
     }

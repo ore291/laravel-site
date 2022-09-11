@@ -130,7 +130,7 @@ class GenerateMenus
                     'activematches' => [
                         'admin/plans*',
                     ],
-                    'permission' => ['view_posts', 'view_categories'],
+                 
                 ]);
             $categories_menu->link->attr([
                 'class' => 'nav-link',
@@ -148,7 +148,7 @@ class GenerateMenus
                     'activematches' => [
                         'admin/leagues*',
                     ],
-                    'permission' => ['view_posts', 'view_categories'],
+                  
                 ]);
             $categories_menu->link->attr([
                 'class' => 'nav-link nav-group-toggle',

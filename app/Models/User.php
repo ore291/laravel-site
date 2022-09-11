@@ -63,7 +63,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function subscription()
+    public function subscriptions()
     {
         return $this->hasMany('App\Models\Subscription');
     }

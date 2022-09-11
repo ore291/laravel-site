@@ -80,6 +80,21 @@ class GenerateMenus
                         'class' => 'nav-link',
                         'href'  => '/admin/sms',
                     ]);
+
+                    $upgrade_menu = $menu->add('<i class="nav-icon fas fa-users "></i> ' . __('Upgrade User'), [
+                        'class' => 'nav-item',
+                    ])
+                        ->data([
+                            'order'         => 17,
+                            'activematches' => [
+                                'admin/upgrade-user*',
+                            ],
+                           
+                        ]);
+                    $upgrade_menu->link->attr([
+                        'class' => 'nav-link',
+                        'href'  => '/admin/upgrade-user',
+                    ]);
     
     
           

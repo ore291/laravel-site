@@ -27,7 +27,7 @@
 
         <div class="row mt-4">
             <div class="col">
-                <form method="post" action="{{ route('backend.settings.store') }}" class="form-horizontal" role="form">
+                <form method="post" action="{{ route('backend.settings.store') }}" enctype="multipart/form-data" class="form-horizontal" role="form">
                     {!! csrf_field() !!}
 
                     @if(count(config('setting_fields', [])) )

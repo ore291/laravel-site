@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 md:justify-center gap-x-3">
+  <div class="grid grid-cols-1 md:grid-cols-2 md:justify-center gap-3 gap-y-5">
     <div class="w-full">
       <div class="w-full bg-black text-white">
         <p class="text-center font-bold text-xl mt-2 mb-[5px]">
@@ -9,12 +9,13 @@
       <div class="bg-black">
         <div class="w-full flex justify-between px-2 py-3">
           <span v-for="(day, i) in days" :key="i" @click="setActiveDate(day)"
-            :class="{ 'bg-white !text-black p-1 rounded-md': activeDay == day }" class="
+            :class="{ 'bg-white   !text-black p-1 rounded-md': activeDay == day }" class="
               text-white
               font-bold
               cursor-pointer
               first:hidden first:md:block
               last:hidden last:md:block
+               text-xs md:text-sm
             ">
             {{ addDays(day) }}
           </span>
@@ -24,15 +25,16 @@
         <table class="table-auto w-full">
           <thead class="border-b border-b-black font-semibold text-black">
             <tr>
-              <th class="text-start pb-2 ml-1">Matches</th>
-              <th class="text-start pb-2">Tips/Odds</th>
-              <th class="text-start pb-2 mr-1">Score</th>
+              <th class="text-start  text-xs md:text-sm  pb-2 ml-1">Matches</th>
+              <th class="text-start  text-xs md:text-sm pb-2">Tips/Odds</th>
+              <th class="text-start  text-xs md:text-sm pb-2 ">Score</th>
+              <th class="text-start  text-xs md:text-sm pb-2 ">&nbsp;</th>
             </tr>
           </thead>
           <div class="w-full p-2" v-if="loading">
             <p>Loading...</p>
           </div>
-          <div class="w-full p-2 text-red-600" v-if="!loading && predictions.length < 1">
+          <div class=" text-xs md:text-sm  p-2 text-red-600" v-if="!loading && predictions.length < 1">
             <p>No Predictions available for the selected Date</p>
           </div>
           <tbody v-if="!loading && predictions.length > 0">
@@ -53,7 +55,7 @@
                   </div>
                 </div>
               </td>
-              <td class="py-2">
+              <td class="py-2 text-sm">
                 <span class="
                     inline-flex
                     items-center
@@ -61,7 +63,7 @@
                     px-1
                     py-1
                     font-medium
-                    text-[9px]
+                  
                     leading-none
                     text-white
                     bg-[#0D6EFD]
@@ -75,7 +77,7 @@
                     px-1
                     py-1
                     font-medium
-                    text-[9px]
+              
                     leading-none
                     text-white
                     bg-[#DC3545]
@@ -83,11 +85,35 @@
                   ">Odds: {{ game.odds }}</span>
               </td>
               <td class="py-2">{{ `${game.score_a} - ${game.score_b}` }}</td>
+              <td class="py-2">
+                <span v-if="game.status == 0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                  </svg>
+                </span>
+                <span v-else-if="game.status == 1"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-6 h-6 stroke-2 text-green-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+                </span>
+                <span v-else-if="game.status == 2"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-2 text-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+
+                </span>
+              </td>
             </tr>
           </tbody>
         </table>
         <div class="w-full bg-black text-white">
-          <p class="text-center text-xs">Sportverified</p>
+          <!-- <p class="text-center text-xs">Sportverified</p> -->
         </div>
       </div>
     </div>
@@ -125,6 +151,7 @@
               cursor-pointer
               first:hidden first:md:block
               last:hidden last:md:block
+               text-xs md:text-sm
             ">
             {{ addDays(day) }}
           </span>
@@ -134,17 +161,18 @@
         <table class="table-auto w-full">
           <thead class="border-b border-b-black font-semibold text-black">
             <tr>
-              <th class="text-start pb-2 ml-1">Matches</th>
-              <th class="text-start pb-2">Tips/Odds</th>
-              <th class="text-start pb-2 mr-1">Score</th>
+              <th class="text-start  text-xs md:text-sm pb-2 ml-1">Matches</th>
+              <th class="text-start  text-xs md:text-sm pb-2">Tips/Odds</th>
+              <th class="text-start  text-xs md:text-sm pb-2 ">Score</th>
+              <th class="text-start  text-xs md:text-sm pb-2 ">&nbsp;</th>
             </tr>
           </thead>
-           <tbody class="w-full p-2" v-if="o_loading">
+          <div class="w-full p-2" v-if="o_loading">
             <p>Loading...</p>
-          </tbody>
-          <tbody class="w-full p-2 text-red-600" v-if="!o_loading && other_predictions.length < 1">
+          </div>
+          <div class="w-full text-xs md:text-sm p-2 text-red-600" v-if="!o_loading && other_predictions.length < 1">
             <p>No Predictions available for the selected Date</p>
-          </tbody>
+          </div>
           <tbody v-if="!o_loading && other_predictions.length > 0">
             <tr class="even:bg-white odd:bg-[#F2F2F2] text-xs !px-3" v-for="game in other_predictions" :key="game.id">
               <td class="py-2 flex space-x-1 items-center">
@@ -167,7 +195,7 @@
                   </div>
                 </div>
               </td>
-              <td class="py-2">
+              <td class="py-2 text-sm">
                 <span class="
                     inline-flex
                     items-center
@@ -175,7 +203,7 @@
                     px-1
                     py-1
                     font-medium
-                    text-[9px]
+                
                     leading-none
                     text-white
                     bg-[#0D6EFD]
@@ -189,7 +217,7 @@
                     px-1
                     py-1
                     font-medium
-                    text-[9px]
+                  
                     leading-none
                     text-white
                     bg-[#DC3545]
@@ -197,11 +225,34 @@
                   ">Odds: {{ game.odds }}</span>
               </td>
               <td class="py-2">{{ `${game.score_a} - ${game.score_b}` }}</td>
+              <td class="py-2"> <span v-if="game.status == 0"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-2 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                  </svg>
+                </span>
+                <span v-else-if="game.status == 1"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-6 h-6 stroke-2 text-green-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+                </span>
+                <span v-else-if="game.status == 2"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+
+                </span>
+              </td>
             </tr>
           </tbody>
         </table>
         <div class="w-full   bg-[#006600] text-white">
-          <p class="text-center text-xs">Sportverified</p>
+          <!-- <p class="text-center text-xs">Sportverified</p> -->
         </div>
       </div>
     </div>
@@ -224,7 +275,7 @@ export default {
   methods: {
     setOtherSport(id) {
       this.activeSport = id;
-      localStorage.setItem('other_sport',this.other_sportz[id].sport)
+      localStorage.setItem('other_sport', this.other_sportz[id].sport)
       this.getFreeOtherPredictions(this.other_sportz[id].sport, this.otherActiveDay)
     },
     getFreePredictions(id, days) {

@@ -26,6 +26,7 @@
               <th class="text-start pb-2">Predictions</th>
               <th class="text-start pb-2">Date</th>
               <th class="text-start pb-2 mr-1">Score</th>
+              <th class="text-start pb-2 ">&nbsp;</th>
             </tr>
           </thead>
           <tbody class="font-medium p-2 text-lg" v-if="loading">
@@ -56,7 +57,7 @@
                   </div>
                 </div>
                 <div class="flex items-center space-x-1.5 ml-2">
-                 <span>
+                  <span>
 
                     <img v-if="game.sport_name === 'basketball'" src="/img/Basketball-1.png" alt="" class="w-6 h-6" />
                     <img v-if="game.sport_name === 'tennis'" src="/img/Tennis-1.png" alt="" class="w-6 h-6" />
@@ -101,6 +102,29 @@
               </td>
               <td>{{ game.date_t }}</td>
               <td class="py-2">{{ `${game.score_a} - ${game.score_b}` }}</td>
+              <td class="py-2"><span v-if="game.status == 0"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-2 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                  </svg>
+                </span>
+                <span v-else-if="game.status == 1"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-6 h-6 stroke-2 text-green-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+                </span>
+                <span v-else-if="game.status == 2"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+
+                </span>
+              </td>
             </tr>
 
           </tbody>

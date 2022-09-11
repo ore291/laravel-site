@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    {{ app_name() }}
+{{setting('app_name')  }}
 @endsection
 
 @section('content')
@@ -322,9 +322,9 @@
                         PAY VIA MPESA </h1>
 
                     <p>After Clicking make Payment <br> Select Your Country/Region <br> Select Pay with MPESA <br>Choose
-                        your preferred plan <br> Pay the subscription amount to the following <b> number (0703200262). MPESA
-                            Name : CONSOLATA NANDUTU MUTUKU </b><br>After payment is successful, Send your Name, Email
-                        address, Amount and Plan and to the agent number (0703200262) to confirm your payment and for your
+                        your preferred plan <br> Pay the subscription amount to the following <b> number ({{setting('mpesa_bank_acct')  }}). MPESA
+                            Name : {{setting('mpesa_user_name')}}   </b><br>After payment is successful, Send your Name, Email
+                        address, Amount and Plan and to the agent number {{setting('transfer_comfirm_number')  }} to confirm your payment and for your
                         account to be upgraded.</p>
 
                 </div>

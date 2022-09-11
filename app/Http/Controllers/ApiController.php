@@ -20,7 +20,7 @@ class ApiController extends Controller
     public function plans(Request $request)
     {
 
-        return PlanResource::collection(Plan::where("id", "!=", 1)->get());
+        return PlanResource::collection(Plan::where("id", "!=", 1)->where("is_disabled", 0)->get());
     }
 
     /**
@@ -79,7 +79,7 @@ class ApiController extends Controller
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => "GET",
                 CURLOPT_HTTPHEADER => array(
-                    "Authorization: Bearer " . getenv('FLW_SECRET_KEY'),
+                    "Authorization: Bearer " .  setting('fw_key') ,
                     "Cache-Control: no-cache",
                 ),
             ));
@@ -150,7 +150,7 @@ class ApiController extends Controller
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => "GET",
                 CURLOPT_HTTPHEADER => array(
-                    "Authorization: Bearer " . getenv('PAYSTACK_SECRET_KEY'),
+                    "Authorization: Bearer " . setting('paystack_secret_key'),
                     "Cache-Control: no-cache",
                 ),
             ));

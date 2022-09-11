@@ -9,10 +9,11 @@ use Carbon\Carbon;
 use App\Models\Plan;
 use App\Models\League;
 use Illuminate\Support\Str;
+use App\Events\TipPostEvent;
 use Illuminate\Http\Request;
-use Modules\Predictions\Entities\Category;
 use Yajra\DataTables\DataTables;
 use Illuminate\Routing\Controller;
+use Modules\Predictions\Entities\Category;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Predictions\Entities\Prediction;
 
@@ -169,6 +170,10 @@ class PredictionsController extends Controller
 
 
         $$module_name_singular = $module_model::create($data);
+
+        if($$module_name_singular->category == 11){
+            event(new TipPostEvent($$module_name_singular));
+        }
 
 
 

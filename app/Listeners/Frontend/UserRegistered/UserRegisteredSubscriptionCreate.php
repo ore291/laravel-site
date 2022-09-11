@@ -31,17 +31,17 @@ class UserRegisteredSubscriptionCreate implements ShouldQueue
     {
         $user = $event->user;
 
-        $userSub = new Subscription();
+        // $userSub = new Subscription();
 
-        $plan = Plan::findOrFail(1);
+        // $plan = Plan::findOrFail(1);
 
-        $userSub->user_id = $user->id;
-        $userSub->plan_id = 1;
-        $userSub->plan_name = $plan->name;
-        $userSub->start_date = Carbon::now();
-        $userSub->end_date = new Carbon('first day of January 2050');
+        // $userSub->user_id = $user->id;
+        // $userSub->plan_id = 1;
+        // $userSub->plan_name = $plan->name;
+        // $userSub->start_date = Carbon::now();
+        // $userSub->end_date = new Carbon('first day of January 2050');
 
-        $userSub->save();
+        // $userSub->save();
 
     }
 }

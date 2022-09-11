@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Akaunting\Money\Currency;
+use App\Events\TipPostEvent;
 use Yajra\DataTables\DataTables;
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Support\Renderable;
@@ -95,7 +96,7 @@ class LiveController extends Controller
 
         $module_action = 'List';
 
-        $$module_name = $module_model::select("id", "event", "booking_no", "live_streaming_link", "updated_at");
+        $$module_name = $module_model::select("id", "event", "booking_no", "live_streaming_link",'tips', 'odds', 'date', 'time', "updated_at");
 
         $data = $$module_name;
 
@@ -172,6 +173,8 @@ class LiveController extends Controller
 
         $$module_name_singular = $module_model::create($data);
 
+        event(new TipPostEvent($$module_name_singular));
+
 
         Flash::success("<i class='fas fa-check'></i> New '" . Str::singular($module_title) . "' Added")->important();
 
@@ -220,6 +223,13 @@ class LiveController extends Controller
 
         $module_action = 'List';
 
+        // $subs = Subscription::whereIn('plan_id', [2, 3, 4])->whereDate('end_date', '>=', Carbon::now())->with(['user'])->get();
+
+        // dd($subs->toArray());
+        
+
+       
+
         
 
 
@@ -251,11 +261,19 @@ class LiveController extends Controller
 
 
 
-        $$module_name = Subscription::all()->where('plan_id', 5)->filter(function ($item) {
+        // $$module_name = Subscription::where('plan_id', 5)->with('user')->filter(function ($item) {
+        //     if (Carbon::now()->between($item->start_date, $item->end_date)) {
+        //         return $item;
+        //     }
+        // })->get();
+
+        $$module_name = Subscription::where('plan_id', 5)->with('user')->get();
+
+        $$module_name = $$module_name->filter(function ($item) {
             if (Carbon::now()->between($item->start_date, $item->end_date)) {
                 return $item;
             }
-        });
+        })->all();
 
         $data = $$module_name;
 

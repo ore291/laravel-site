@@ -128,24 +128,54 @@
                                 <p>Click to Pay</p>
                             </button>
                         </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div v-show="currentStep === 3 && payment_option === 1 && selectCard === false">
+            <div class="w-full">
 
 
+                <h1
+                    style="font-size: 20px; dtext-align: center; font-family: arial black; font-style: italic; color: Green;">
+                </h1>
+                <div class="w-full" style="dheight: 300px; dborder:solid; border-width: thin; padding-top: 20px;">
+                    <div class="w-full"
+                        style="background-color: green; height: 40px; margin-top: 30px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px; color: white;">
+                        Continue Payment Process <span style="font-size: 15px;"></span></div>
+                    <div class="w-full"
+                        style="background-color: white; border:solid; border-width: thin;  border-top: none;   margin-top: 0px; padding: 4px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px;">
+                        <ul style="text-align: left; font-size: 20px; font-weight: 400; font-family: calibri;">
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp;{{ selectedPlan.name }}</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; {{ getDurationText }}</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp;<b id="email">{{ user.email }}</b>
+                            </li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; {{ getAmount.b }}</li>
+                        </ul>
 
+                        <p style="text-align: left; padding-left: 10px; font-weight: normal;">You can activate or
+                            upgrade your {{site_name}} account by making the appropriate payments to our East Africa
+                            Agent via Mpesa.
+
+                            <br> <b> MPESA Name : {{ mpesa_name }} </b>
+
+                            <br> <b> Account Number : {{ mpesa_acct }} </b>
+
+                        </p>
+                        <p style="text-align: left; padding-left: 10px; font-weight: normal; margin-bottom: 20px;">
+                            After making payments, ensure you send your Name, Email address, Amount and Plan and to the
+                            agent number {{ con_trans }} to confirm your payment.
+                            <br> Your {{site_name}} account will be upgraded once payment has been confirmed.
+                        </p>
+
+                        <!--</form>---->
 
 
 
 
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
 
             </div>
         </div>
@@ -168,8 +198,56 @@ export default {
     },
     created() {
         this.user = window.user;
+        this.mpesa_name = window.mpesa_name;
+        this.mpesa_acct = window.mpesa_acct;
+        this.con_trans = window.con_trans;
+        this.site_name = window.app_name;
+    },
+    data() {
+        return {
+            mpesa_name: "",
+            mpesa_acct: "",
+            con_trans: "",
+            site_name: "",
+            publicKey: "pk_test_9da36d88c1d36b3beaab17754e6a92d2ad64ccaf",
+            user: null,
+            selectedPlan: {},
+            selectedDuration: "",
+            totalSteps: 2,
+            selectCard: false,
+            currentStep: 0,
+            payment_option: null,
+            payment_method: 0,
+            //   subs: [],
+            //   plans: [],
+
+            ng_payment_options: [
+                {
+                    name: "Pay with Debit/Credit Card",
+                    image: "/img/guy_card2.jpg",
+                    value: 0
+                },
+                {
+                    name: "Pay with Mobile Money",
+                    image: "/img/mobile_money.jpg",
+                    value: 1
+                },
+                {
+                    name: "Pay with MPESA",
+                    image: "/img/mpesa.png",
+                    value: 2
+                }
+            ],
+            ng_payment_methods: [
+                {
+                    name: "Pay using Flutterwave",
+                    image: "/img/guy_card2.jpg",
+                    value: 0
+                },
 
 
+            ]
+        }
     },
     computed: {
         f_plans() {
@@ -278,9 +356,9 @@ export default {
                     })
                 },
                 customizations: {
-                    title: 'My store',
+                    title: this.site_name,
                     description: 'Upgrade Plan',
-                    logo: 'https://sportverified.com/logo.png'
+                   
                 }
             })
         },
@@ -372,48 +450,7 @@ export default {
 
     },
 
-    data() {
-        return {
-            publicKey: "pk_test_9da36d88c1d36b3beaab17754e6a92d2ad64ccaf",
-            user: null,
-            selectedPlan: {},
-            selectedDuration: "",
-            totalSteps: 2,
-            selectCard: false,
-            currentStep: 0,
-            payment_option: null,
-            payment_method: 0,
-            //   subs: [],
-            //   plans: [],
 
-            ng_payment_options: [
-                {
-                    name: "Pay with Debit/Credit Card",
-                    image: "/img/guy_card2.jpg",
-                    value: 0
-                },
-                {
-                    name: "Pay with Mobile Money",
-                    image: "/img/mobile_money.jpg",
-                    value: 1
-                },
-                {
-                    name: "Pay with MPESA",
-                    image: "/img/mpesa.png",
-                    value: 2
-                }
-            ],
-            ng_payment_methods: [
-                {
-                    name: "Pay using Flutterwave",
-                    image: "/img/guy_card2.jpg",
-                    value: 0
-                },
-
-
-            ]
-        }
-    },
 }
 </script>
 
