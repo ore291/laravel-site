@@ -245,7 +245,7 @@ export default {
                         duration: selectedDuration,
                         payment_method: payment_method,
                         transactionId: data.transaction_id,
-                        amount: data.amount,
+                        amount: parseInt(data.amount),
                     };
 
                     axios.post(`/api/upgrade-package/${window.user.id}`, body).then((res) => {

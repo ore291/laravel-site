@@ -11,21 +11,21 @@
         <section class="container max-w-6xl mx-auto   py-1 mt-2 ">
             <div class="relative w-full">
                 <div class="owl-carousel ">
-                    <img src="{{ asset('img/slider/5.jpg') }}" class="block w-full rounded"
-                        alt="..."style="min-height:150px;">
-                    <img src="{{ asset('img/slider/oslide4.jpg') }}" class="block w-full rounded"
-                        alt="..."style="min-height:150px;">
-                    <img src="{{ asset('img/slider/oslide11.jpg') }}" class="block w-full rounded"
-                        alt="..."style="min-height:150px;">
-                    <img src="{{ asset('img/slider/slide3.jpg') }}" class="block w-full rounded"
-                        alt="..."style="min-height:150px;">
-                    <img src="{{ asset('img/slider/slidenew.jpg') }}" class="block w-full rounded"
-                        alt="..."style="min-height:150px;">
+                    <img src="{{ asset('img/slider/1.png') }}" class="block w-full rounded "
+                        alt="..."style="min-height:200px;">
+                    <img src="{{ asset('img/slider/2.png') }}" class="block w-full rounded "
+                        alt="..."style="min-height:200px;">
+                    <img src="{{ asset('img/slider/3.png') }}" class="block w-full rounded "
+                        alt="..."style="min-height:200px;">
+                   
                 </div>
             </div>
         </section>
 
         <section class="container max-w-6xl mx-auto bg-white">
+            <script>
+                window.name = @json(setting('app_name'));
+            </script>
 
             <div id="vue-div">
 
@@ -35,10 +35,17 @@
 
         </section>
 
+        @if (setting('home_page_1') !== null)
+            <section class="my-5 md:my-12 p-1 lg:p-0 max-w-6xl mx-auto">
+                <img src="/{{ setting('home_page_1') }}" class="w-full object-cover" alt="">
+            </section>
+        @endif
+
+
         <section class="py-5 md:py-20 max-w-6xl mx-auto ">
             <div class="grid grid-cols-1 md:grid-cols-2 md:divide-x ">
                 <div class="w-full text-black">
-                    <h4 class="text-center font-semibold text-2xl">
+                    <h4 class="text-center font-bold mb-1 text-2xl">
                         Football Popular Categories
                     </h4>
                     <div class="grid grid-cols-4 place-items-center">
@@ -47,51 +54,53 @@
                             <p class="text-[#0A58CA] font-medium"><b>1.5 Goals</b></p>
                         </a>
                         <a href="/predictions" class="flex flex-col items-center justify-center">
-                            <img src="/img/draw.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>Draws</b></p>
-                        </a>
-                        <a href="/predictions" class="flex flex-col items-center justify-center">
-                            <img src="/img/Double-Chance-new.png" class="w-[75px]" alt="" srcset="">
+                            <img src="/img/dc.png" class="w-[75px]" alt="" srcset="">
                             <p class="text-[#0A58CA] font-medium"><b>Double Chance</b></p>
                         </a>
                         <a href="/predictions" class="flex flex-col items-center justify-center">
-                            <img src="/img/Correct-Score-new.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>1.5 Goals</b></p>
+                            <img src="/img/draw.png" class="w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-medium"><b>Draws</b></p>
+                        </a>
+
+                        <a href="/predictions" class="flex flex-col items-center justify-center">
+                            <img src="/img/cs.png" class="w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-medium"><b>Correct Score</b></p>
                         </a>
                     </div>
                     <div class="text-center mt-2 flex items-center justify-center">
                         <a href="/predictions"
-                            class="rounded font-semibold text-xl h-12 w-[250px] bg-red-500 hover:bg-red-600 text-white flex items-center justify-center">
+                            class="rounded font-medium text-xl h-12 w-[250px] bg-red-500 hover:bg-b text-white flex items-center justify-center">
                             View More Categories
                             <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                 </div>
                 <div class="w-full text-black">
-                    <h4 class="text-center font-semibold text-2xl">
+                    <h4 class="text-center font-bold mb-1 text-2xl">
                         Other Sports Popular Categories
                     </h4>
                     <div class="grid grid-cols-4 place-items-center">
                         <a href="/basketball" class="flex flex-col items-center justify-center">
-                            <img src="/img/Basketball-1.png" class="w-[75px]" alt="" srcset="">
+                            <img src="/img/basketball.png" class="w-[75px]" alt="" srcset="">
                             <p class="text-[#0A58CA] font-medium"><b>Basketball</b></p>
                         </a>
+                        <a href="/tennis" class="flex flex-col items-center justify-center">
+                            <img src="/img/tennis.png" class="w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-medium"><b>Tennis</b></p>
+                        </a>
                         <a href="/boxing" class="flex flex-col items-center justify-center">
-                            <img src="/img/boxing.png" class="w-[75px]" alt="" srcset="">
+                            <img src="/img/boxing-new.png" class="w-[75px]" alt="" srcset="">
                             <p class="text-[#0A58CA] font-medium"><b>Boxing</b></p>
                         </a>
                         <a href="/ice-hockey" class="flex flex-col items-center justify-center">
-                            <img src="/img/Ice-Hockey-1.png" class="w-[75px]" alt="" srcset="">
+                            <img src="/img/icehockey.png" class="w-[75px]" alt="" srcset="">
                             <p class="text-[#0A58CA] font-medium"><b>Ice Hockey</b></p>
                         </a>
-                        <a href="/tennis" class="flex flex-col items-center justify-center">
-                            <img src="/img/Tennis-1.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>Tennis</b></p>
-                        </a>
+
                     </div>
                     <div class="text-center mt-2 flex items-center justify-center">
-                        <a href="/predictions"
-                            class="rounded font-semibold text-xl h-12 w-[250px] bg-green-500 hover:bg-green-600 text-white flex items-center justify-center">
+                        <a href="/basketball"
+                            class="rounded font-medium text-xl h-12 w-[250px] bg-[#266992] text-white flex items-center justify-center">
                             View More Categories
                             <i class="fa fa-solid fa-chevron-right"></i>
                         </a>
@@ -104,20 +113,20 @@
 
 
     <section class="mt-5  md:mt-20 mb-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
-        <div class="w-full bg-black rounded flex justify-start items-center text-white  py-3 pl-5">
-            <h3 class="text-sm font-semibold mb-0">TRENDING PREDICTIONS</h3>
+        <div class="w-full bg-secBg rounded flex justify-start items-center text-secText  py-3 pl-5">
+            <h3 class="text-sm md:text-lg font-semibold mb-0">TRENDING PREDICTIONS</h3>
         </div>
         <div class="w-full bg-white shadow ">
-            <h2 class="font-bold text-sm md:text-2xl text-black p-2">
+            <h2 class="font-semibold text-sm md:text-2xl text-black p-2 mb-1">
                 Today's Football Popular Predictions
             </h2>
             <table class="table-auto w-full border-spacing-2 ">
                 <thead class="border-b border-b-black font-semibold text-black">
                     <tr class="p-2 md:px-5">
-                        <th class="text-start  p-2 ml-1">Event</th>
+                        <th class="text-start  p-2 ">Event</th>
                         <th class="text-start p-2">Tips</th>
-                        <th class="text-start p-2 mr-1">Odds</th>
-                        <th class="text-start p-2 mr-1">Time</th>
+                        <th class="text-start p-2 ">Odds</th>
+                        <th class="text-start p-2 ">Result</th>
                     </tr>
                 </thead>
                 @if (count($trending_pred) < 1)
@@ -133,6 +142,9 @@
                                         <div class="flex items-center justify-between space-x-1">
                                             <img src="/svg/{{ $pred->emblem }}" alt="logo" class="w-5 h-5" />
                                             <span>{{ $pred->country }}</span>
+                                            <span class=" text-sm ">
+                                                : {{ date('g:i A', strtotime($pred->time_t)) }}
+                                            </span>
                                         </div>
                                     </div>
                                 </td>
@@ -152,8 +164,8 @@
                                 </td>
                                 <td>
                                     <div class="flex flex-col items-start justify-center pl-2">
-                                        <span class=" text-sm ">
-                                            {{ date('g:i A', strtotime($pred->time_t)) }}
+                                        <span class="font-semibold text-sm uppercase ">
+                                            {{ $pred->score_a . ' - ' . $pred->score_b }}
                                         </span>
                                     </div>
                                 </td>
@@ -168,8 +180,8 @@
         </div>
     </section>
     <section class="mb-2 mt-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
-        <div class="w-full bg-black rounded flex justify-start items-center text-white  py-3 pl-5">
-            <h3 class="text-sm font-semibold mb-0">UPCOMING EVENTS PREDICTIONS</h3>
+        <div class="w-full bg-secBg rounded flex justify-start items-center text-secText  py-3 pl-5">
+            <h3 class="text-[16px] font-semibold mb-0">UPCOMING EVENTS PREDICTIONS</h3>
         </div>
         <div class="w-full bg-white shadow ">
 
@@ -179,7 +191,7 @@
                         <th class="text-start  p-2 ml-1">Event</th>
                         <th class="text-start p-2">Tips</th>
                         <th class="text-start p-2 mr-1">Odds</th>
-                        <th class="text-start p-2 mr-1">Date</th>
+                        <th class="text-start p-2 mr-1">Result</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -191,6 +203,9 @@
                                     <div class="flex items-center justify-between space-x-1">
                                         <img src="/svg/{{ $pred->emblem }}" alt="logo" class="w-5 h-5" />
                                         <span>{{ $pred->country }}</span>
+                                        <span class=" text-sm ">
+                                            : {{ $pred->date_t }} {{ date('g:i A', strtotime($pred->time_t)) }}
+                                        </span>
                                     </div>
                                 </div>
                             </td>
@@ -210,8 +225,8 @@
                             </td>
                             <td>
                                 <div class="flex flex-col items-start justify-center pl-2">
-                                    <span class="text-sm ">
-                                        {{ $pred->date_t }}
+                                    <span class="font-semibold text-sm uppercase ">
+                                        {{ $pred->score_a . ' - ' . $pred->score_b }}
                                     </span>
                                 </div>
                             </td>
@@ -225,120 +240,34 @@
             </table>
         </div>
     </section>
-    {{-- <section class="my-2 max-w-6xl mx-auto">
+
+    @if (setting('home_page_2') !== null)
+        <section class="my-5 md:my-12 p-1 lg:p-0 max-w-6xl mx-auto">
+            <img src="/{{ setting('home_page_2') }}" class="w-full object-cover" alt="">
+        </section>
+    @endif
+
+    <section class="my-2 max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 gap-x-10 py-20">
             <div class="bg-black flex flex-col items-center justify-center text-white font-semibold p-5">
-                <span class="text-lg font-bold">
-                    Rollover Tips <b class="animate-pulse ">( Football )</b>
-                </span>
-                <p class="text-center text-sm font-bold">
-                    The Professional plan is reserved for investors looking to make meaningful profits from low odds
-                    accumulators. It has Odds from 1.6 to 2.1 This Plan offers Soccer based on minimal risks.
+                <h4 class="text-center text-2xl ">DON'T GAMBLE, INVEST.</h4>
+                <p class="text-white text-center px-2" style="font-size:15px;">
+                    <small class="text-[15px]">The investment scheme is recommended for serious bettors who believe in the
+                        smart way of making
+                        profit steadily. In this scheme, we provide not less than 2.00 odds daily.</small>
                 </p>
-                <p class="text-white pr-2 pl-2 mb-2 pb-1 text-center" style="font-size:14px;">
-                    <small>To secure your investment, we employ a highly effective <b
-                            style="color:red;font-size:14px;font-weight: 800;">risk management strategy</b>.<br /> Join now
-                        to
-                        learn more.</small>
-                </p>
-                <div class="part-team w-full text-white pb-2 pt-2">
 
-
-
-                    <div class="result-class text-left">
-                        <div class="ti text-center">
-                            <h4 class="mt-0 mb-0 font-bold text-2xl">Results</h4>
-                        </div>
-                        <ul class="flex justify-between mt-3" style="padding:0px;">
-
-                            <li class="inline-block text-center" style="margin-right:5px;">
-                                <span class="text-white" style="font-size:13px;">2022-08-01</span><br>
-                                <span class="text-white" style="font-size:12px;">18:00</span><br>
-                                <i class="fa fa-check-circle" style="color:red;font-size: 20px;"></i>
-                            </li>
-                            <li class="inline-block text-center" style="margin-right:5px;">
-                                <span class="text-white" style="font-size:13px;">2022-08-01</span><br>
-                                <span class="text-white" style="font-size:12px;">18:00</span><br>
-                                <i class="fa fa-check-circle" style="color:red;font-size: 20px;"></i>
-                            </li>
-                            <li class="inline-block text-center" style="margin-right:5px;">
-                                <span class="text-white" style="font-size:13px;">2022-08-01</span><br>
-                                <span class="text-white" style="font-size:12px;">18:00</span><br>
-                                <i class="fa fa-check-circle" style="color:red;font-size: 20px;"></i>
-                            </li>
-                            <li class="inline-block text-center" style="margin-right:5px;">
-                                <span class="text-white" style="font-size:13px;">2022-08-01</span><br>
-                                <span class="text-white" style="font-size:12px;">18:00</span><br>
-                                <i class="fa fa-check-circle" style="color:red;font-size: 20px;"></i>
-                            </li>
-
-
-
-
-
-                        </ul>
-
-
-                        <style type="text/css">
-                            .blink_me,
-                            #ball {
-                                animation: blinker 3s linear infinite;
-                            }
-
-                            @keyframes blinker {
-                                50% {
-                                    opacity: 0;
-                                }
-                            }
-                        </style>
-                    </div>
-
-                </div>
-                <div class="grid grid-cols-3 mt-3 justify-between w-full mb-10">
-                    <div class="col-span-2 text-center acc-profit">
-                        <p class="text-white">
-                            <b style="font-size:17px !important;color:red;display:block !important;">
-                                75%
-                            </b>
-                            <b>Winning Rate in the last 30 days</b>
-                        </p>
-                    </div>
-                    <div class="flex items-center    flex-col space-y-1">
-                        <div class="match-time text-center">
-                            <span class="mb-2 text-white">Today's Odd</span>
-                            <span style="color:white;font-weight:bold;" class="blink_me">
-
-                                1.72
-
-                            </span>
-                        </div> <a href="account.php" class="text-xs">
-                            <button
-                                class="rounded px-3 py-2 bg-[#dc3545] text-white flex items-center justify-center cursor-pointer ">
-
-                                Get Access Now
-
-
-                            </button> </a>
-                    </div>
+                <div class="flex items-center justify-center mt-5 bg-[#198754] text-white">
+                    <a href="/register" class=" h-8 flex-justify-center items-center rounded-sm px-2 py-1">
+                        JOIN NOW
+                    </a>
                 </div>
 
 
             </div>
-            <div class="bg-[#000B2B] flex flex-col items-center justify-center text-white font-semibold p-5">
-                <span class="text-lg font-bold">
-                    Rollover Tips <b class="animate-pulse ">( Other Sport )</b>
-                </span>
-                <p class="text-center text-sm font-bold">
-                    The Professional plan is reserved for investors looking to make meaningful profits from low odds
-                    accumulators. It has Odds from 1.6 to 2.1 This Plan offers Boxing,Tennis, Basketball and Ice-Hockey
-                    Predictions based on minimal risks.
-                </p>
-                <p class="text-white pr-2 pl-2 mb-2 pb-1 text-center" style="font-size:14px;">
-                    <small>To secure your investment, we employ a highly effective <b
-                            style="color:red;font-size:14px;font-weight: 800;">risk management strategy</b>.<br /> Join now
-                        to
-                        learn more.</small>
-                </p>
+
+            <div class="bg-[#000b2b] flex flex-col items-center justify-center text-white font-semibold p-5">
+
                 <div class="part-team w-full text-white pb-2 pt-2">
 
 
@@ -349,7 +278,23 @@
                         </div>
                         <ul class="flex justify-between mt-3" style="padding:0px;">
 
-                            <li class="inline-block text-center" style="margin-right:5px;">
+                            @forelse ($results as $result)
+                                <li class="flex flex-col items-center justify-center  text-center" style="margin-right:5px;">
+                                   
+                                    {{-- <span class="text-white" style="font-size:12px;">18:00</span><br> --}}
+                                    @if ($result->status == 0)
+                                        <i class="fa fa-times-circle" style="color:red;font-size: 25px;"></i>
+                                    @else
+                                        <i class="fa fa-check-circle" style="color:green;font-size: 25px;"></i>
+                                    @endif
+
+                                    <span class="text-white mt-2" style="font-size:14px;">{{ $result->date }}</span><br>
+
+                                </li>
+                            @empty
+                                <p>No Results Yet</p>
+                            @endforelse
+                            {{-- <li class="inline-block text-center" style="margin-right:5px;">
                                 <span class="text-white" style="font-size:13px;">2022-08-01</span><br>
                                 <span class="text-white" style="font-size:12px;">18:00</span><br>
                                 <i class="fa fa-check-circle" style="color:red;font-size: 20px;"></i>
@@ -368,7 +313,7 @@
                                 <span class="text-white" style="font-size:13px;">2022-08-01</span><br>
                                 <span class="text-white" style="font-size:12px;">18:00</span><br>
                                 <i class="fa fa-check-circle" style="color:red;font-size: 20px;"></i>
-                            </li>
+                            </li> --}}
 
 
 
@@ -395,10 +340,9 @@
                 <div class="grid grid-cols-3 mt-3 justify-between w-full mb-10">
                     <div class="col-span-2 text-center acc-profit">
                         <p class="text-white">
-                            <b style="font-size:17px !important;color:red;display:block !important;">
-                                75%
-                            </b>
-                            <b>Winning Rate in the last 30 days</b>
+
+                            <b>Well analyzed by Experts, with
+                                Up to <span style="color: #87CEFA">{{ $perc->value }}%</span> Accuracy.</b>
                         </p>
                     </div>
                     <div class="flex items-center    flex-col space-y-1">
@@ -406,10 +350,10 @@
                             <span class="mb-2 text-white">Today's Odd</span>
                             <span style="color:white;font-weight:bold;" class="blink_me">
 
-                                1.72
+                                {{ $d_odd->value }}
 
                             </span>
-                        </div> <a href="account.php" class="text-xs">
+                        </div> <a href="/login" class="text-xs">
                             <button
                                 class="rounded px-3 py-2 bg-[#dc3545] text-white flex items-center justify-center cursor-pointer ">
 
@@ -423,55 +367,51 @@
 
             </div>
         </div>
-    </section> --}}
+    </section>
     <section class="my-2 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
-        <div class="w-full bg-black rounded flex justify-start items-center text-white  py-3 pl-5">
-            <h3 class="text-sm font-semibold mb-0">LATEST RESULTS</h3>
+        <div class="w-full bg-secBg rounded flex justify-start items-center text-secText  py-3 pl-5">
+            <h3 class="text-sm font-semibold mb-0">LATEST PREDICTION RESULTS</h3>
         </div>
         <div class="w-full bg-white shadow ">
 
             <table class="table-auto w-full">
                 <thead class="border-b border-b-black font-semibold text-black">
                     <tr class="p-2 px-5 text-center">
-                        <th class="text-start  p-2 ml-1">Event</th>
-                        <th class="text-start p-2">Tips</th>
-                        <th class="text-start p-2 mr-1">Date</th>
-                        <th class="text-start p-2 mr-1">Score</th>
+                        <th class="text-center  p-2 ">Date</th>
+                        <th class="text-center p-2">Event</th>
+                        <th class="text-center p-2 ">Prediction</th>
+                        <th class="text-center p-2 ">Result</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($results_pred as $pred)
-                        <tr class="even:bg-white odd:bg-[#F2F2F2]">
-                            <td>
-                                <div class="flex flex-col items-start justify-center pl-2">
-                                    <span class="text-sm font-medium">{{ $pred->team_a . ' vs ' . $pred->team_b }}</span>
-                                    <div class="flex items-center justify-between space-x-1">
-                                        <img src="/svg/{{ $pred->emblem }}" alt="logo" class="w-5 h-5" />
-                                        <span>{{ $pred->country }}</span>
-                                    </div>
-                                </div>
+                        <tr class="even:bg-white py-1 odd:bg-[#F2F2F2]">
+                            <td class="text-center">
+
+                                {{ date('d M, Y', strtotime($pred->date_t)) }}
+
                             </td>
 
-                            <td>
-                                <div class="flex flex-col items-start justify-center pl-2">
-                                    <span class="font-medium text-sm ">
-                                        {{ $pred->tips }}
-                                    </span>
-                                </div>
+                            <td class="text-center">
+
+
+                                <span class="text-sm font-medium">{{ $pred->team_a . ' vs ' . $pred->team_b }}</span>
+
+
                             </td>
-                            <td>
-                                <div class="flex flex-col items-start justify-center pl-2">
-                                    <span class="text-sm ">
-                                        {{ $pred->date_t }}
-                                    </span>
-                                </div>
+                            <td class="text-center">
+
+                                <span class="text-sm uppercase font-medium">
+                                    {{ $pred->tips }}
+                                </span>
+
                             </td>
-                            <td>
-                                <div class="flex flex-col items-start justify-center pl-2">
-                                    <span class="font-semibold text-sm uppercase ">
-                                        {{ $pred->score_a . ' - ' . $pred->score_b }}
-                                    </span>
-                                </div>
+                            <td class="text-center">
+
+                                <span class="font-semibold text-sm uppercase ">
+                                    {{ $pred->score_a . ' - ' . $pred->score_b }}
+                                </span>
+
                             </td>
                         </tr>
                     @empty
@@ -483,30 +423,43 @@
         </div>
     </section>
 
-    <section class="my-20 p-1 lg:p-0 max-w-6xl mx-auto">
-        <img src="/img/1xbet2.jpeg" class="w-full object-cover" alt="">
-    </section>
+    @if (setting('home_page_3') !== null)
+        <section class="my-5 md:my-12 p-1 lg:p-0 max-w-6xl mx-auto">
+            <img src="/{{ setting('home_page_3') }}" class="w-full object-cover" alt="">
+        </section>
+    @endif
+
     <section class="my-5 p-1 lg:p-0 max-w-6xl mx-auto">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
                     <div class="section-title mb-2">
-                        <h1 class="text-3xl md:text-5xl font-bold text-center text-black">FREE FOOTBALL PREDICTION SITE</h1>
+                        <h1 class="text-2xl font-bold text-left text-secBg">FREE FOOTBALL PREDICTION SITE
+                        </h1>
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 ">
                     <p class="text-justify">
-                        <b style="color: green;">{{setting('app_name')  }}</b> is the best free Soccer prediction site in the
+                        <b style="color: green;">{{ setting('app_name') }}</b> is the best free Soccer prediction site in
+                        the
                         world and the site that predicts Soccer matches correctly. We are the most accurate Soccer
                         prediction site providing our users with the most accurate Soccer predictions around the world.
 
+
+                    <p>
                         We provide the best Soccer predictions and sport betting tips daily. We select the most reliable
                         Soccer betting tips and we carefully analyze our predictions especially our Sure 2, Banker, Sure 3,
                         Sure 5, Combo, BTS and more to give you the best.
+                    </p>
 
+                    <p>
                         We provide our subscribers with the best and most accurate Soccer predictions making us the best
                         Soccer prediction site in the world.
                     </p>
+
+
+                    </p>
+
                     <p class="text-justify">
                         Not everyone has what it takes to be a successful punter. Which, therefore, has raised a lot of
                         questions from soccer fans all over the world to find perfect solution by searching the best
@@ -515,7 +468,8 @@
                         prediction site like ours.
                     </p>
                     <p class="text-justify">
-                        But don't worry, you're one of the luckiest Soccer fan for using {{setting('app_name')  }}.com as your
+                        But don't worry, you're one of the luckiest Soccer fan for using {{ setting('app_name') }}.com as
+                        your
                         best guide to Soccer betting and predictions.
 
                         As one of the best Soccer prediction site in the world, we offer our visitors and subscribers with
@@ -527,16 +481,18 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
                     <div class="section-title mb-2">
-                        <h2 class="font-extrabold text-3xl md:text-5xl text-center text-black">ACCURATE SOCCER PREDICTION - HOW IS THIS
+                        <h2 class=" text-2xl font-bold text-left text-secBg">ACCURATE SOCCER PREDICTION -
+                            HOW IS THIS
                             POSSIBLE?</h2>
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 ">
                     <p class="text-justify">
-                        <b style="color: green;">{{setting('app_name')  }}</b> understands the attraction of this league and
+                        <b style="color: green;">{{ setting('app_name') }}</b> understands the attraction of this league
+                        and
                         provides expert analysis and Soccer betting tips, to ensure you come out tops with your wagers.
 
-                        <b style="color: green;">{{setting('app_name')  }}</b> works round the clock to grow your Soccer
+                        <b style="color: green;">{{ setting('app_name') }}</b> works round the clock to grow your Soccer
                         betting tips bankroll. When you engage with our platform, you can rest assure that you see things
                         from the lens of our informed experts. You need not waste your time and resources in endless
                         searches for Fixed matches or Fixed games, because none exist. All you need to do is tune in to our
@@ -550,27 +506,30 @@
 
                         To learn more on how to win with sure Soccer predictions, visit our how to win page and learn more.
 
-                        Thank you for choosing {{setting('app_name')  }} as the best Soccer prediction site. We hope our team
+                        Thank you for choosing {{ setting('app_name') }} as the best Soccer prediction site. We hope our
+                        team
                         have served you better? Contact us for any enquries below.
-                        <br>Email : <b style="color:green;">{{setting('email')  }}</b>
+                        <br>Email : <b style="color:green;">{{ setting('email') }}</b>
                     </p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-8 mt-4">
                     <div class="section-title mb-2">
-                        <h2 class="font-extrabold text-3xl md:text-5xl text-center text-black" style="text-transform: uppercase;">Best
+                        <h2 class="text-2xl font-bold text-left text-secBg" style="text-transform: uppercase;">Best
                             Prediction Site In The World</h2>
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 ">
-                    <p class="text-justify">{{setting('app_name')  }} is the best prediction site in the world. Our website
+                    <p class="text-justify">{{ setting('app_name') }} is the best prediction site in the world. Our
+                        website
                         works to help you win with the best Soccer tips in the industry. Both Amateur and Professional
                         tipsters can get fast, reliable and efficient Soccer betting tips from our site. We understands the
                         attraction of league and provides expert analysis and Soccer betting tips, to ensure you come out
                         tops with your wagers.</p>
                     <p class="text-justify">
-                        At <b style="color: green;"> {{setting('app_name')  }}</b>, we offer the best betting tips and guide on
+                        At <b style="color: green;"> {{ setting('app_name') }}</b>, we offer the best betting tips and
+                        guide on
                         how to make money steadily from Soccer betting. Example of scheme offered is Soccer investment
                         scheme where we unveil the world of Soccer investment and guide you on how to increase your profits
                         immediately! Our investment tracker shows our recent performance as we encourage transparency in

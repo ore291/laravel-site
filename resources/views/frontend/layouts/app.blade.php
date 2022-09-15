@@ -16,13 +16,17 @@
 
     <!-- Shortcut Icon -->
     <link rel="shortcut icon" href="{{ asset(setting('site_favicon')) }}">
-    <link rel="icon" type="image/ico" href="{{ asset(setting('site_favicon')) }}" />
+    <link rel="icon" type="image" href="{{ asset(setting('site_favicon')) }}" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @stack('before-styles')
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Rubik:wght@300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="{{ mix('css/frontend.css') }}">
     <script src="https://kit.fontawesome.com/fe20a09b13.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.min.css') }}">

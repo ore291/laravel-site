@@ -3,6 +3,10 @@
 @import "tailwindcss/utilities";
 
 @layer base {
+
+    p, span {
+        @apply font-sans;
+    }
     /* html {
         @apply text-gray-600;
     }

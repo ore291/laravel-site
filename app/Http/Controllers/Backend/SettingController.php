@@ -72,6 +72,32 @@ class SettingController extends Controller
             $request->site_favicon->move(public_path('img'), $imageName);
             $data['site_favicon'] = 'img/'. $imageName;
         }
+        if ($request->has('home_page_3')) {
+            $imageName = time() . '.' . $request->home_page_3->extension();
+            $request->home_page_3->move(public_path('img'), $imageName);
+            $data['home_page_3'] = 'img/'. $imageName;
+        }
+        if ($request->has('home_page_1')) {
+            $imageName = time() . '.' . $request->home_page_1->extension();
+            $request->home_page_1->move(public_path('img'), $imageName);
+            $data['home_page_1'] = 'img/'. $imageName;
+        }
+        if ($request->has('home_page_2')) {
+            $imageName = time() . '.' . $request->home_page_2->extension();
+            $request->home_page_2->move(public_path('img'), $imageName);
+            $data['home_page_2'] = 'img/'. $imageName;
+        }
+        if ($request->has('football_ad')) {
+            $imageName = time() . '.' . $request->football_ad->extension();
+            $request->football_ad->move(public_path('img'), $imageName);
+            $data['football_ad'] = 'img/'. $imageName;
+        }
+        if ($request->has('other_sports_ad')) {
+            $imageName = time() . '.' . $request->other_sports_ad->extension();
+            $request->other_sports_ad->move(public_path('img'), $imageName);
+            $data['other_sports_ad'] = 'img/'. $imageName;
+        }
+      
 
         $validSettings = array_keys($rules);
 

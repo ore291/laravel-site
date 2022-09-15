@@ -82,6 +82,61 @@ return [
         ],
 
     ],
+    'ads' => [
+        'title' => 'Ads Panel',
+        'desc'  => 'Ads upload for app',
+        'icon'  => 'fas fa-volume',
+
+        'elements' => [
+            [
+                'type'  => 'file', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'home_page_1', // unique name for field
+                'label' => 'Home Page first AD space', // you know what label it is
+                'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // validation rule of laravel
+                'class' => '', // any class for input
+                 // default value if you want
+            ],
+            [
+                'type'  => 'file', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'home_page_2', // unique name for field
+                'label' => 'Home Page second AD space', // you know what label it is
+                'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // validation rule of laravel
+                'class' => '', // any class for input
+                 // default value if you want
+            ],
+            [
+                'type'  => 'file', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'home_page_3', // unique name for field
+                'label' => 'Home Page third AD space', // you know what label it is
+                'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // validation rule of laravel
+                'class' => '', // any class for input
+                 // default value if you want
+            ],
+            [
+                'type'  => 'file', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'football_ad', // unique name for field
+                'label' => 'Football predictions page ad', // you know what label it is
+                'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // validation rule of laravel
+                'class' => '', // any class for input
+                 // default value if you want
+            ],
+            [
+                'type'  => 'file', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'other_sports_ad', // unique name for field
+                'label' => 'Other Sports predictions page ad', // you know what label it is
+                'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // validation rule of laravel
+                'class' => '', // any class for input
+                 // default value if you want
+            ],
+           
+        ],
+
+    ],
     'bank' => [
         'title' => 'Bank Settings',
         'desc'  => 'Bank settings for app',
@@ -91,8 +146,17 @@ return [
             [
                 'type'  => 'text', // input fields type
                 'data'  => 'string', // data type, string, int, boolean
-                'name'  => 'fw_key', // unique name for field
-                'label' => 'FlutterWave API Key', // you know what label it is
+                'name'  => 'fw_public_key', // unique name for field
+                'label' => 'FlutterWave Public API Key', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => 'FLWPUBK_TEST-3b100333c526f8573b7e7c85ee5310b8-X', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'fw_secret_key', // unique name for field
+                'label' => 'FlutterWave Secret API Key', // you know what label it is
                 'rules' => 'required|nullable|max:191', // validation rule of laravel
                 'class' => '', // any class for input
                 'value' => 'FLWSECK_TEST-e482ebb4d6add3df13f04170fcdcc4cf-X', // default value if you want

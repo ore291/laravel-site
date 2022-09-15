@@ -29,15 +29,15 @@
                             alt="{{ app_name() }}">
                     </a>
                 </div>
-                <div class="hidden sm:block sm:ml-6">
-                    <div class="flex space-x-2">
+                <div class="hidden sm:block sm:ml-1">
+                    <div class="flex space-x-1">
                         <a href="/"
-                            class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                            class="text-white border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                             HOME
                         </a>
                         <div class="relative inline-flex items-center justify-center group">
                             <a href="/pricing"
-                                class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                                class="text-white border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                                 <span class="flex items-center justify-center space-x-1">
                                     PREDICTIONS <i class="fa fa-chevron-down ml-1 !block group-hover:!hidden"
                                         aria-hidden="true"></i>
@@ -50,23 +50,23 @@
                             <ul
                                 class="dropdown-menu absolute hidden group-hover:block top-10 text-gray-700 shadow  w-[250px]">
                                 <li class=""><a
-                                        class="rounded-t bg-gray-200 hover:bg-red-400 hover:text-white py-2 px-4 block whitespace-no-wrap"
+                                        class="rounded-t bg-gray-200 hover:bg-secText hover:text-white py-2 px-4 block whitespace-no-wrap"
                                         href="/predictions">FOOTBALL PREDICTIONS</a></li>
 
                                 <li class=""><a
-                                        class=" bg-gray-200 hover:bg-red-400 hover:text-white py-2 px-4 block whitespace-no-wrap"
+                                        class=" bg-gray-200 hover:bg-secText hover:text-white py-2 px-4 block whitespace-no-wrap"
                                         href="/basketball">BASKETBALL PREDICTIONS</a></li>
 
                                 <li class=""><a
-                                        class=" bg-gray-200 hover:bg-red-400 hover:text-white py-2 px-4 block whitespace-no-wrap"
+                                        class=" bg-gray-200 hover:bg-secText hover:text-white py-2 px-4 block whitespace-no-wrap"
                                         href="/boxing">BOXING PREDICTIONS</a></li>
 
                                 <li class=""><a
-                                        class="bg-gray-200 hover:bg-red-400 hover:text-white py-2 px-4 block whitespace-no-wrap"
+                                        class="bg-gray-200 hover:bg-secText hover:text-white py-2 px-4 block whitespace-no-wrap"
                                         href="/tennis">TENNIS PREDICTIONS</a></li>
 
                                 <li class=""><a
-                                        class="rounded-b bg-gray-200 hover:bg-red-400 hover:text-white py-2 px-4 block whitespace-no-wrap"
+                                        class="rounded-b bg-gray-200 hover:bg-secText hover:text-white py-2 px-4 block whitespace-no-wrap"
                                         href="/ice-hockey">ICE HOCKEY PREDICTIONS</a></li>
 
 
@@ -77,43 +77,43 @@
 
 
                         <a href="/pricing"
-                            class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                            class="text-white border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                             PRICING
                         </a>
                         <a href="/how-to-pay"
-                            class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                            class="text-white border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                             HOW TO PAY
                         </a>
                         <a href="/contact-us"
-                            class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                            class="text-white border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                             CONTACT
                         </a>
                         <a href="/blog"
-                            class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                            class="text-white border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                             BLOG
                         </a>
                         <a href="/live-scores"
-                            class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                            class="text-white border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                             LIVE SCORES
                         </a>
 
                         @auth
                             <a href="/dashboard"
-                                class="text-white border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                                class="text-white border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                                 DASHBOARD
                             </a>
                         @endauth
 
-                        {{-- <a href="{{ route('frontend.posts.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                        {{-- <a href="{{ route('frontend.posts.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                             {{__('Posts')}}
                         </a>
-                        <a href="{{ route('frontend.categories.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                        <a href="{{ route('frontend.categories.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                             {{__('Categories')}}
                         </a>
-                        <a href="{{ route('frontend.tags.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                        <a href="{{ route('frontend.tags.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                             {{__('Tags')}}
                         </a>
-                        <a href="{{ route('frontend.comments.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-orange-600 px-3 py-2 text-base font-medium transition ease-out duration-300">
+                        <a href="{{ route('frontend.comments.index') }}" class="text-gray-600 border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                             {{__('Comments')}}
                         </a> --}}
                     </div>
@@ -124,7 +124,7 @@
                     <div class="flex flex-row">
                         @guest
                             <a href="{{ route('login') }}"
-                                class="flex items-center mx-2 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-500 focus:outline-none focus:bg-orange-500 invisible md:visible">
+                                class="flex items-center mx-2 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-secBg rounded-md hover:bg-secText focus:outline-none focus:bg-secText  invisible md:visible">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -134,7 +134,7 @@
                             </a>
                             @if (user_registration())
                                 <a href="{{ route('register') }}"
-                                    class="flex items-center mx-2 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-500 focus:outline-none focus:bg-orange-500 invisible md:visible">
+                                    class="flex items-center mx-2 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-secBg rounded-md hover:bg-secText focus:outline-none focus:bg-secText  invisible md:visible">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round"

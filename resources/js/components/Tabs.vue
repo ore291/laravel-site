@@ -3,7 +3,7 @@
     <div class="w-full">
       <div class="w-full bg-black text-white">
         <p class="text-center font-bold text-xl mt-2 mb-[5px]">
-          Free Football Predictions
+          Free Soccer Predictions
         </p>
       </div>
       <div class="bg-black">
@@ -13,12 +13,15 @@
               text-white
               font-bold
               cursor-pointer
-              first:hidden first:md:block
-              last:hidden last:md:block
-               text-xs md:text-sm
+              
+               text-[15px]
+               leading-[1.3]
+               text-center
             ">
             {{ addDays(day) }}
           </span>
+          <!-- first:hidden first:md:block
+              last:hidden last:md:block -->
         </div>
       </div>
       <div>
@@ -57,6 +60,25 @@
               </td>
               <td class="py-2 text-sm">
                 <span class="
+                  
+                    
+                   
+                    font-bold
+                    uppercase
+                  
+                    leading-none
+                   
+                   
+                  "> {{ game.tips }}</span>
+                <span>/</span>
+                <span class="
+                   
+                    font-bold
+              
+                    leading-none
+               
+                  "> {{ game.odds }}</span>
+                <!-- <span class="
                     inline-flex
                     items-center
                     justify-center
@@ -82,29 +104,27 @@
                     text-white
                     bg-[#DC3545]
                     rounded
-                  ">Odds: {{ game.odds }}</span>
+                  ">Odds: {{ game.odds }}</span> -->
               </td>
               <td class="py-2">{{ `${game.score_a} - ${game.score_b}` }}</td>
               <td class="py-2">
-                <span v-if="game.status == 0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
-                  </svg>
+                <span v-if="game.status == 0" class="px-2">
+
+
+                  <i class="fa fa-question" aria-hidden="true"></i>
                 </span>
-                <span v-else-if="game.status == 1"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                    class="w-6 h-6 stroke-2 text-green-500">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <span v-else-if="game.status == 1">
+
+                  <i class="fa fa-check-circle text-green-700"></i>
+
+
 
                 </span>
-                <span v-else-if="game.status == 2"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-2 text-red-500">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <span v-else-if="game.status == 2">
+
+                  <i class="fa fa-times-circle text-red-500" style="color:red;"></i>
+
+
 
 
                 </span>
@@ -113,14 +133,14 @@
           </tbody>
         </table>
         <div class="w-full bg-black text-white">
-          <!-- <p class="text-center text-xs">Sportverified</p> -->
+          <p class="text-center  text-lg font-bold">{{name}}</p>
         </div>
       </div>
     </div>
     <div class="w-full">
-      <div class="w-full bg-[#006600] text-white">
-        <p class="text-center font-medium text-lg mt-2 mb-[1px]">
-          Other Sport Free Predictions
+      <div class="w-full bg-[#266992] text-white">
+        <p class="text-center font-bold text-lg text-[#87CEFA] mt-2 mb-[1px]">
+          Other Sport Predictions
         </p>
       </div>
       <div class="
@@ -128,7 +148,7 @@
           flex
           items-center
           justify-around
-          bg-[#006600]
+          bg-[#266992]
           text-white
           mb-[1px]
         ">
@@ -140,7 +160,7 @@
           {{ sport.name }}
         </p>
       </div>
-      <div class="my-.5 bg-[#006600]">
+      <div class="my-.5 bg-[#266992]">
         <div class="w-full flex justify-between px-2 py-3">
           <span v-for="(day, i) in days" :key="i" @click="setOtherActiveDate(day)" :class="{
             'bg-white !text-black p-1 inline-flex items-center justify-center rounded-md':
@@ -149,9 +169,10 @@
               text-white
               font-bold
               cursor-pointer
-              first:hidden first:md:block
-              last:hidden last:md:block
-               text-xs md:text-sm
+            
+              text-[15px]
+               leading-[1.3]
+               text-center
             ">
             {{ addDays(day) }}
           </span>
@@ -182,7 +203,7 @@
                     <img v-if="game.sport_name === 'basketball'" src="/img/Basketball-1.png" alt="" class="w-5 h-5" />
                     <img v-if="game.sport_name === 'tennis'" src="/img/Tennis-1.png" alt="" class="w-5 h-5" />
                     <img v-if="game.sport_name === 'boxing'" src="/img/boxing.png" alt="" class="w-5 h-5" />
-                    <img v-if="game.sport_name === 'ice hockey'" src="/img/Ice-hockey-1.png" alt="" class="w-5 h-5" />
+                    <img v-if="game.sport_name === 'ice hockey'" src="/img/Ice-Hockey-1.png" alt="" class="w-5 h-5" />
                   </span>
                   <!-- <span>{{ game.league.country.substring(0, 3).toUpperCase() }}</span> -->
                   <span>{{ `(${game.league_name})` }}</span>
@@ -197,53 +218,46 @@
               </td>
               <td class="py-2 text-sm">
                 <span class="
-                    inline-flex
-                    items-center
-                    justify-center
-                    px-1
-                    py-1
-                    font-medium
-                
-                    leading-none
-                    text-white
-                    bg-[#0D6EFD]
-                    rounded
-                  ">Tips : {{ game.tips }}</span>
-                <span class="
-                    ml-1
-                    inline-flex
-                    items-center
-                    justify-center
-                    px-1
-                    py-1
-                    font-medium
+                    
+                    
+                  
+                    font-bold
+                    uppercase
                   
                     leading-none
-                    text-white
-                    bg-[#DC3545]
-                    rounded
-                  ">Odds: {{ game.odds }}</span>
+                   
+                   
+                  "> {{ game.tips }}</span>
+                <span>/</span>
+                <span class="
+                   
+                   
+                   
+                    font-bold
+              
+                    leading-none
+                    
+                   
+                  "> {{ game.odds }}</span>
               </td>
               <td class="py-2">{{ `${game.score_a} - ${game.score_b}` }}</td>
-              <td class="py-2"> <span v-if="game.status == 0"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-2 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
-                  </svg>
+              <td class="py-2"> <span v-if="game.status == 0" class="px-2">
+
+
+                  <i class="fa fa-question" aria-hidden="true"></i>
                 </span>
-                <span v-else-if="game.status == 1"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                    class="w-6 h-6 stroke-2 text-green-500">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <span v-else-if="game.status == 1">
+
+                  <i class="fa fa-check-circle text-green-700"></i>
+
+
 
                 </span>
-                <span v-else-if="game.status == 2"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <span v-else-if="game.status == 2">
+
+                  <i class="fa fa-times-circle text-red-500" style="color:red;"></i>
+
+
 
 
                 </span>
@@ -251,8 +265,8 @@
             </tr>
           </tbody>
         </table>
-        <div class="w-full   bg-[#006600] text-white">
-          <!-- <p class="text-center text-xs">Sportverified</p> -->
+        <div class="w-full   bg-[#266992] text-[#87CEFA]">
+          <p class="text-center text-lg font-bold">{{name}}</p>
         </div>
       </div>
     </div>
@@ -262,7 +276,10 @@
 import moment from "moment";
 import axios from "axios";
 export default {
+
+
   created() {
+    this.name = window.name;
     this.getFreePredictions(1, 0);
     if (localStorage.getItem('other_sport') === null) {
       localStorage.setItem('other_sport', 2)
@@ -310,9 +327,11 @@ export default {
     },
     addDays(n) {
       if (n === 0) {
-        return `Today ${moment().format("MMM DD")}`;
+        return `TODAY ${moment().format("MMM Do, Y")}`;
+      } else if (n === 1) {
+        return `TOMMOROW ${moment().add(n, "days").format("MMM Do, Y")}`;
       } else {
-        return moment().add(n, "days").format("MMM DD");
+        return `YESTERDAY ${moment().add(n, "days").format("MMM Do, Y")}`;
       }
     },
     setActiveDate(n) {
@@ -331,6 +350,7 @@ export default {
   },
   data() {
     return {
+      name : "",
       predictions: [],
       other_predictions: [],
       loading: false,
@@ -360,7 +380,7 @@ export default {
           sport: 5
         },
       ],
-      days: [-3, -2, -1, 0, 1, 2, 3],
+      days: [-1, 0, 1],
 
 
     };

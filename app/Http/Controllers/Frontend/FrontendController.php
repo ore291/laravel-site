@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use Carbon\Carbon;
 use App\Models\Plan;
 use App\Models\User;
+use Modules\Results\Entities\Stats;
+use Modules\Results\Entities\Results;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Location;
@@ -29,13 +31,20 @@ class FrontendController extends Controller
         $query_date = $today->addDays(5)->toDateString();
         $back_date = $today->addDays(-3)->toDateString();
 
+        $perc = Stats::where('name', 'percent')->first();
+
+        $d_odd = Stats::where('name', 'odds')->first();
+        $results = Results::latest('date')->take(4)->get();
+
+     
+
         $trending_pred =  Prediction::where('sport_id', 1)->where('category', 22)->whereDate('date_t', Carbon::today()->toDateString())->get();
         $results_pred =  Prediction::where('sport_id', 1)->where('score_a', '!=', '?')->where('score_b', '!=', '?')->whereDate('date_t', "<=", Carbon::today()->toDateString())->orderBy('date_t', 'desc')->limit(10)->get();
 
         $upcoming_pred =  Prediction::where('sport_id', 1)->whereRelation('cat', 'tier', 1)->whereDate('date_t', "<=", $query_date)->whereDate('date_t', ">=", Carbon::today()->toDateString())->orderBy('date_t', 'desc')->get();
 
         // return view('dashboard', compact('body_class'));
-        return view('frontend.index', compact('body_class', 'results_pred', 'trending_pred', 'upcoming_pred'));
+        return view('frontend.index', compact('body_class', 'results_pred', 'trending_pred', 'upcoming_pred', 'perc', 'd_odd','results' ));
     }
 
     /**

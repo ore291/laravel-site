@@ -79,7 +79,7 @@ class ApiController extends Controller
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => "GET",
                 CURLOPT_HTTPHEADER => array(
-                    "Authorization: Bearer " .  setting('fw_key') ,
+                    "Authorization: Bearer " .  setting('fw_secret_key') ,
                     "Cache-Control: no-cache",
                 ),
             ));
@@ -130,7 +130,8 @@ class ApiController extends Controller
                             'references'    => $request->transactionId,
                             'payment_method' => $request->payment_method,
                             'duration' => $duration,
-                            'status' => $result['data']['status']
+                            'status' => $result['data']['status'],
+                            'amount' => $request->amount,
 
                         ]
                     );
@@ -200,7 +201,8 @@ class ApiController extends Controller
                             'references'    => $request->transactionId,
                             'payment_method' => $request->payment_method,
                             'duration' => $duration,
-                            'status' => $result['data']['status']
+                            'status' => $result['data']['status'],
+                            'amount' => $request->amount,
 
                         ]
                     );

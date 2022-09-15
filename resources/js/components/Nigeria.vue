@@ -249,6 +249,7 @@ export default {
         paystack,
     },
     created() {
+        console.log(window.flutter_key);
         this.user = window.user;
         this.publicKey = window.paystack_key;
         this.ng_bank_user = window.ng_bank_user
@@ -374,6 +375,8 @@ export default {
 
 
         makePaymentFlutterWave(selectedPlan, selectedDuration, payment_method) {
+
+        
             this.$launchFlutterwave({
                 tx_ref: this.reference,
                 amount: this.getAmount.a,

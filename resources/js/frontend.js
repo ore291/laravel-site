@@ -29,8 +29,10 @@ app.component('pred-tabs', Tabs);
 app2.component('Football', Football);
 app2.component('slide-up-down', SlideUpDown)
 
+var flut_key = window.flutter_key
+
 app3.component('Payment', Payment);
-app3.use(Flutterwave, { publicKey:  window.flutter_key })
+app3.use(Flutterwave, { publicKey:  flut_key })
 
 app3.mount("#payment-div")
 

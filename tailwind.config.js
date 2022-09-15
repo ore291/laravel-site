@@ -13,9 +13,15 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Rubik', 'Montserrat', 'Poppins', 'Nunito', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                secBg: '#266992',
+                secText: '#87CEFA',
+               
+              }
         },
+        
     },
 
     plugins: [require('@tailwindcss/forms')],

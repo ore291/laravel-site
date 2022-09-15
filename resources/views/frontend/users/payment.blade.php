@@ -8,7 +8,7 @@
     <script>
         window.user = @json($user);
         window.country_code = @json($country_code);
-        window.flutter_key = '{{ setting('fw_key') }}';
+        window.flutter_key = '{{ setting('fw_public_key') }}';
         window.paystack_key = '{{ setting('paystack_key') }}';
         window.mpesa_name = '{{ setting('mpesa_user_name') }}';
         window.mpesa_acct = '{{ setting('mpesa_bank_acct') }}';

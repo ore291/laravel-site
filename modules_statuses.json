@@ -4,5 +4,6 @@
     "Comment": true,
     "Predictions": true,
     "Live": true,
-    "OtherSports": true
+    "OtherSports": true,
+    "Results": true
 }

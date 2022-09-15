@@ -21,7 +21,7 @@ require __DIR__ . '/auth.php';
 // Language Switch
 Route::get('language/{language}', [LanguageController::class, 'switch'])->name('language.switch');
 
-Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index')->name('dashboard');
+// Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index')->name('dashboard');
 
 
 

@@ -11,7 +11,7 @@
     <div class="card-body">
 
         <x-backend.section-header>
-            @lang("Welcome to", ['name'=>config('app.name')])
+            @lang("Welcome to", ['name'=>setting('app_name')])
 
             <x-slot name="subtitle">
                 {{ date_today() }}
