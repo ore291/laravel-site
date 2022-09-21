@@ -3,7 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
+
 .env.backup
 .phpunit.result.cache
 Homestead.json
@@ -16,3 +16,5 @@ yarn-error.log
 bet-with-sense.zip
 
 framework.zip
+laravel-site.zip
+public.zip
