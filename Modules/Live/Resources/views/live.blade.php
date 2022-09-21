@@ -12,114 +12,117 @@
 @endsection
 
 @section('content')
-    <div class="p-2 ">
+    <div class="p-2 max-w-5xl mx-auto">
         {{-- <h1 class="text-center text-3xl font-semibold my-2"></h1> --}}
-        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-2 my-3 lg:my-20">
-            <div class=" lg:col-span-2  bg-gray-900 py-10">
-                <!-- Component Start -->
-                <h1 class="text-lg text-gray-400 font-medium text-center">LIVE EVENTS</h1>
+        <h1 class="text-3xl my-3 text-gray-400 font-medium text-center">LIVE EVENTS</h1>
+        <div class=" lg:col-span-2  bg-gray-900 pb-10">
+            <!-- Component Start -->
 
 
-                <div class="shadow  sm:rounded-lg  mt-2 p-2 overflow-x-auto relative w-full">
-                    <table class="table-auto  text-sm text-gray-400 overflow-scroll w-full">
-                        <thead class="bg-gray-800 text-xs uppercase font-normal">
-                            <tr>
-                                <th></th>
-                                <th scope="col" class="px-1 py-3 text-left tracking-wider">
-                                    Event
-                                </th>
-                                <th scope="col" class="px-1 py-3 text-left tracking-wider">
-                                    Booking Code
-                                </th>
-                                <th scope="col" class="px-1 py-3 text-left tracking-wider">
-                                    Live Streaming Link
-                                </th>
-                                <th scope="col" class="px-1 py-3 text-left tracking-wider">
-                                    Tips
-                                </th>
-                                <th scope="col" class="px-1 py-3 text-left tracking-wider">
-                                    Odds
-                                </th>
-                                <th scope="col" class="px-1 py-3 text-left tracking-wider">
-                                    Date
-                                </th>
-                                <th scope="col" class="px-1 py-3 text-left tracking-wider">
-                                    Time
-                                </th>
+
+            <div class="shadow  sm:rounded-lg  mt-2 p-2 overflow-x-auto relative w-full">
+                <table class="table-auto  text-sm text-gray-400 overflow-scroll w-full">
+                    <thead class="bg-gray-800 text-xs uppercase font-normal">
+                        <tr>
+                            <th></th>
+                            <th scope="col" class="px-1 py-3 text-left tracking-wider whitespace-nowrap">
+                                Event
+                            </th>
+                            <th scope="col" class="px-1 py-3 text-left tracking-wider  whitespace-nowrap">
+                                Booking Code
+                            </th>
+                            <th scope="col" class="px-1 py-3 text-left tracking-wider  whitespace-nowrap">
+                                Live Streaming Link
+                            </th>
+                            <th scope="col" class="px-1 py-3 text-left tracking-wider whitespace-nowrap">
+                                Tips
+                            </th>
+                            <th scope="col" class="px-1 py-3 text-left tracking-wider whitespace-nowrap">
+                                Odds
+                            </th>
+                            <th scope="col" class="px-1 py-3 text-left tracking-wider whitespace-nowrap">
+                                Date
+                            </th>
+                            <th scope="col" class="px-1 py-3 text-left tracking-wider whitespace-nowrap">
+                                Time
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody class="bg-gray-800">
+                        @forelse ($$module_name as $event)
+                            <tr class="bg-black bg-opacity-20 text-left">
+                                <td class="pl-1">
+                                    {{ $loop->index + 1 }}
+                                </td>
+                                <td class="flex px-1 py-4 whitespace-nowrap">
+
+                                    <span class=" font-medium">{{ $event->event }}</span>
+                                </td>
+                                <td class="px-1 py-4 whitespace-nowrap">
+                                    {{ $event->booking_no }}
+                                </td>
+                                <td class="px-1 py-4 whitespace-nowrap truncate">
+                                    <a class="hover:text-green-400"
+                                        href="{{ $event->live_streaming_link }}">{{ $event->live_streaming_link }}</a>
+                                </td>
+                                <td class=" px-1 py-4 whitespace-nowrap">
+
+                                    <span class=" font-medium">{{ $event->tips }}</span>
+                                </td>
+                                <td class=" px-1 py-4 whitespace-nowrap">
+
+                                    <span class=" font-medium">{{ $event->odds }}</span>
+                                </td>
+                                <td class="   px-1 py-4 whitespace-nowrap">
+                                    <span class=" font-medium">{{ $event->date }}</span>
+
+                                </td>
+                                <td class="   px-1 py-4 whitespace-nowrap">
+
+                                    <span class=" font-medium">{{ date('g:i a', strtotime($event->time)) }}</span>
+
+                                </td>
+
 
 
                             </tr>
-                        </thead>
-                        <tbody class="bg-gray-800">
-                            @forelse ($$module_name as $event)
-                                <tr class="bg-black bg-opacity-20 text-left">
-                                    <td class="pl-1">
-                                        {{ $loop->index + 1 }}
-                                    </td>
-                                    <td class="flex px-1 py-4 whitespace-nowrap">
-
-                                        <span class=" font-medium">{{ $event->event }}</span>
-                                    </td>
-                                    <td class="px-1 py-4 whitespace-nowrap">
-                                        {{ $event->booking_no }}
-                                    </td>
-                                    <td class="px-1 py-4 whitespace-nowrap truncate">
-                                        <a class="hover:text-green-400"
-                                            href="{{ $event->live_streaming_link }}">{{ $event->live_streaming_link }}</a>
-                                    </td>
-                                    <td class=" px-1 py-4 whitespace-nowrap">
-
-                                        <span class=" font-medium">{{ $event->tips }}</span>
-                                    </td>
-                                    <td class=" px-1 py-4 whitespace-nowrap">
-
-                                        <span class=" font-medium">{{ $event->odds }}</span>
-                                    </td>
-                                    <td class="   px-1 py-4 whitespace-nowrap">
-                                        <span class=" font-medium">{{ $event->date }}</span>
-
-                                    </td>
-                                    <td class="   px-1 py-4 whitespace-nowrap">
-
-                                        <span class=" font-medium">{{ date('g:i a', strtotime($event->time)) }}</span>
-
-                                    </td>
+                        @empty
+                            <p>No live events available.</p>
+                        @endforelse
 
 
-
-                                </tr>
-                            @empty
-                                <p>No live events available.</p>
-                            @endforelse
-
-
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
+                <div class="p-2">
                     {{ $$module_name->links() }}
                 </div>
 
-
-
-                <!-- Component End  -->
             </div>
-            <div id="fs-standings"></div>
-            <script>
-                (function(w, d, s, o, f, js, fjs) {
-                    w['fsStandingsEmbed'] = o;
-                    w[o] = w[o] || function() {
-                        (w[o].q = w[o].q || []).push(arguments)
-                    };
-                    js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
-                    js.id = o;
-                    js.src = f;
-                    js.async = 1;
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(window, document, 'script', 'mw', 'https://cdn.footystats.org/embeds/standings.js'));
-                mw('params', {
-                    leagueID: 7704
-                });
-            </script>
+
+
+
+            <!-- Component End  -->
         </div>
+
+        <div id="fs-standings"></div>
+        <script>
+            (function(w, d, s, o, f, js, fjs) {
+                w['fsStandingsEmbed'] = o;
+                w[o] = w[o] || function() {
+                    (w[o].q = w[o].q || []).push(arguments)
+                };
+                js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+                js.id = o;
+                js.src = f;
+                js.async = 1;
+                fjs.parentNode.insertBefore(js, fjs);
+            }(window, document, 'script', 'mw', 'https://cdn.footystats.org/embeds/standings.js'));
+            mw('params', {
+                leagueID: 7704
+            });
+        </script>
 
     </div>
 @endsection
