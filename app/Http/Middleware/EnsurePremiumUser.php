@@ -25,7 +25,7 @@ class EnsurePremiumUser
         $id = auth()->user()->id;
         $userSub = Subscription::where('user_id', $id)->whereIn('plan_id', [1, 2, 3, 4])->first();
         $today = Carbon::today();
-        $plans = Stats::whereStrict('name', 'plans')->first();
+        $plans = Stats::where('name', 'plans')->first();
 
         $plans_array = array(1);
 
