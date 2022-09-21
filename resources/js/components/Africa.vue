@@ -62,28 +62,32 @@
                     <br>
                     <ul class="p-2 flex flex-col space-y-1 items-start">
                         <button @click="selectPlan(plan, 'w')" v-if="plan.sms_plan === 1">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{ plan.n_weekly_f
-                            }} -
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b
+                                    class="cursor-pointer  hover:text-green-700 underline">{{ plan.n_weekly_f
+                                    }} -
                                     Weekly</b>
                             </li>
                         </button>
                         <button @click="selectPlan(plan, 'm')">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{
-                                    plan.k_per_month_f
-                            }} -
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b
+                                    class="cursor-pointer  hover:text-green-700 underline">{{
+                                            plan.k_per_month_f
+                                    }} -
                                     Monthly</b></li>
                         </button>
                         <button @click="selectPlan(plan, '6m')" v-if="plan.id != 6">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{
-                                    plan.k_per_6months_f
-                            }}
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b
+                                    class="cursor-pointer  hover:text-green-700 underline">{{
+                                            plan.k_per_6months_f
+                                    }}
                                     - 6
                                     Months</b></li>
                         </button>
                         <button @click="selectPlan(plan, 'y')" v-if="plan.id != 6">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{
-                                    plan.k_per_year_f
-                            }} -
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b
+                                    class="cursor-pointer  hover:text-green-700 underline">{{
+                                            plan.k_per_year_f
+                                    }} -
                                     1
                                     Year</b></li>
                         </button>
@@ -155,7 +159,7 @@
                         </ul>
 
                         <p style="text-align: left; padding-left: 10px; font-weight: normal;">You can activate or
-                            upgrade your {{site_name}} account by making the appropriate payments to our East Africa
+                            upgrade your {{ site_name }} account by making the appropriate payments to our East Africa
                             Agent via Mpesa.
 
                             <br> <b> MPESA Name : {{ mpesa_name }} </b>
@@ -166,7 +170,7 @@
                         <p style="text-align: left; padding-left: 10px; font-weight: normal; margin-bottom: 20px;">
                             After making payments, ensure you send your Name, Email address, Amount and Plan and to the
                             agent number {{ con_trans }} to confirm your payment.
-                            <br> Your {{site_name}} account will be upgraded once payment has been confirmed.
+                            <br> Your {{ site_name }} account will be upgraded once payment has been confirmed.
                         </p>
 
                         <!--</form>---->
@@ -340,7 +344,7 @@ export default {
                         payment_method: payment_method,
                         transactionId: data.transaction_id,
                         amount: data.amount,
-                        
+
                     };
 
                     axios.post(`/api/upgrade-package/${window.user.id}`, body).then((res) => {
@@ -359,7 +363,7 @@ export default {
                 customizations: {
                     title: this.site_name,
                     description: 'Upgrade Plan',
-                   
+
                 }
             })
         },

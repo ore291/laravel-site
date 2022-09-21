@@ -6,24 +6,24 @@
                 <div class="md:col-span-2 px-2  md:px-14">
                     <div class="about-widget">
                         <a class="logo" href="/">
-                            <img src="{{ asset(setting('site_logo')) }}" alt="{{ app_name() }}">
+                            <img class="object-contain max-w-[200px]" src="{{ asset(setting('site_logo')) }}" alt="{{ app_name() }}">
                         </a>
                         <p class="text-[#ccc] text-[16px] leading-[26px] my-2 font-semibold uppercase">
-                            {{setting('app_name')  }} YOUR NO 1 GUIDE TO FOOTBALL BETTING AND PREDICTION.
+                            {{ setting('app_name') }} YOUR NO 1 GUIDE TO FOOTBALL BETTING AND PREDICTION.
                         </p>
                         <div class="social">
                             <ul class="list-none">
                                 <li class="list-none flex space-x-4 items-center ">
-                                    <a href="{{setting('facebook_url')  }}" class="social-icon">
+                                    <a href="{{ setting('facebook_url') }}" class="social-icon">
                                         <i class="fab fa-facebook"></i>
                                     </a>
-                                    <a href="{{setting('twitter_url')  }}" class="social-icon">
+                                    <a href="{{ setting('twitter_url') }}" class="social-icon">
                                         <i class="fab fa-twitter"></i>
                                     </a>
-                                    <a href="{{setting('instagram_url')  }}" class="social-icon">
+                                    <a href="{{ setting('instagram_url') }}" class="social-icon">
                                         <i class="fab fa-instagram"></i>
                                     </a>
-                                    <a href="{{setting('linkedin_url')  }}" class="social-icon">
+                                    <a href="{{ setting('linkedin_url') }}" class="social-icon">
                                         <i class="fab fa-linkedin"></i>
                                     </a>
                                 </li>
@@ -38,7 +38,7 @@
                                     <span class="text flex flex-col space-y-2">
                                         <span class="footer-mail ml-2">Mail Us</span>
                                         <span
-                                            class="descr ml-2 opacity-30 text-sm text-[#ddd]">{{setting('email')  }}</span>
+                                            class="descr ml-2 opacity-30 text-sm text-[#ddd]">{{ setting('email') }}</span>
                                     </span>
                                 </li>
                                 <br>
@@ -51,10 +51,11 @@
                                         <span class="descr text-white opacity-30 text-sm ml-2">
                                             Calls &amp; WhatsApp:
 
-                                            {{setting('ng_whatsapp')  }} (Nigeria), {{setting('kenya_whatsapp')  }} (Kenya) <br>
+                                            {{ setting('ng_whatsapp') }} (Nigeria), {{ setting('kenya_whatsapp') }}
+                                            (Kenya) <br>
                                             <i class="fab fa-whatsapp" style="color:#32CD32;"></i>
                                             <a class="section-title2"
-                                                href="https://api.whatsapp.com/send?phone={{setting('ng_whatsapp')}}"
+                                                href="https://api.whatsapp.com/send?phone={{ setting('ng_whatsapp') }}"
                                                 style="color:#32CD32;">Click here to contact us via
                                                 WhatApp(Nigeria).</a>
                                             <br>
@@ -77,7 +78,7 @@
                             @endauth
                             <li><a href="/pricing" class="footer-links">Pricing Plan</a></li>
                             <li><a href="/how-to-pay" class="footer-links">How to Pay</a></li>
-                          
+
                         </ul>
                     </div>
                 </div>
@@ -132,9 +133,9 @@
         <div class="copyright-footer p-3">
             <div class="container">
                 <div class="flex flex-col md:flex-row space-y-2 items-center justify-between">
-                    <div class="md:flex block align-center">
+                    <div class="md:flex block align-center px-2">
                         <p class="copyright-text">
-                            <a href="/">{{setting('app_name')  }}</a> ©
+                            <a href="/">{{ setting('app_name') }}</a> ©
                             <script>
                                 var d = new Date();
                                 var n = d.getFullYear();
@@ -144,16 +145,18 @@
                     </div>
                     <div class="text-right col-md-6 col-xl-4 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
                         <p class="copyright-text">
-                            Powered By <a href="/">KnightTech</a>
+                            {!! setting('footer_text') !!}
                         </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- <p class="text-xs font-medium">
-            &copy; {{ app_name() }}, {!! setting('footer_text') !!}
-        </p> --}}
+        <p class="text-xs font-medium text-center mt-1">
+            @if (setting('show_copyright'))
+                @lang('Copyright') &copy; {{ date('Y') }}
+            @endif {{ setting('app_name') }}, 
+        </p>
 
     </div>
 </footer>

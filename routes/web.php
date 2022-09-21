@@ -28,6 +28,11 @@ Route::get('language/{language}', [LanguageController::class, 'switch'])->name('
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');
 });
+
+Route::get('/clear-cache', function() {
+    Artisan::call('optimize:clear');
+    echo Artisan::output();
+    });
 /*
 *
 * Frontend Routes
@@ -42,6 +47,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.
     Route::view('how-to-pay2', 'frontend.howtopay2')->name('howtopay2');
     Route::view('how-to-pay3', 'frontend.howtopay3')->name('howtopay3');
     Route::get('contact-us', 'FrontendController@contact')->name('contact');
+    Route::post('contact-us', 'FrontendController@contactStore')->name('contact.us.store');
     Route::get('privacy', 'FrontendController@privacy')->name('privacy');
     Route::get('terms', 'FrontendController@terms')->name('terms');
     Route::get('predictions', 'FrontendController@predictions')->name('predictions');

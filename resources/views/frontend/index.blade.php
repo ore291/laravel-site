@@ -17,7 +17,7 @@
                         alt="..."style="min-height:200px;">
                     <img src="{{ asset('img/slider/3.png') }}" class="block w-full rounded "
                         alt="..."style="min-height:200px;">
-                   
+
                 </div>
             </div>
         </section>
@@ -37,37 +37,39 @@
 
         @if (setting('home_page_1') !== null)
             <section class="my-5 md:my-12 p-1 lg:p-0 max-w-6xl mx-auto">
-                <img src="/{{ setting('home_page_1') }}" class="w-full object-cover" alt="">
+                <a href={{ setting('homepage_1_ad_link') }} class="appearance-none ">
+                    <img src="/{{ setting('home_page_1') }}" class="w-full object-cover" alt="">
+                </a>
             </section>
         @endif
 
 
-        <section class="py-5 md:py-20 max-w-6xl mx-auto ">
-            <div class="grid grid-cols-1 md:grid-cols-2 md:divide-x ">
+        <section class="px-1 md:px-0 py-5 md:py-20 max-w-6xl mx-auto ">
+            <div class="grid grid-cols-1 md:grid-cols-2 md:divide-x gap-y-10 md:gap-0">
                 <div class="w-full text-black">
                     <h4 class="text-center font-bold mb-1 text-2xl">
                         Football Popular Categories
                     </h4>
                     <div class="grid grid-cols-4 place-items-center">
-                        <a href="/predictions" class="flex flex-col items-center justify-center">
-                            <img src="/img/OVER-15.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>1.5 Goals</b></p>
+                        <a href="/predictions" class="flex flex-col items-center justify-between">
+                            <img src="/img/OVER-15.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>1.5 Goals</b></p>
                         </a>
-                        <a href="/predictions" class="flex flex-col items-center justify-center">
-                            <img src="/img/dc.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>Double Chance</b></p>
+                        <a href="/predictions" class="flex flex-col items-center justify-between">
+                            <img src="/img/dc.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Double Chance</b></p>
                         </a>
-                        <a href="/predictions" class="flex flex-col items-center justify-center">
-                            <img src="/img/draw.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>Draws</b></p>
+                        <a href="/predictions" class="flex flex-col items-center justify-between">
+                            <img src="/img/draw.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Draws</b></p>
                         </a>
 
-                        <a href="/predictions" class="flex flex-col items-center justify-center">
-                            <img src="/img/cs.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>Correct Score</b></p>
+                        <a href="/predictions" class="flex flex-col items-center justify-between">
+                            <img src="/img/cs.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Correct Score</b></p>
                         </a>
                     </div>
-                    <div class="text-center mt-2 flex items-center justify-center">
+                    <div class="text-center my-5 md:my-2 flex items-center justify-center">
                         <a href="/predictions"
                             class="rounded font-medium text-xl h-12 w-[250px] bg-red-500 hover:bg-b text-white flex items-center justify-center">
                             View More Categories
@@ -80,25 +82,25 @@
                         Other Sports Popular Categories
                     </h4>
                     <div class="grid grid-cols-4 place-items-center">
-                        <a href="/basketball" class="flex flex-col items-center justify-center">
-                            <img src="/img/basketball.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>Basketball</b></p>
+                        <a href="/basketball" class="flex flex-col items-center justify-between">
+                            <img src="/img/basketball.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Basketball</b></p>
                         </a>
-                        <a href="/tennis" class="flex flex-col items-center justify-center">
-                            <img src="/img/tennis.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>Tennis</b></p>
+                        <a href="/tennis" class="flex flex-col items-center justify-between">
+                            <img src="/img/tennis.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Tennis</b></p>
                         </a>
-                        <a href="/boxing" class="flex flex-col items-center justify-center">
-                            <img src="/img/boxing-new.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>Boxing</b></p>
+                        <a href="/boxing" class="flex flex-col items-center justify-between">
+                            <img src="/img/boxing-new.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Boxing</b></p>
                         </a>
-                        <a href="/ice-hockey" class="flex flex-col items-center justify-center">
-                            <img src="/img/icehockey.png" class="w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-medium"><b>Ice Hockey</b></p>
+                        <a href="/ice-hockey" class="flex flex-col items-center justify-between">
+                            <img src="/img/icehockey.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Ice Hockey</b></p>
                         </a>
 
                     </div>
-                    <div class="text-center mt-2 flex items-center justify-center">
+                    <div class="text-center my-5 md:my-2  flex items-center justify-center">
                         <a href="/basketball"
                             class="rounded font-medium text-xl h-12 w-[250px] bg-[#266992] text-white flex items-center justify-center">
                             View More Categories
@@ -243,13 +245,15 @@
 
     @if (setting('home_page_2') !== null)
         <section class="my-5 md:my-12 p-1 lg:p-0 max-w-6xl mx-auto">
-            <img src="/{{ setting('home_page_2') }}" class="w-full object-cover" alt="">
+            <a href={{ setting('homepage_2_ad_link') }} class="appearance-none ">
+                <img src="/{{ setting('home_page_2') }}" class="w-full object-cover" alt="">
+            </a>
         </section>
     @endif
 
     <section class="my-2 max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 gap-x-10 py-20">
-            <div class="bg-black flex flex-col items-center justify-center text-white font-semibold p-5">
+            <div class="bg-black flex flex-col items-center justify-between text-white font-semibold p-5">
                 <h4 class="text-center text-2xl ">DON'T GAMBLE, INVEST.</h4>
                 <p class="text-white text-center px-2" style="font-size:15px;">
                     <small class="text-[15px]">The investment scheme is recommended for serious bettors who believe in the
@@ -266,7 +270,7 @@
 
             </div>
 
-            <div class="bg-[#000b2b] flex flex-col items-center justify-center text-white font-semibold p-5">
+            <div class="bg-[#000b2b] flex flex-col items-center justify-between text-white font-semibold p-5">
 
                 <div class="part-team w-full text-white pb-2 pt-2">
 
@@ -279,8 +283,9 @@
                         <ul class="flex justify-between mt-3" style="padding:0px;">
 
                             @forelse ($results as $result)
-                                <li class="flex flex-col items-center justify-center  text-center" style="margin-right:5px;">
-                                   
+                                <li class="flex flex-col items-center justify-between  text-center"
+                                    style="margin-right:5px;">
+
                                     {{-- <span class="text-white" style="font-size:12px;">18:00</span><br> --}}
                                     @if ($result->status == 0)
                                         <i class="fa fa-times-circle" style="color:red;font-size: 25px;"></i>
@@ -294,26 +299,7 @@
                             @empty
                                 <p>No Results Yet</p>
                             @endforelse
-                            {{-- <li class="inline-block text-center" style="margin-right:5px;">
-                                <span class="text-white" style="font-size:13px;">2022-08-01</span><br>
-                                <span class="text-white" style="font-size:12px;">18:00</span><br>
-                                <i class="fa fa-check-circle" style="color:red;font-size: 20px;"></i>
-                            </li>
-                            <li class="inline-block text-center" style="margin-right:5px;">
-                                <span class="text-white" style="font-size:13px;">2022-08-01</span><br>
-                                <span class="text-white" style="font-size:12px;">18:00</span><br>
-                                <i class="fa fa-check-circle" style="color:red;font-size: 20px;"></i>
-                            </li>
-                            <li class="inline-block text-center" style="margin-right:5px;">
-                                <span class="text-white" style="font-size:13px;">2022-08-01</span><br>
-                                <span class="text-white" style="font-size:12px;">18:00</span><br>
-                                <i class="fa fa-check-circle" style="color:red;font-size: 20px;"></i>
-                            </li>
-                            <li class="inline-block text-center" style="margin-right:5px;">
-                                <span class="text-white" style="font-size:13px;">2022-08-01</span><br>
-                                <span class="text-white" style="font-size:12px;">18:00</span><br>
-                                <i class="fa fa-check-circle" style="color:red;font-size: 20px;"></i>
-                            </li> --}}
+                           
 
 
 
@@ -425,7 +411,9 @@
 
     @if (setting('home_page_3') !== null)
         <section class="my-5 md:my-12 p-1 lg:p-0 max-w-6xl mx-auto">
-            <img src="/{{ setting('home_page_3') }}" class="w-full object-cover" alt="">
+            <a href={{ setting('homepage_3_ad_link') }} class="appearance-none ">
+                <img src="/{{ setting('home_page_3') }}" class="w-full object-cover" alt="">
+            </a>
         </section>
     @endif
 

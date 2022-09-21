@@ -25,6 +25,7 @@ return [
                 'class' => '', // any class for input
                 'value' => '##########', // default value if you want
             ],
+           
             [
                 'type'  => 'file', // input fields type
                 'data'  => 'string', // data type, string, int, boolean
@@ -39,20 +40,20 @@ return [
                 'data'  => 'string', // data type, string, int, boolean
                 'name'  => 'site_favicon', // unique name for field
                 'label' => 'Site Favicon', // you know what label it is
-                'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // validation rule of laravel
+                'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg,ico|max:2048', // validation rule of laravel
                 'class' => '', // any class for input
                  // default value if you want
             ],
             
-            // [
-            //     'type'  => 'text', // input fields type
-            //     'data'  => 'string', // data type, string, int, boolean
-            //     'name'  => 'footer_text', // unique name for field
-            //     'label' => 'Footer Text', // you know what label it is
-            //     'rules' => 'required|min:2', // validation rule of laravel
-            //     'class' => '', // any class for input
-            //     'value' => '<a href="https://github.com/nasirkhan/laravel-starter/">Built with ♥ from Bangladesh</a>', // default value if you want
-            // ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'footer_text', // unique name for field
+                'label' => 'Footer Text', // you know what label it is
+                'rules' => 'required|min:2', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '<a href="https://www.betwithsense.com">Bet Responsibly</a>', // default value if you want
+            ],
             // [
             //     'type'  => 'checkbox', // input fields type
             //     'data'  => 'text', // data type, string, int, boolean
@@ -98,6 +99,15 @@ return [
                  // default value if you want
             ],
             [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'homepage_1_ad_link', // unique name for field
+                'label' => 'Homepage 1 Link', // you know what label it is
+                'rules' => 'required|min:1|max:100', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
+            ],
+            [
                 'type'  => 'file', // input fields type
                 'data'  => 'string', // data type, string, int, boolean
                 'name'  => 'home_page_2', // unique name for field
@@ -105,6 +115,15 @@ return [
                 'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // validation rule of laravel
                 'class' => '', // any class for input
                  // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'homepage_2_ad_link', // unique name for field
+                'label' => 'Homepage 2 Link', // you know what label it is
+                'rules' => 'required|min:1|max:100', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
             ],
             [
                 'type'  => 'file', // input fields type
@@ -116,6 +135,15 @@ return [
                  // default value if you want
             ],
             [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'homepage_3_ad_link', // unique name for field
+                'label' => 'Homepage 3 Link', // you know what label it is
+                'rules' => 'required|min:1|max:100', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
+            ],
+            [
                 'type'  => 'file', // input fields type
                 'data'  => 'string', // data type, string, int, boolean
                 'name'  => 'football_ad', // unique name for field
@@ -125,6 +153,15 @@ return [
                  // default value if you want
             ],
             [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'football_ad_link', // unique name for field
+                'label' => 'Football Predictions Link', // you know what label it is
+                'rules' => 'required|min:1|max:100', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
+            ],
+            [
                 'type'  => 'file', // input fields type
                 'data'  => 'string', // data type, string, int, boolean
                 'name'  => 'other_sports_ad', // unique name for field
@@ -132,6 +169,15 @@ return [
                 'rules' => 'sometimes|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048', // validation rule of laravel
                 'class' => '', // any class for input
                  // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'other_sports_ad_link', // unique name for field
+                'label' => 'Other Sports Predictions Link', // you know what label it is
+                'rules' => 'required|min:1|max:100', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#', // default value if you want
             ],
            
         ],

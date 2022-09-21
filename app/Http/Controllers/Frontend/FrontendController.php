@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use Carbon\Carbon;
 use App\Models\Plan;
 use App\Models\User;
-use Modules\Results\Entities\Stats;
-use Modules\Results\Entities\Results;
+use App\Models\Contact;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Location;
+use Modules\Results\Entities\Stats;
 use App\Http\Controllers\Controller;
+use Modules\Results\Entities\Results;
 use Modules\Predictions\Entities\Category;
 use Modules\Predictions\Entities\Prediction;
 use Modules\Predictions\Transformers\PredictionResource;
@@ -101,6 +102,27 @@ class FrontendController extends Controller
     }
 
     /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function contactStore(Request $request)
+    {
+        $request->validate([
+            'full_name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'subject' => 'required',
+            'message' => 'required'
+        ]);
+  
+        Contact::create($request->all());
+  
+        return redirect()->back()
+                         ->with(['success' => 'Thank you for contacting us. we will reply shortly.']);
+    }
+
+    /**
      * Show the application pricing page.
      *
      * @return \Illuminate\Http\Response
@@ -140,7 +162,7 @@ class FrontendController extends Controller
             ];
         }
 
-        $sport_categories = Category::where('sport', 1)->where('id', '!=', 22)->whereRelation('plan', 'is_disabled', 0)->with('plan')->get();
+        $sport_categories = Category::where('sport', 1)->where('id', '!=', 22)->whereRelation('plan', 'is_disabled', 0)->with('plan')->orderBy('tier', 'asc')->get();
 
       
 

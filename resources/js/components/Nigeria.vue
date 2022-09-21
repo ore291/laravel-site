@@ -60,26 +60,26 @@
                     <br>
                     <ul class="p-2">
                         <button @click="selectPlan(plan, 'w')" v-if="plan.sms_plan === 1">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{ plan.n_weekly_f
+                            <li><span class="glyphicon glyphicon-ok  "></span> &nbsp; <b class="cursor-pointer  hover:text-green-700 underline">{{ plan.n_weekly_f
                             }} -
                                     Weekly</b>
                             </li>
                         </button>
                         <button @click="selectPlan(plan, 'm')">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b class="cursor-pointer  hover:text-green-700 underline">{{
                                     plan.n_per_month_f
                             }} -
                                     Monthly</b></li>
                         </button>
                         <button @click="selectPlan(plan, '6m')" v-if="plan.id != 6">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b class="cursor-pointer  hover:text-green-700 underline">{{
                                     plan.n_per_6months_f
                             }}
                                     - 6
                                     Months</b></li>
                         </button>
                         <button @click="selectPlan(plan, 'y')" v-if="plan.id != 6">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b class="cursor-pointer  hover:text-green-700 underline">{{
                                     plan.n_per_year_f
                             }} -
                                     1
@@ -108,26 +108,26 @@
                     <br>
                     <ul class="p-2">
                         <button @click="selectPlan(plan, 'w')" v-if="plan.sms_plan === 1">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{ plan.n_weekly_f
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b class="cursor-pointer  hover:text-green-700 underline">{{ plan.n_weekly_f
                             }} -
                                     Weekly</b>
                             </li>
                         </button>
                         <button @click="selectPlan(plan, 'm')">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b class="cursor-pointer  hover:text-green-700 underline">{{
                                     plan.n_per_month_f
                             }} -
                                     Monthly</b></li>
                         </button>
                         <button @click="selectPlan(plan, '6m')" v-if="plan.id != 6">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b class="cursor-pointer  hover:text-green-700 underline">{{
                                     plan.n_per_6months_f
                             }}
                                     - 6
                                     Months</b></li>
                         </button>
                         <button @click="selectPlan(plan, 'y')" v-if="plan.id != 6">
-                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b class="pricez">{{
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b class="cursor-pointer  hover:text-green-700 underline">{{
                                     plan.n_per_year_f
                             }} -
                                     1

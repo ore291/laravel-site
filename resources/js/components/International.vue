@@ -43,24 +43,24 @@
                     <ul class="p-2 flex flex-col items-start space-y-1">
                         <button @click="selectPlan(plan, 'w')" v-if="plan.sms_plan === 1">
                             <li><span
-                                    class="glyphicon glyphicon-ok  hover:text-green-700 transition scale-105 ease-in-out"></span>
-                                &nbsp; <b class="pricez">{{ plan.n_weekly_f
+                                    class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{ plan.n_weekly_f
                                 }} -
                                     Weekly</b>
                             </li>
                         </button>
                         <button @click="selectPlan(plan, 'm')">
                             <li><span
-                                    class="glyphicon glyphicon-ok hover:text-green-700 transition scale-105 ease-in-out"></span>
-                                &nbsp; <b class="pricez">{{
+                                    class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
                                         plan.d_per_month_f
                                 }} -
                                     Monthly</b></li>
                         </button>
                         <button @click="selectPlan(plan, '6m')" v-if="plan.id != 6">
                             <li><span
-                                    class="glyphicon glyphicon-ok hover:text-green-700 transition scale-105 ease-in-out"></span>
-                                &nbsp; <b class="pricez">{{
+                                    class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
                                         plan.d_per_6months_f
                                 }}
                                     - 6
@@ -68,8 +68,8 @@
                         </button>
                         <button @click="selectPlan(plan, 'y')" v-if="plan.id != 6">
                             <li><span
-                                    class="glyphicon glyphicon-ok hover:text-green-700 transition scale-105 ease-in-out"></span>
-                                &nbsp; <b class="pricez">{{
+                                    class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
                                         plan.d_per_year_f
                                 }} -
                                     1

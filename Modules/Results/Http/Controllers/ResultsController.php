@@ -286,31 +286,8 @@ class ResultsController extends Controller
         $$module_name_singular = $module_model::findOrFail($id);
 
         $data = $request->all();
-
-        if (isset($request->emblem)) {
-            $request->validate([
-                'emblem' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-
-
-
-            $imageName = time() . '.' . $request->emblem->extension();
-
-
-
-            $request->emblem->move(public_path('svg'), $imageName);
-
-
-            $data['emblem'] = $imageName;
-        }
-
-
-
-
-        $data['country_short'] = substr($data['country'], 0, 3);
-
-        $data['code'] = strtoupper($data['code']);
-
+ 
+       
         $$module_name_singular->update($data);
 
 
