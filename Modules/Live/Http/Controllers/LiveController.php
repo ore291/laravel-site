@@ -167,7 +167,7 @@ class LiveController extends Controller
         $module_model = $this->module_model;
         $module_name_singular = Str::singular($module_name);
 
-        $plans = Plan::whereIn('plan_id', [1, 2, 3, 4])->get();
+        $plans = Plan::whereIn('id', [1, 2, 3, 4])->get();
 
         $plans2 = Stats::where('name', 'plans')->first();
 
