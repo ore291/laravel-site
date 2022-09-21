@@ -30,7 +30,7 @@ class EnsurePremiumUser
         $plans_array = array(1);
 
         if(isset($plans)){
-               $plans_array = explode(',', $plans->value);
+            $plans_array = explode(',', $plans->value);
         }
      
 
