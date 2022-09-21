@@ -1,12 +1,12 @@
-<!-- lsapi_phpini /home/wealliuz/test.betwithsense.com/php.ini
 
 
-<FilesMatch ".(?:html|php)$">
-SetHandler application/x-lsphp81
-</FilesMatch>
+
+# <FilesMatch ".(?:html|php)$">
+# SetHandler application/x-lsphp81
+# </FilesMatch>
 
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteRule ^(.*) public/$1 [L]
-</IfModule> -->
+</IfModule> 

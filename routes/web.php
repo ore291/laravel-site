@@ -27,6 +27,7 @@ Route::get('language/{language}', [LanguageController::class, 'switch'])->name('
 
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');
+    echo Artisan::output();
 });
 
 Route::get('/clear-cache', function() {

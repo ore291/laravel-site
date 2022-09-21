@@ -114,14 +114,78 @@
     </div>
 
 
-    <section class="mt-5  md:mt-20 mb-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
+   
+    <section class="mb-2 mt-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
         <div class="w-full bg-secBg rounded flex justify-start items-center text-secText  py-3 pl-5">
-            <h3 class="text-sm md:text-lg font-semibold mb-0">TRENDING PREDICTIONS</h3>
+            <h3 class="text-[16px] font-semibold mb-0">TRENDING EVENTS PREDICTIONS</h3>
         </div>
         <div class="w-full bg-white shadow ">
             <h2 class="font-semibold text-sm md:text-2xl text-black p-2 mb-1">
                 Today's Football Popular Predictions
             </h2>
+
+            <table class="table-auto w-full">
+                <thead class="border-b border-b-black font-semibold text-black">
+                    <tr class="p-2 px-5">
+                        <th class="text-start  p-2 ml-1">Event</th>
+                        <th class="text-start p-2">Tips</th>
+                        <th class="text-start p-2 mr-1">Odds</th>
+                        <th class="text-start p-2 mr-1">Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($trending_pred as $pred)
+                        <tr class="even:bg-white odd:bg-[#F2F2F2]">
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="text-sm font-medium">{{ $pred->team_a . ' vs ' . $pred->team_b }}</span>
+                                    <div class="flex items-center justify-between space-x-1">
+                                        <img src="/svg/{{ $pred->emblem }}" alt="logo" class="w-5 h-5" />
+                                        <span>{{ $pred->country }}</span>
+                                        <span class=" text-sm ">
+                                            : {{ $pred->date_t }} {{ date('g:i A', strtotime($pred->time_t)) }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="font-semibold text-sm uppercase ">
+                                        {{ $pred->tips }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="font-medium text-sm ">
+                                        {{ $pred->odds }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex flex-col items-start justify-center pl-2">
+                                    <span class="font-semibold text-sm uppercase ">
+                                        {{ $pred->score_a . ' - ' . $pred->score_b }}
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <p>No Predictions available </p>
+                    @endforelse
+
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+     <section class="mt-5  md:mt-20 mb-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
+        <div class="w-full bg-secBg rounded flex justify-start items-center text-secText  py-3 pl-5">
+            <h3 class="text-sm md:text-lg font-semibold mb-0">UPCOMING PREDICTIONS</h3>
+        </div>
+        <div class="w-full bg-white shadow ">
+            
             <table class="table-auto w-full border-spacing-2 ">
                 <thead class="border-b border-b-black font-semibold text-black">
                     <tr class="p-2 md:px-5">
@@ -131,11 +195,11 @@
                         <th class="text-start p-2 ">Result</th>
                     </tr>
                 </thead>
-                @if (count($trending_pred) < 1)
+                @if (count($upcoming_pred) < 1)
                     <tbody class="text-sm">No Predictions available for Today</tbody>
                 @else
                     <tbody>
-                        @foreach ($trending_pred as $pred)
+                        @foreach ($upcoming_pred as $pred)
                             <tr class="even:bg-white odd:bg-[#F2F2F2]">
                                 <td>
                                     <div class="flex flex-col items-start justify-center pl-2">
@@ -178,67 +242,6 @@
                     </tbody>
                 @endif
 
-            </table>
-        </div>
-    </section>
-    <section class="mb-2 mt-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
-        <div class="w-full bg-secBg rounded flex justify-start items-center text-secText  py-3 pl-5">
-            <h3 class="text-[16px] font-semibold mb-0">UPCOMING EVENTS PREDICTIONS</h3>
-        </div>
-        <div class="w-full bg-white shadow ">
-
-            <table class="table-auto w-full">
-                <thead class="border-b border-b-black font-semibold text-black">
-                    <tr class="p-2 px-5">
-                        <th class="text-start  p-2 ml-1">Event</th>
-                        <th class="text-start p-2">Tips</th>
-                        <th class="text-start p-2 mr-1">Odds</th>
-                        <th class="text-start p-2 mr-1">Result</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($upcoming_pred as $pred)
-                        <tr class="even:bg-white odd:bg-[#F2F2F2]">
-                            <td>
-                                <div class="flex flex-col items-start justify-center pl-2">
-                                    <span class="text-sm font-medium">{{ $pred->team_a . ' vs ' . $pred->team_b }}</span>
-                                    <div class="flex items-center justify-between space-x-1">
-                                        <img src="/svg/{{ $pred->emblem }}" alt="logo" class="w-5 h-5" />
-                                        <span>{{ $pred->country }}</span>
-                                        <span class=" text-sm ">
-                                            : {{ $pred->date_t }} {{ date('g:i A', strtotime($pred->time_t)) }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="flex flex-col items-start justify-center pl-2">
-                                    <span class="font-semibold text-sm uppercase ">
-                                        {{ $pred->tips }}
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="flex flex-col items-start justify-center pl-2">
-                                    <span class="font-medium text-sm ">
-                                        {{ $pred->odds }}
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="flex flex-col items-start justify-center pl-2">
-                                    <span class="font-semibold text-sm uppercase ">
-                                        {{ $pred->score_a . ' - ' . $pred->score_b }}
-                                    </span>
-                                </div>
-                            </td>
-                        </tr>
-                    @empty
-                        <p>No Predictions available </p>
-                    @endforelse
-
-
-                </tbody>
             </table>
         </div>
     </section>

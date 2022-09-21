@@ -36,7 +36,7 @@
                             HOME
                         </a>
                         <div class="relative inline-flex items-center justify-center group">
-                            <a href="/pricing"
+                            <a href="/predictions"
                                 class="text-white border-transparent border-b-2 hover:border-secBg px-3 py-2 text-base font-medium transition ease-out duration-300">
                                 <span class="flex items-center justify-center space-x-1">
                                     PREDICTIONS <i class="fa fa-chevron-down ml-1 !block group-hover:!hidden"

@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/wealliuz/betwithsense.com/
+    - /bin/cp -R * $DEPLOYPATH

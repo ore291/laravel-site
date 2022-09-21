@@ -3,7 +3,7 @@
   <div class="max-w-6xl mx-auto bg-gray-100 p-1 md:p-5 py-14">
     <h1 class="text-center text-3xl font-semibold mb-8">FOOTBALL</h1>
     <div class="flex justify-between bg-white mx-2 items-center px-1 md:px-2">
-      <h4 class="font-medium capitalize text-sm md:text-2xl" id="infoTable">{{ currentCategory?.name }} Predictions</h4>
+      <h4 class="font-semibold text-sm md:text-2xl" id="infoTable">{{ cats[category - 1].name }} Predictions</h4>
       <div class="cat-toggle p-1">
         <button class="btn btn-sm btn-primary flex items-center space-x-1"
           style="background: #000; color: #ee5253; border-color: #000" @click="() => (show = !show)">
@@ -20,14 +20,13 @@
           divide-y divide-x divide-white divide-solid
         ">
         <div v-for="cat in cats" :key="cat.id">
-
           <div @click="changeCategory(cat.id)" v-if="cat.tier === 1" :class="{ '!bg-black': category === cat.id }"
 
           :style="{backgroundColor : category === cat.id ? '#000' : '#666666'}"
             class="
         
-            min-h-[50px]
-           hover:!bg-black
+        
+           hover:bg-black
             text-white
             p-1
             flex
@@ -317,13 +316,13 @@ export default {
           this.loading = false;
         }
       } else {
-        if (tier == 1) {
+        if (cat <= 3) {
           console.log('what is happening here', data)
           const res = await axios.post("/api/predictions/football", data);
           this.predictions = res.data.data;
           this.loading = false;
 
-        } else if (tier != 1 && this.user === null && this.user_subs === null) {
+        } else if (cat > 3 && this.user === null && this.user_subs === null) {
           console.log('here1');
           localStorage.setItem('category', 1);
           this.category = 1;
@@ -331,13 +330,13 @@ export default {
         }
 
 
-        else if (tier != 1 && this.user_subs.sub.plan_id < tier || this.today.isBetween(this.user_subs.sub.start_date, this.user_subs.sub.end_date) === false) {
+        else if (cat > 3 && this.user_subs.sub.plan_id < tier || this.today.isBetween(this.user_subs.sub.start_date, this.user_subs.sub.end_date) === false) {
 
 
           localStorage.setItem('category', 1);
           this.category = 1;
           window.location.assign('/payment')
-        } else if (tier != 1 && this.user_subs.sub.plan_id >= tier || this.today.isBetween(this.user_subs.sub.start_date, this.user_subs.sub.end_date)) {
+        } else if (cat > 3 && this.user_subs.sub.plan_id >= tier || this.today.isBetween(this.user_subs.sub.start_date, this.user_subs.sub.end_date)) {
 
           console.log('here6');
 
@@ -353,11 +352,11 @@ export default {
     changeCategory(category) {
       localStorage.setItem('category', category)
       this.category = category;
-      this.getPredictions(category, this.activeDay, this.currentCategory.tier)
+      this.getPredictions(category, 0, this.cats[category - 1].tier)
     },
 
     selectedTier(id) {
-      
+      console.log(parseInt(localStorage.getItem('category')) === id)
       return parseInt(localStorage.getItem('category')) === id;
     },
 
@@ -373,7 +372,7 @@ export default {
     },
     setActiveDate(n) {
       this.activeDay = n;
-      this.getPredictions(parseInt(localStorage.getItem('category')), n, this.currentCategory.tier)
+      this.getPredictions(parseInt(localStorage.getItem('category')), n, this.cats[this.category - 1].tier)
     },
     setOtherActiveDate(n) {
       this.otherActiveDay = n;
@@ -411,9 +410,6 @@ export default {
     today() {
       return moment();
     },
-    currentCategory(){
-      return this.cats.find(( cat ) => cat.id === this.category);
-    }
 
 
   },

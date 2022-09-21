@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Notifications;
-
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\Lang;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Lang;
 
 class ResetPasswordNotification extends Notification
 {
-
     use Queueable;
     /**
      * The password reset token.

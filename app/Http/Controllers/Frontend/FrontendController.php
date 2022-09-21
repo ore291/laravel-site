@@ -39,10 +39,12 @@ class FrontendController extends Controller
 
      
 
-        $trending_pred =  Prediction::where('sport_id', 1)->where('category', 22)->whereDate('date_t', Carbon::today()->toDateString())->get();
+        $upcoming_pred =  Prediction::where('sport_id', 1)->where('category', 22)->whereDate('date_t','>=', Carbon::today()->toDateString())->get();
+        
+        
         $results_pred =  Prediction::where('sport_id', 1)->where('score_a', '!=', '?')->where('score_b', '!=', '?')->whereDate('date_t', "<=", Carbon::today()->toDateString())->orderBy('date_t', 'desc')->limit(10)->get();
 
-        $upcoming_pred =  Prediction::where('sport_id', 1)->whereRelation('cat', 'tier', 1)->whereDate('date_t', "<=", $query_date)->whereDate('date_t', ">=", Carbon::today()->toDateString())->orderBy('date_t', 'desc')->get();
+        $trending_pred =  Prediction::where('sport_id', 1)->where('category', 37)->whereDate('date_t', Carbon::today()->toDateString())->orderBy('date_t', 'desc')->get();
 
         // return view('dashboard', compact('body_class'));
         return view('frontend.index', compact('body_class', 'results_pred', 'trending_pred', 'upcoming_pred', 'perc', 'd_odd','results' ));
@@ -162,7 +164,7 @@ class FrontendController extends Controller
             ];
         }
 
-        $sport_categories = Category::where('sport', 1)->where('id', '!=', 22)->whereRelation('plan', 'is_disabled', 0)->with('plan')->orderBy('tier', 'asc')->get();
+        $sport_categories = Category::where('sport', 1)->where('id', '!=', 22)->where('id' , '!=', 37)->whereRelation('plan', 'is_disabled', 0)->with('plan')->orderBy('tier', 'asc')->get();
 
       
 

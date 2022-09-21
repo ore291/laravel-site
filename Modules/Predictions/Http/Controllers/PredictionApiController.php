@@ -27,7 +27,7 @@ class PredictionApiController extends Controller
 
         $query_date = $today->addDays($days)->toDateString();
 
-        return PredictionResource::collection(Prediction::whereRelation('cat', 'tier', 1)->where('sport_id', $id)->whereNotIn('category', [21, 22])->whereDate('date_t',  $query_date)
+        return PredictionResource::collection(Prediction::whereRelation('cat', 'tier', 1)->where('sport_id', $id)->whereNotIn('category', [20,21, 22, 37])->whereDate('date_t',  $query_date)
             ->take($request->limit)->get());
     }
 
