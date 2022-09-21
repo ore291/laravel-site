@@ -14,6 +14,7 @@ use App\Events\TipPostEvent;
 use Yajra\DataTables\DataTables;
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\Results\Entities\Stats;
 
 class LiveController extends Controller
 {
@@ -154,10 +155,79 @@ class LiveController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     * @return Renderable
+     */
+    public function plan()
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+
+        $plans = Plan::all();
+
+        $plans2 = Stats::where('name', 'plans')->first();
+        $plans_array = explode(',', $plans2->value);
+
+        $useful_plans = Plan::whereIn('id', $plans_array)->get();
+
+
+     
+
+       
+
+        $module_action = 'Edit Plans';
+
+
+        return view(
+            "live::plan",
+            compact('module_title', 'module_name','useful_plans', 'module_icon','plans', 'module_action', 'module_name_singular')
+        );
+    }
+
+    /**
      * Store a newly created resource in storage.
      * @param Request $request
      * @return Renderable
      */
+    public function plan_store(Request $request)
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+
+      
+
+        $data = $request->all();
+
+      
+
+        foreach ($data as $key => $val) {
+            if(isset($val) && $key != "_token"){
+                Stats::add($key, implode(',', (array) $val));
+            }    
+        }
+
+        $module_action = 'Store';
+
+      
+       
+
+
+        Flash::success("<i class='fas fa-check'></i> Edit Active Live Bet '" . "Plans". "' Successful")->important();
+
+
+
+        return redirect("admin/$module_name/plan");
+    }
+
+
     public function store(Request $request)
     {
         $module_title = $this->module_title;

@@ -36,6 +36,8 @@ Route::group(['namespace' => '\Modules\Live\Http\Controllers', 'as' => 'backend.
     Route::get("$module_name", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
     Route::get("$module_name/index_data", ['as' => "$module_name.index_data", 'uses' => "$controller_name@index_data"]);
     Route::get("$module_name/add", ['as' => "$module_name.add", 'uses' => "$controller_name@create"]);
+    Route::get("$module_name/plan", ['as' => "$module_name.plan", 'uses' => "$controller_name@plan"]);
+    Route::post("$module_name/plan", ['as' => "$module_name.plan_store", 'uses' => "$controller_name@plan_store"]);
     Route::get("/sms", ['as' => "sms",  'uses' => "$controller_name@sms"]);
     Route::get("/sms_data", ['as' => "$module_name.sms_data",  'uses' => "$controller_name@sms_data"]);
 

@@ -65,6 +65,19 @@ class GenerateMenus
                         'class' => 'nav-link',
                     ]);
 
+                    $articles_menu->add('<i class="nav-icon fas fa-plus"></i> ' . __('Edit Plan'), [
+                        'route' => 'backend.live_events.plan',
+                        'class' => 'nav-item',
+                    ])
+                        ->data([
+                            'order'         => 84,
+                            'activematches' => 'admin/live/plan',
+                            'permission'    => ['edit_posts'],
+                        ])
+                        ->link->attr([
+                            'class' => 'nav-link',
+                        ]);
+
 
                     $sms_menu = $menu->add('<i class="nav-icon fas fa-comment"></i> ' . __('SMS Users'), [
                         'class' => 'nav-item',
