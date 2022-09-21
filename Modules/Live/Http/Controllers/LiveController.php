@@ -97,7 +97,7 @@ class LiveController extends Controller
 
         $module_action = 'List';
 
-        $$module_name = $module_model::select("id", "event", "booking_no", "live_streaming_link",'tips', 'odds', 'date', 'time', "updated_at");
+        $$module_name = $module_model::select("id", "event", "booking_no", "live_streaming_link", 'tips', 'odds', 'date', 'time', "updated_at");
 
         $data = $$module_name;
 
@@ -170,21 +170,26 @@ class LiveController extends Controller
         $plans = Plan::all();
 
         $plans2 = Stats::where('name', 'plans')->first();
-        $plans_array = explode(',', $plans2->value);
 
-        $useful_plans = Plan::whereIn('id', $plans_array)->get();
+        $useful_plans = array();
+
+        if (isset($plans2)) {
+            $plans_array = explode(',', $plans2->value);
+
+            $useful_plans = Plan::whereIn('id', $plans_array)->get();
+        };
 
 
-     
 
-       
+
+
 
         $module_action = 'Edit Plans';
 
 
         return view(
             "live::plan",
-            compact('module_title', 'module_name','useful_plans', 'module_icon','plans', 'module_action', 'module_name_singular')
+            compact('module_title', 'module_name', 'useful_plans', 'module_icon', 'plans', 'module_action', 'module_name_singular')
         );
     }
 
@@ -202,25 +207,25 @@ class LiveController extends Controller
         $module_model = $this->module_model;
         $module_name_singular = Str::singular($module_name);
 
-      
+
 
         $data = $request->all();
 
-      
+
 
         foreach ($data as $key => $val) {
-            if(isset($val) && $key != "_token"){
+            if (isset($val) && $key != "_token") {
                 Stats::add($key, implode(',', (array) $val));
-            }    
+            }
         }
 
         $module_action = 'Store';
 
-      
-       
 
 
-        Flash::success("<i class='fas fa-check'></i> Edit Active Live Bet '" . "Plans". "' Successful")->important();
+
+
+        Flash::success("<i class='fas fa-check'></i> Edit Active Live Bet '" . "Plans" . "' Successful")->important();
 
 
 
@@ -296,11 +301,11 @@ class LiveController extends Controller
         // $subs = Subscription::whereIn('plan_id', [2, 3, 4])->whereDate('end_date', '>=', Carbon::now())->with(['user'])->get();
 
         // dd($subs->toArray());
-        
 
-       
 
-        
+
+
+
 
 
         return view(
@@ -350,30 +355,30 @@ class LiveController extends Controller
 
 
         return Datatables::of($$module_name)
-        ->addColumn('action', function ($data) {
-            $module_name = $this->module_name;
+            ->addColumn('action', function ($data) {
+                $module_name = $this->module_name;
 
-            return view('backend.includes.action_column', compact('module_name', 'data'));
-        })
-        ->editColumn('name', function ($data) {
+                return view('backend.includes.action_column', compact('module_name', 'data'));
+            })
+            ->editColumn('name', function ($data) {
 
 
-            return $data->name;
-        })
-        ->editColumn('updated_at', function ($data) {
-            $module_name = $this->module_name;
+                return $data->name;
+            })
+            ->editColumn('updated_at', function ($data) {
+                $module_name = $this->module_name;
 
-            $diff = Carbon::now()->diffInHours($data->updated_at);
+                $diff = Carbon::now()->diffInHours($data->updated_at);
 
-            if ($diff < 25) {
-                return $data->updated_at->diffForHumans();
-            } else {
-                return $data->updated_at->isoFormat('LLLL');
-            }
-        })
-        ->rawColumns(['name', 'status', 'action'])
-        // ->orderColumns(['id'], '-:column $1')
-        ->make(true);
+                if ($diff < 25) {
+                    return $data->updated_at->diffForHumans();
+                } else {
+                    return $data->updated_at->isoFormat('LLLL');
+                }
+            })
+            ->rawColumns(['name', 'status', 'action'])
+            // ->orderColumns(['id'], '-:column $1')
+            ->make(true);
     }
 
     /**
