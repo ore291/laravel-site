@@ -138,8 +138,8 @@
       </div>
     </div>
     <div class="w-full">
-      <div class="w-full bg-[#266992] text-white">
-        <p class="text-center font-bold text-lg text-[#87CEFA] mt-2 mb-[1px]">
+      <div class="w-full bg-secBg text-white">
+        <p class="text-center font-bold text-lg text-secText mt-2 mb-[1px]">
           Other Sport Predictions
         </p>
       </div>
@@ -148,7 +148,7 @@
           flex
           items-center
           justify-around
-          bg-[#266992]
+          bg-secBg
           text-white
           mb-[1px]
         ">
@@ -160,7 +160,7 @@
           {{ sport.name }}
         </p>
       </div>
-      <div class="my-.5 bg-[#266992]">
+      <div class="my-.5 bg-secBg">
         <div class="w-full flex justify-between px-2 py-3">
           <span v-for="(day, i) in days" :key="i" @click="setOtherActiveDate(day)" :class="{
             'bg-white !text-black p-1 inline-flex items-center justify-center rounded-md':
@@ -259,13 +259,12 @@
 
 
 
-
                 </span>
               </td>
             </tr>
           </tbody>
         </table>
-        <div class="w-full   bg-[#266992] text-[#87CEFA]">
+        <div class="w-full   bg-secBg text-secText">
           <p class="text-center text-lg font-bold">{{name}}</p>
         </div>
       </div>

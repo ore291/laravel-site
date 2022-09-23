@@ -16,8 +16,11 @@ module.exports = {
                 sans: ['Rubik', 'Montserrat', 'Poppins', 'Nunito', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                secBg: '#266992',
-                secText: '#87CEFA',
+
+                secBg: '#59147f',
+                secText: '#ffcf26',
+                oldsecBg: '#266992',
+                oldsecText: '#87CEFA',
                
               }
         },
