@@ -11,11 +11,11 @@
         <section class="container max-w-6xl mx-auto   py-1 mt-2 ">
             <div class="relative w-full">
                 <div class="owl-carousel ">
-                    <img src="{{ asset('img/slider/1.png') }}" class="block w-full rounded "
+                    <img src="{{ asset('img/betfuse/1.png') }}" class="block w-full rounded "
                         alt="..."style="min-height:200px;">
-                    <img src="{{ asset('img/slider/2.png') }}" class="block w-full rounded "
+                    <img src="{{ asset('img/betfuse/2.png') }}" class="block w-full rounded "
                         alt="..."style="min-height:200px;">
-                    <img src="{{ asset('img/slider/3.png') }}" class="block w-full rounded "
+                    <img src="{{ asset('img/betfuse/3.png') }}" class="block w-full rounded "
                         alt="..."style="min-height:200px;">
 
                 </div>
@@ -53,20 +53,28 @@
                     <div class="grid grid-cols-4 place-items-center">
                         <a href="/predictions" class="flex flex-col items-center justify-between">
                             <img src="/img/OVER-15.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>1.5 Goals</b></p>
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium">
+                                <b>1.5 Goals</b>
+                            </p>
                         </a>
                         <a href="/predictions" class="flex flex-col items-center justify-between">
                             <img src="/img/dc.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Double Chance</b></p>
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium">
+                                <b>Double Chance</b>
+                            </p>
                         </a>
                         <a href="/predictions" class="flex flex-col items-center justify-between">
                             <img src="/img/draw.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Draws</b></p>
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium">
+                                <b>Draws</b>
+                            </p>
                         </a>
 
                         <a href="/predictions" class="flex flex-col items-center justify-between">
                             <img src="/img/cs.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Correct Score</b></p>
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium">
+                                <b>Correct Score</b>
+                            </p>
                         </a>
                     </div>
                     <div class="text-center my-5 md:my-2 flex items-center justify-center">
@@ -84,25 +92,33 @@
                     <div class="grid grid-cols-4 place-items-center">
                         <a href="/basketball" class="flex flex-col items-center justify-between">
                             <img src="/img/basketball.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Basketball</b></p>
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium">
+                                <b>Basketball</b>
+                            </p>
                         </a>
                         <a href="/tennis" class="flex flex-col items-center justify-between">
                             <img src="/img/tennis.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Tennis</b></p>
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium">
+                                <b>Tennis</b>
+                            </p>
                         </a>
                         <a href="/boxing" class="flex flex-col items-center justify-between">
                             <img src="/img/boxing-new.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Boxing</b></p>
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium">
+                                <b>Boxing</b>
+                            </p>
                         </a>
                         <a href="/ice-hockey" class="flex flex-col items-center justify-between">
                             <img src="/img/icehockey.png" class="w-[50px] md:w-[75px]" alt="" srcset="">
-                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium"><b>Ice Hockey</b></p>
+                            <p class="text-[#0A58CA] font-norrmal text-xs md:text-lg whitespace-nowrap md:font-medium">
+                                <b>Ice Hockey</b>
+                            </p>
                         </a>
 
                     </div>
                     <div class="text-center my-5 md:my-2  flex items-center justify-center">
                         <a href="/basketball"
-                            class="rounded font-medium text-xl h-12 w-[250px] bg-[#266992] text-white flex items-center justify-center">
+                            class="rounded font-medium text-xl h-12 w-[250px] bg-secBg text-white flex items-center justify-center">
                             View More Categories
                             <i class="fa fa-solid fa-chevron-right"></i>
                         </a>
@@ -113,8 +129,61 @@
         </section>
     </div>
 
+    <section class="mb-2 mt-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
 
-   
+        <div class="w-full" id="accordion">
+            <div class="fantasy_sectionMiddleInnerToggle">
+                <div class="" style="text-align: center !important;font-size: 30px; padding: 20px;font-weight: 600;">
+                    Subscribe to Premium plan to have direct access to our Expert!</div>
+
+                <div class="fantasy_sectionMiddleCard" style="border-bottom: 6px solid #ffcf26;">
+
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 place-content-center ">
+                        <div class="p-1 text-center flex items-center justify-center ">
+                            <div class="expertIcon">
+                                <img src="/img/betfuse/img.png" alt="SPORTVERIFIED EXPERT"
+                                    style="width:100px !important;">
+                            </div>
+                        </div>
+                        <div class="col-span-2 " style="padding: 6px;">
+                            <h6 class="text-center flex items-center justify-center">
+                                <span class="text-black capitalize ">
+                                    <img class="icoCountryFlag"
+                                        style="width:30px;height: 100%; transform: none; margin:5px;"
+                                        src="/img/betfuse/fb.png">
+                                </span>
+                                <span class="text-black uppercase">
+                                    {{ setting('app_name') }} EXPERT
+                                </span>
+                                <small class="text-green-500 float-none"
+                                    style="border-radius: .15rem; padding: .30em .4em;font-weight: 500;">FOOTBALL</small>
+                            </h6>
+                            <p>
+                                <small>Our expert gives the best game of the day when you subscribe to Premium
+                                    plan</small>
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="w-full flex items-center justify-center " id="heading"
+                        style="width:100%; margin-bottom: 10px;">
+                        <a href="/pricing" class="text-center w-full text-white  mt-1"
+                            style=" background:#59147f;color:white; font-weight:600; font-size:100%;padding:10px;">Subscribe
+                            to Premium plan to Get Access.</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+
     <section class="mb-2 mt-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
         <div class="w-full bg-secBg rounded flex justify-start items-center text-secText  py-3 pl-5">
             <h3 class="text-[16px] font-semibold mb-0">TRENDING EVENTS PREDICTIONS</h3>
@@ -179,13 +248,13 @@
             </table>
         </div>
     </section>
-    
-     <section class="mt-5  md:mt-20 mb-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
+
+    <section class="mt-5  md:mt-20 mb-5 max-w-6xl mx-auto px-2 md:px-0 bg-[#f9f9f9]">
         <div class="w-full bg-secBg rounded flex justify-start items-center text-secText  py-3 pl-5">
             <h3 class="text-sm md:text-lg font-semibold mb-0">UPCOMING PREDICTIONS</h3>
         </div>
         <div class="w-full bg-white shadow ">
-            
+
             <table class="table-auto w-full border-spacing-2 ">
                 <thead class="border-b border-b-black font-semibold text-black">
                     <tr class="p-2 md:px-5">
@@ -302,7 +371,7 @@
                             @empty
                                 <p>No Results Yet</p>
                             @endforelse
-                           
+
 
 
 

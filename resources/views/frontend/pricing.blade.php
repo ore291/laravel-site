@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-{{setting('app_name')  }}
+    {{ setting('app_name') }}
 @endsection
 
 @section('content')
@@ -10,27 +10,31 @@
             <div class="max-w-6xl mx-auto  px-2 md:px-10 mt-4">
                 <div class="section-title mb-2">
                     <h1
-                        style="font-size: 20px; text-align: center; font-family: arial black; font-style: NORMAL; color: green;">
-                        PRICING LIST</h1>
+                        style="font-size: 24px; text-align: center; font-family: arial black; font-style: NORMAL; color: black;">
+                        PRICING PLAN</h1>
                 </div>
 
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+
+
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-1 content-center ">
                     @foreach ($plans as $plan)
-                        <div class="border border-black">
-                            <div class="w-full bg-green-700 text-white h-8 flex items-center justify-center">
-                                <h2 class="text-center font-bold text-xl">
+                        <div class="border border-gray-300 group">
+                            <div
+                                class="w-full group-odd:bg-[#0066ff91] group-even:bg-[#bb220091] text-white h-12 flex items-center justify-center">
+                                <h2 class="text-center font-bold text-xl md:text-2xl">
                                     {{ $plan->name }}
                                 </h2>
                             </div>
-                            <div class="p-2">{!! $plan->content !!}</div>
+                            <div class="p-2 !text-center">{!! $plan->content !!}</div>
                             <br>
                             @if ($plan->id !== 1)
-                                <ul class="p-2">
+                                <ul class="w-full">
                                     @if ($plan->sms_plan === 1 && $country_code === 'ng')
-                                        <li><span class="glyphicon glyphicon-ok"></span> &nbsp;
+                                        <li class="border first:border-b-0 last:border-t-0 border-y py-0.5"> &nbsp;
 
-                                            <b class="pricez">
+                                            <b class="pricez text-green-700 hover:text-blue-600">
                                                 <x-money amount="{{ $plan->n_weekly }}" currency="NGN" convert />-
                                                 Weekly
                                             </b>
@@ -41,18 +45,18 @@
 
 
 
-                                    <li><span class="glyphicon glyphicon-ok"></span> &nbsp; @if ($country_code === 'ng')
-                                            <b class="pricez">
+                                    <li class="border first:border-b-0 last:border-t-0 border-y py-0.5"> &nbsp; @if ($country_code === 'ng')
+                                            <b class="pricez text-green-700 hover:text-blue-600">
                                                 <x-money amount="{{ $plan->n_per_month }}" currency="NGN" convert />-
                                                 Monthly
                                             </b>
                                         @elseif ($country_code === 'ea')
-                                            <b class="pricez">
+                                            <b class="pricez text-green-700 hover:text-blue-600">
                                                 <x-money amount="{{ $plan->k_per_month }}" currency="KES" convert />-
                                                 Monthly
                                             </b>
                                         @else
-                                            <b class="pricez">
+                                            <b class="pricez text-green-700 hover:text-blue-600">
                                                 <x-money amount="{{ $plan->d_per_month }}" currency="USD" convert />-
                                                 Monthly
                                             </b>
@@ -60,18 +64,18 @@
                                     </li>
 
                                     @if ($plan->id !== 6)
-                                        <li><span class="glyphicon glyphicon-ok"></span> &nbsp; @if ($country_code === 'ng')
-                                                <b class="pricez">
+                                        <li class="border first:border-b-0 last:border-t-0 border-y py-0.5"> &nbsp; @if ($country_code === 'ng')
+                                                <b class="pricez text-green-700 hover:text-blue-600">
                                                     <x-money amount="{{ $plan->n_per_6months }}" currency="NGN" convert />-
                                                     6 Months
                                                 </b>
                                             @elseif ($country_code === 'ea')
-                                                <b class="pricez">
+                                                <b class="pricez text-green-700 hover:text-blue-600">
                                                     <x-money amount="{{ $plan->k_per_6months }}" currency="KES" convert />-
                                                     6 Months
                                                 </b>
                                             @else
-                                                <b class="pricez">
+                                                <b class="pricez text-green-700 hover:text-blue-600">
                                                     <x-money amount="{{ $plan->d_per_6months }}" currency="USD" convert />-
                                                     6 Months
                                                 </b>
@@ -79,251 +83,41 @@
                                         </li>
                                     @endif
                                     @if ($plan->id !== 6)
-                                       
-                                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; @if ($country_code === 'ng')
-                                                    <b class="pricez">
-                                                        <x-money amount="{{ $plan->n_per_year }}" currency="NGN" convert />-
-                                                        1 year
-                                                    </b>
-                                                @elseif ($country_code === 'ea')
-                                                    <b class="pricez">
-                                                        <x-money amount="{{ $plan->k_per_year }}" currency="KES" convert />
-                                                        -
-                                                        1 year
-                                                    </b>
-                                                @else
-                                                    <b class="pricez">
-                                                        <x-money amount="{{ $plan->d_per_year }}" currency="USD" convert />
-                                                        -
-                                                        1 year
-                                                    </b>
-                                                @endif
-                                            </li>
-                                      
+                                        <li class="border first:border-b-0 last:border-t-0 border-y py-0.5"> &nbsp; @if ($country_code === 'ng')
+                                                <b class="pricez text-green-700 hover:text-blue-600">
+                                                    <x-money amount="{{ $plan->n_per_year }}" currency="NGN" convert />-
+                                                    1 year
+                                                </b>
+                                            @elseif ($country_code === 'ea')
+                                                <b class="pricez text-green-700 hover:text-blue-600">
+                                                    <x-money amount="{{ $plan->k_per_year }}" currency="KES" convert />
+                                                    -
+                                                    1 year
+                                                </b>
+                                            @else
+                                                <b class="pricez text-green-700 hover:text-blue-600">
+                                                    <x-money amount="{{ $plan->d_per_year }}" currency="USD" convert />
+                                                    -
+                                                    1 year
+                                                </b>
+                                            @endif
+                                        </li>
                                     @endif
                                 </ul>
                             @endif
 
                             <br>
-                            <div style="text-align: left;" class="p-2"><a href="/register"><button
-                                style="text-align: center; background-color: green; border:none; font-size: 14px; width: 100%; color:white;border-radius: 10px;">Sign
-                                Up</button></a></div>
+                            <div class="w-full flex justify-center my-2">
+                                <div style="text-align: center;"
+                                    class=" w-[140px] h-8 rounded-full bg-blue-600 transform hover:scale-105 transition-all text-white flex items-center justify-center">
+                                    <a href="/login"><button>Subscribe Now</button></a></div>
+                            </div>
+
                         </div>
                     @endforeach
 
                 </div>
-                {{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
 
-                    <div class="col-md-4">
-                        <div class="col-md-12"
-                            style="background-color: green; height: 40px; margin-top: 30px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px; color: white;">
-                            FREE PLAN <span style="font-size: 15px;"></span></div>
-                        <div class="col-md-12"
-                            style="background-color: white; border: 1px solid gray; border-top: none;   margin-top: 0px; padding: 4px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px;">
-                            <ul
-                                style="text-align: left; font-size: 17px; font-weight: normal; font-family: calibri;color: black;">
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to free predictions on the
-                                    website and 3 other categories</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Correct score</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Double Chance &amp; Draw
-                                    No Bet</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Draws </li>
-                                <li><span class="glyphicon glyphicon-remove"></span> &nbsp; Not eligible to view other
-                                    prediction categories.</li>
-                                <br>
-                                <li><span class="glyphicon glyphicon-ok"></span><b> &nbsp; ₦0 / $0 / KSH0 Monthly </b></li>
-
-                            </ul>
-                            <div style="text-align: left;"><a href="/register"><button
-                                        style="text-align: center; background-color: green; border:none; font-size: 14px; width: 100%; color:white;border-radius: 10px;">Sign
-                                        Up</button></a></div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-4">
-                        <div class="col-md-12"
-                            style="background-color: green; height: 40px; margin-top: 30px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px; color: white;">
-                            REGULAR PLAN <span style="font-size: 15px;"></span></div>
-                        <div class="col-md-12"
-                            style="background-color: white; border: 1px solid gray; border-top: none;   margin-top: 0px; padding: 4px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px;">
-                            <ul
-                                style="text-align: left; font-size: 17px; font-weight: normal; font-family: calibri;color: black;">
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to free predictions on the
-                                    website and 6 other categories inclusive.</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Double Chance</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Draws </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to HT/FT </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Over/Under goals </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Both teams score</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Take Risk</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Handicap</li>
-                                <br>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦2,000 / $10 / KSH1,000
-                                        Monthly</b></li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦10,000 / $50 / KSH5,000 6
-                                        Months</b></li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦20,000 / $100 / KSH10,000 1
-                                        year</b></li>
-
-                            </ul>
-                            <div style="text-align: left;"><a href="/register"><button
-                                        style="text-align: center; background-color: green; border:none; font-size: 14px; width:100%; color:white;border-radius: 10px;">Sign
-                                        Up</button></a></div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-md-4">
-                        <div class="col-md-12"
-                            style="background-color: green; height: 40px; margin-top: 30px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px; color: white;">
-                            BASIC PLAN <span style="font-size: 15px;"> </span></div>
-                        <div class="col-md-12"
-                            style="background-color: white; border: 1px solid gray; border-top: none; margin-top: 0px; padding: 4px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px;">
-
-                            <ul
-                                style="text-align: left; font-size: 17px; font-weight: normal; font-family: calibri;color: black;">
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to free categories, Regular
-                                    and 5 more categories </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Correct score </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Double Chance </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Draws </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Banker of the day</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Sure 2</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Sure 3 odds</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Sure 5 odds</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Weekend 50 odds</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Other Leagues</li>
-                                <br>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦5,000 / $15 / KSH3,000
-                                        Monthly</b></li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦25,000 / $85 / KSH8,000 6
-                                        Months</b></li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦45,000 / $180 / KSH10,000 1
-                                        year</b></li>
-
-
-                            </ul>
-                            <div style="text-align: left;"><a href="/register"><button
-                                        style="text-align: center; background-color: green; border:none; font-size: 14px; width:100%;border-radius: 10px; color:white;">Sign
-                                        Up</button></a></div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="col-md-12"
-                            style="background-color: green; height: 40px; margin-top: 30px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px; color: white;">
-                            PREMIUM PLAN <span style="font-size: 15px;"></span></div>
-                        <div class="col-md-12"
-                            style="background-color: white; border: 1px solid gray; border-top: none;  margin-top: 0px; padding: 4px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px;">
-
-
-                            <ul
-                                style="text-align: left; font-size: 17px; font-weight: normal; font-family: calibri;color: black;">
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to All Predictions and
-                                    Categories on the Website.</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Correct Sccore</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Double Chance</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Draws </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Sure 2 odds </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Sure 3 odds </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Sure 5 odds </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Combo</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Weekly Jackpot </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Popular Leagues </li>
-
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Super 10 odds </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to all Top Leagues
-                                    Predictions </li><br>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦7,000 / $25 / KSH5,000
-                                        Monthly</b></li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦40,000 / $90 / KSH12,000 6
-                                        Months</b></li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦60,000 / $200 / KSH14,000 1
-                                        year</b></li>
-
-                            </ul>
-                            <div style="text-align: left;"><a href="#../register/"><button
-                                        style="text-align: center; background-color: green; border:none; font-size: 14px; width:100%;border-radius: 10px; color:white;">Sign
-                                        Up</button></a></div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="col-md-12"
-                            style="background-color: green; height: 40px; margin-top: 30px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px; color: white;">
-                            SMS PLAN <span style="font-size: 15px;"></span></div>
-                        <div class="col-md-12"
-                            style="background-color: white; border: 1px solid gray; border-top: none;   margin-top: 0px; padding: 4px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px;">
-                            <ul
-                                style="text-align: left; font-size: 17px; font-weight: normal; font-family: calibri;color: black;">
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>Recieve Games By SMS on Your
-                                        Phone Daily.</b></li>
-                                <!--<li><span class="glyphicon glyphicon-ok"></span> &nbsp; Exclusive to Nigerians Only</li>-->
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b> Banker and Sure 2 odds on your
-                                        phones daily </b></li>
-
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to free predictions on the
-                                    website and Regular Categories.</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Double Chance</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Draws </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to HT/FT </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Over/Under goals </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to Both teams score</li>
-                                <li><span class="glyphicon glyphicon-remove"></span> &nbsp; <b> Available to Nigerians only
-                                    </b> </li>
-                                <br>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦2,500 Weekly</b></li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦4,000 Monthly</b></li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦35,000 6 Months</b></li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦70,000 1 year</b></li>
-
-                            </ul>
-                            <div style="text-align:left;"><a href="/register"><button
-                                        style="text-align: center; background-color: green; border:none; font-size: 14px; width:100%;border-radius:10px;color:white;">Sign
-                                        Up</button></a></div>
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="col-md-4">
-                        <div class="col-md-12"
-                            style="background-color: green; height: 40px; margin-top: 30px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px; color: white;">
-                            ROLLOVER PLAN <span style="font-size: 15px;"></span></div>
-                        <div class="col-md-12"
-                            style="background-color: white; border: 1px solid gray; border-top: none;   margin-top: 0px; padding: 4px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px;">
-
-
-                            <ul
-                                style="text-align: left; font-size: 17px; font-weight: normal; font-family: calibri;color: black;">
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to All Rollover Prediction.
-                                </li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Matches and Scores</li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; Access to all Top Leagues
-                                    Predictions </li><br>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦5,000 / $15 / KHS 1,370
-                                        Weekly</b></li>
-                                <li><span class="glyphicon glyphicon-ok"></span> &nbsp; <b>₦15,000 / $40 / KHS 4,120
-                                        Monthly</b></li>
-
-                            </ul>
-                            <div style="text-align: left;"><a href="/register"><button
-                                        style="text-align: center; background-color: green; border:none; font-size: 14px; width:100%;border-radius: 10px; color:white;">Signup</button></a>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-
-
-
-                </div> --}}
             </div>
         </div>
     </div>
