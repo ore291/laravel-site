@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/wealliuz/betwithsense.com/
+    - export DEPLOYPATH=/home/wealliuz/betfuse.live/
     - /bin/cp -R * $DEPLOYPATH
