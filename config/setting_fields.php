@@ -192,6 +192,24 @@ return [
             [
                 'type'  => 'text', // input fields type
                 'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'crypto_name', // unique name for field
+                'label' => 'Crypto Name e.g Bitcoin , Ethereum', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#################################', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'wallet_address', // unique name for field
+                'label' => 'Wallet Address', // you know what label it is
+                'rules' => 'required|nullable|max:191', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '#################################', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
                 'name'  => 'fw_public_key', // unique name for field
                 'label' => 'FlutterWave Public API Key', // you know what label it is
                 'rules' => 'required|nullable|max:191', // validation rule of laravel

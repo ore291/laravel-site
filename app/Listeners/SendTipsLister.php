@@ -8,6 +8,7 @@ use App\Events\TipPostEvent;
 use App\Models\Subscription;
 use App\Mail\NewLiveBetTipAlert;
 use App\Mail\NewSure2oddsTipAlert;
+use Modules\Results\Entities\Stats;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -34,7 +35,15 @@ class SendTipsLister implements ShouldQueue
     {
         // $emails = ['oreoluwapadonu@gmail.com', 'oreoluwapadonu51@gmail.com'];
 
-        $subs = Subscription::whereIn('plan_id', [2, 3, 4])->whereDate('end_date', '>=', Carbon::now())->with('user')->get();
+        $plans = Stats::where('name', 'plans')->first();
+
+        $plans_array = array(1);
+
+        if(isset($plans)){
+            $plans_array = explode(',', $plans->value);
+        }
+
+        $subs = Subscription::whereIn('plan_id', $plans_array)->whereDate('end_date', '>=', Carbon::now())->with('user')->get();
 
 
 

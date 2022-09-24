@@ -23,10 +23,10 @@
                     @lang(':module_name Management Dashboard', ['module_name' => Str::title($module_name)])
                 </x-slot>
                 <x-slot name="toolbar">
-                    {{-- @can('add_' . $module_name)
+                    @can('add_' . $module_name)
                         <x-buttons.create route='{{ route("backend.$module_name.create") }}'
                             title="{{ __('Create') }} {{ ucwords(Str::singular($module_name)) }}" />
-                    @endcan --}}
+                    @endcan
 
                     {{-- @can('restore_' . $module_name)
                 <div class="btn-group">
@@ -57,22 +57,37 @@
                                     #
                                 </th>
                                 <th>
-                                    Name
+                                    Country
                                 </th>
                                 <th>
-                                    Price Per Month (Naira)
+                                    Currency
                                 </th>
                                 <th>
-                                    Price Per Month (Dollar)
+                                    Plan Name
                                 </th>
                                 <th>
-                                    Status
+                                    Monthly Price
+                                </th>
+                                <th>
+                                    6months Price
+                                </th>
+                                <th>
+                                    Yearly Price
                                 </th>
 
+                                {{-- <th class="text-center d-flex ">
+                                    curr_code
+                                </th>
+                                <th>
+                                  Date
+                                </th> --}}
+                               
 
-                                <th class="text-end">
+
+
+                                {{-- <th class="text-end">
                                     Action
-                                </th>
+                                </th> --}}
                             </tr>
                         </thead>
                     </table>
@@ -106,24 +121,6 @@
     <script type="text/javascript" src="{{ asset('vendor/datatable/datatables.min.js') }}"></script>
 
     <script type="text/javascript">
-        const formatData = (currency, amount) => {
-            var formatter = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: currency,
-            });
-
-            return formatter.format(amount)
-
-        }
-        const formatNData = (currency, amount) => {
-            var formatter = new Intl.NumberFormat('en-NG', {
-                style: 'currency',
-                currency: currency,
-            });
-
-            return formatter.format(amount)
-
-        }
         $('#datatable').DataTable({
             processing: true,
             serverSide: true,
@@ -132,55 +129,59 @@
             ajax: '{{ route("backend.$module_name.index_data") }}',
             columns: [{
                     data: 'id',
-                    name: 'id'
-                },
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'n_per_month',
-                    name: 'n_per_month',
-                    render: function(data) {
-
-                        return formatNData('NGN', data);
-                    }
-                },
-                // {
-                //     data: 'k_per_month',
-                //     name: 'k_per_month',
-                //     render: function(data) {
-
-                //         return formatData('KES', data);
-                //     }
-                // },
-                {
-                    data: 'd_per_month',
-                    name: 'd_per_month',
-                    render: function(data) {
-
-                        return formatData('USD', data);
-                    }
-                },
-                {
-                    data: 'is_disabled',
-                    name: 'is_disabled',
-                    render: function(data) {
-                      
-                        if (data == 0) {
-                            return "ACTIVE"
-                        } else {
-                            return "DISABLED"
-                        }
-
-                    }
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
+                    name: 'id',
                     searchable: false
-                }
+                },
+                 {
+                     data: 'country_name',
+                     name: 'country_name',
+                 },
+                 {
+                     data: 'currency',
+                     name: 'currency',
+                 },
+                 {
+                     data: 'plan_name',
+                     name: 'plan_name',
+                 },
+                 {
+                     data: 'monthly',
+                     name: 'monthly',
+                 },
+                 {
+                     data: '6months',
+                     name: '6months',
+                 },
+                 {
+                     data: 'yearly',
+                     name: 'yearly',
+                 },
+                
+                // {
+                //     data: 'status',
+                //     name: 'status',
+                //     render: function(data) {
+                //         if(data == 0){
+                //             return `<i class="fa fa-times-circle fa-2x text-danger me-1 mr-1"></i> <p>Red</p>`
+                //         }else{
+                //             return `<i class="fa fa-check-circle fa-2x text-success me-1 mr-1"></i> <p>Green</p>`
+                //         }
+                       
+                //     },
+
+                // },
+                // {
+                //     data: 'date',
+                //     name: 'date',
+
+                // },
+
+                // {
+                //     data: 'action',
+                //     name: 'action',
+                //     orderable: false,
+                //     searchable: false
+                // }
             ]
         });
     </script>

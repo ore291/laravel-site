@@ -3,6 +3,9 @@ import { createApp } from 'vue'
 import Alpine from 'alpinejs';
 import collapse from '@alpinejs/collapse';
 
+
+
+
 import Tabs from './components/Tabs.vue';
 import Football from "./components/Football.vue";
 import Payment from "./components/Payment.vue";
@@ -33,6 +36,7 @@ var flut_key = window.flutter_key
 
 app3.component('Payment', Payment);
 app3.use(Flutterwave, { publicKey:  flut_key })
+
 
 app3.mount("#payment-div")
 

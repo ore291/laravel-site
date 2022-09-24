@@ -12,7 +12,7 @@
             <h1 class="text-green-700  my-5 text-xl md:text-3xl italic text-center  font-bold uppercase">
                 Select payment option
             </h1>
-            <div class="flex items-center justify-center place-content-center ">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-2 place-content-center ">
                 <div @click="selectPaymentOption(option.value)"
                     class="cursor-pointer transition ease-out hover:scale-105"
                     v-for="(option, i) in int_payment_options" :key="i">
@@ -42,36 +42,93 @@
                     <br>
                     <ul class="p-2 flex flex-col items-start space-y-1">
                         <button @click="selectPlan(plan, 'w')" v-if="plan.sms_plan === 1">
-                            <li><span
-                                    class="glyphicon glyphicon-ok "></span>
-                                &nbsp; <b class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{ plan.n_weekly_f
-                                }} -
+                            <li><span class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b
+                                    class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
+                                            plan.n_weekly_f
+                                    }} -
                                     Weekly</b>
                             </li>
                         </button>
                         <button @click="selectPlan(plan, 'm')">
-                            <li><span
-                                    class="glyphicon glyphicon-ok "></span>
-                                &nbsp; <b class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
-                                        plan.d_per_month_f
-                                }} -
+                            <li><span class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b
+                                    class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
+                                            plan.d_per_month_f
+                                    }} -
                                     Monthly</b></li>
                         </button>
                         <button @click="selectPlan(plan, '6m')" v-if="plan.id != 6">
-                            <li><span
-                                    class="glyphicon glyphicon-ok "></span>
-                                &nbsp; <b class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
-                                        plan.d_per_6months_f
-                                }}
+                            <li><span class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b
+                                    class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
+                                            plan.d_per_6months_f
+                                    }}
                                     - 6
                                     Months</b></li>
                         </button>
                         <button @click="selectPlan(plan, 'y')" v-if="plan.id != 6">
-                            <li><span
-                                    class="glyphicon glyphicon-ok "></span>
-                                &nbsp; <b class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
-                                        plan.d_per_year_f
-                                }} -
+                            <li><span class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b
+                                    class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
+                                            plan.d_per_year_f
+                                    }} -
+                                    1
+                                    Year</b></li>
+                        </button>
+                    </ul>
+
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div v-show="currentStep === 1 && payment_option === 1 && selectCard === true">
+
+            <h1 class="text-green-700  mb-5 text-3xl italic text-center lg:text-start font-bold uppercase">
+                Select Pricing Plan
+            </h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                <div class="border border-black" v-for="plan in f_plans" :key="plan.id">
+                    <div class="w-full bg-green-700 text-white h-8 flex items-center justify-center">
+                        <h2 class="text-center font-bold text-xl">
+                            {{ plan.name }}
+                        </h2>
+                    </div>
+                    <div class="p-2" v-html="plan.content"></div>
+                    <br>
+                    <ul class="p-2 flex flex-col items-start space-y-1">
+                        <button @click="selectPlan(plan, 'w')" v-if="plan.sms_plan === 1">
+                            <li><span class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b
+                                    class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
+                                            plan.n_weekly_f
+                                    }} -
+                                    Weekly</b>
+                            </li>
+                        </button>
+                        <button @click="selectPlan(plan, 'm')">
+                            <li><span class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b
+                                    class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
+                                            plan.d_per_month_f
+                                    }} -
+                                    Monthly</b></li>
+                        </button>
+                        <button @click="selectPlan(plan, '6m')" v-if="plan.id != 6">
+                            <li><span class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b
+                                    class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
+                                            plan.d_per_6months_f
+                                    }}
+                                    - 6
+                                    Months</b></li>
+                        </button>
+                        <button @click="selectPlan(plan, 'y')" v-if="plan.id != 6">
+                            <li><span class="glyphicon glyphicon-ok "></span>
+                                &nbsp; <b
+                                    class="cursor-pointer  underline hover:text-green-700 transition scale-105 ease-in-out">{{
+                                            plan.d_per_year_f
+                                    }} -
                                     1
                                     Year</b></li>
                         </button>
@@ -82,7 +139,7 @@
             </div>
         </div>
 
-        <div v-show="currentStep === 3 && payment_option === 0 ">
+        <div v-show="currentStep === 3 && payment_option === 0">
             <div class="w-full">
 
 
@@ -137,12 +194,78 @@
 
             </div>
         </div>
+        <div v-show="currentStep === 3 && payment_option === 1">
+            <div class="w-full">
+
+
+                <h1
+                    style="font-size: 20px; dtext-align: center; font-family: arial black; font-style: italic; color: Green;">
+                </h1>
+                <div class="w-full" style="dheight: 300px; dborder:solid; border-width: thin; padding-top: 20px;">
+                    <div class="w-full"
+                        style="background-color: green; height: 40px; margin-top: 30px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px; color: white;">
+                        CONFIRM UPGRADE <span style="font-size: 15px;"></span></div>
+                    <div class="w-full"
+                        style="background-color: white; border:solid; border-width: thin;  border-top: none;   margin-top: 0px; padding: 4px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px;">
+
+
+                        <ul style="text-align: left; font-size: 20px; font-weight: bold; font-family: calibri;">
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp;{{ selectedPlan.name }}</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; {{ getDurationText }}</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp;<b id="email">{{ user.email }}</b>
+                            </li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; {{ getAmount.b }}</li>
+                        </ul>
+                        <!--</form>---->
+                        <div class="flex w-full items-center justify-center p-1">
+                            <qrcode-vue :value="value" :size="size" level="H" />
+                        </div>
+
+
+                        <div class=" mx-auto p-2 md:px-20">
+
+                            <div
+                                class="form-control wizard-form-control flex flex-col md:flex-row items-center space-x-2  testing-code md:mx-[20px] mb-[10px]">
+                                <span class="title">{{ crypto_name }} Wallet Address: </span>
+                                <span class="code text-green-600">{{ " " }}{{ value }}</span>
+                                <span
+                                    class="w-[140px] h-8 cursor-pointer hover:scale-105 transform rounded-md bg-black flex items-center justify-center  btn btn-info text-white copy-btn ml-auto"
+                                    @click.stop.prevent="copyTestingCode">
+                                    Copy
+                                </span>
+                                <input type="hidden" id="testing-code" :value="value">
+                            </div>
+
+                        </div>
+
+
+
+
+                        <br />
+                        <p class="text-sm md:text-lg"
+                            style="text-align: left; padding-left: 10px; font-weight: normal;">You can activate or
+                            upgrade your {{ site_name }} account by making the appropriate payments in {{ crypto_name }}
+                            to our
+                            wallet address as shown above.
+
+                        </p>
+                        <p class="text-sm md:text-lg"
+                            style="text-align: left; padding-left: 10px; font-weight: normal; margin-bottom: 20px;">
+                            After making payments, ensure you send your Name, Email address, Amount and Plan and to the
+                            agent number: <b>{{ con_trans }}</b> or email: <b>{{ email }} </b>to confirm your payment.
+                            <br> Your {{ site_name }} account will be upgraded once payment has been confirmed.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
-import paystack from "vue3-paystack";
+import QrcodeVue from 'qrcode.vue'
 import { toRaw } from "vue"
 
 
@@ -152,11 +275,16 @@ export default {
     props: ['plans', 'subs'],
 
     components: {
-        paystack,
+        QrcodeVue
     },
     created() {
         this.user = window.user;
         this.site_name = window.app_name;
+        this.email = window.email;
+        this.con_trans = window.con_trans;
+        this.value = window.wallet_address;
+        this.crypto_name = window.crypto_name;
+
 
 
     },
@@ -224,14 +352,30 @@ export default {
     },
 
     methods: {
-       
 
+        copyTestingCode() {
+            let testingCodeToCopy = document.querySelector('#testing-code')
+            testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
+            testingCodeToCopy.select()
+
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successfully' : 'unsuccessful';
+                alert('Wallet Address was copied ' + msg);
+            } catch (err) {
+                alert('Oops, unable to copy');
+            }
+
+            /* unselect the range */
+            testingCodeToCopy.setAttribute('type', 'hidden')
+            window.getSelection().removeAllRanges()
+        },
 
         makePaymentFlutterWave(selectedPlan, selectedDuration, payment_method) {
             this.$launchFlutterwave({
                 tx_ref: this.reference,
                 amount: this.getAmount.a,
-                currency: 'USD',
+                currency: this.plans[0].currency,
                 payment_options: 'card',
                 customer: {
                     email: this.user.email,
@@ -266,7 +410,7 @@ export default {
                 }
             })
         },
-       
+
         selectPlan(plan, type) {
             this.selectedPlan = plan;
             this.selectedDuration = type;
@@ -279,7 +423,7 @@ export default {
             }
 
         },
-    
+
         previousStep() {
             this.currentStep--;
         },
@@ -305,7 +449,12 @@ export default {
 
     data() {
         return {
-            site_name : "",
+            crypto_name: "",
+            con_trans: "",
+            email: "",
+            value: '##############################',
+            size: 250,
+            site_name: "",
             user: null,
             selectedPlan: {},
             selectedDuration: "",
@@ -325,7 +474,12 @@ export default {
                     image: "/img/guy_card2.jpg",
                     value: 0
                 },
-              
+                {
+                    name: "Pay with Crypto",
+                    image: "/img/crypto.jpg",
+                    value: 1
+                },
+
             ],
             int_payment_methods: [
                 {
@@ -333,7 +487,7 @@ export default {
                     image: "/img/guy_card2.jpg",
                     value: 0
                 },
-               
+
 
             ]
         }
