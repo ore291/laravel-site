@@ -1,11 +1,11 @@
 <template>
-  <div v-if="country === 'ng'">
+  <div v-if="country === 'ng'" v-cloak>
     <NigeriaVue :plans="plans" :subs="subs" />
   </div>
-  <div v-if="country === 'int'">
+  <div v-if="country === 'int'"  v-cloak>
     <International :plans="plans" :subs="subs" />
   </div>
-  <div v-if="country === 'ea'">
+  <div v-if="country === 'ea'"  v-cloak>
     <Africa :plans="plans" :subs="subs" />
   </div>
 </template>

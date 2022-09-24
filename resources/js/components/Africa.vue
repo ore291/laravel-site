@@ -46,6 +46,57 @@
         </div> -->
 
 
+        <div v-show="currentStep === 1 && selectCard === false">
+
+            <h1 class="text-green-700  mb-5 text-3xl italic text-center lg:text-start font-bold uppercase">
+                Select Pricing Plan
+            </h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                <div class="border border-black" v-for="plan in f_plans" :key="plan.id">
+                    <div class="w-full bg-green-700 text-white h-8 flex items-center justify-center">
+                        <h2 class="text-center font-bold text-xl">
+                            {{ plan.name }}
+                        </h2>
+                    </div>
+                    <div class="p-2" v-html="plan.content"></div>
+                    <br>
+                    <ul class="p-2 flex flex-col space-y-1 items-start">
+                        <button @click="selectPlan(plan, 'w')" v-if="plan.sms_plan === 1">
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b
+                                    class="cursor-pointer  hover:text-green-700 underline">{{ plan.n_weekly_f
+                                    }} -
+                                    Weekly</b>
+                            </li>
+                        </button>
+                        <button @click="selectPlan(plan, 'm')">
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b
+                                    class="cursor-pointer  hover:text-green-700 underline">{{
+                                            plan.k_per_month_f
+                                    }} -
+                                    Monthly</b></li>
+                        </button>
+                        <button @click="selectPlan(plan, '6m')" v-if="plan.id != 6">
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b
+                                    class="cursor-pointer  hover:text-green-700 underline">{{
+                                            plan.k_per_6months_f
+                                    }}
+                                    - 6
+                                    Months</b></li>
+                        </button>
+                        <button @click="selectPlan(plan, 'y')" v-if="plan.id != 6">
+                            <li><span class="glyphicon glyphicon-ok "></span> &nbsp; <b
+                                    class="cursor-pointer  hover:text-green-700 underline">{{
+                                            plan.k_per_year_f
+                                    }} -
+                                    1
+                                    Year</b></li>
+                        </button>
+                    </ul>
+
+                    <br>
+                </div>
+            </div>
+        </div>
         <div v-show="currentStep === 1 && selectCard === true">
 
             <h1 class="text-green-700  mb-5 text-3xl italic text-center lg:text-start font-bold uppercase">
@@ -137,7 +188,70 @@
 
             </div>
         </div>
-        <div v-show="currentStep === 3 && payment_option === 1 && selectCard === false">
+
+        <div v-show="currentStep === 3 && payment_option === 1 && selectCard === true">
+            <div class="w-full">
+
+
+                <h1
+                    style="font-size: 20px; dtext-align: center; font-family: arial black; font-style: italic; color: Green;">
+                </h1>
+                <div class="w-full" style="dheight: 300px; dborder:solid; border-width: thin; padding-top: 20px;">
+                    <div class="w-full"
+                        style="background-color: green; height: 40px; margin-top: 30px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px; color: white;">
+                        CONFIRM UPGRADE <span style="font-size: 15px;"></span></div>
+                    <div class="w-full"
+                        style="background-color: white; border:solid; border-width: thin;  border-top: none;   margin-top: 0px; padding: 4px; padding-top: 6px; text-align: center; font-weight: bold; font-size: 18px;">
+
+
+                        <ul style="text-align: left; font-size: 20px; font-weight: bold; font-family: calibri;">
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp;{{ selectedPlan.name }}</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; {{ getDurationText }}</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp;<b id="email">{{ user.email }}</b>
+                            </li>
+                            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; {{ getAmount.b }}</li>
+                        </ul>
+                        <!--</form>---->
+                        <div class="flex w-full items-center justify-center p-1">
+                            <qrcode-vue :value="value" :size="size" level="H" />
+                        </div>
+
+
+                        <div class=" mx-auto p-2 md:px-20">
+
+                            <div
+                                class="form-control wizard-form-control flex flex-col md:flex-row items-center space-x-2  testing-code md:mx-[18px] mb-[10px]">
+                                <span class="title">{{crypto_name}} Wallet Address: </span>
+                                <span class="code text-green-600">{{ " " }}{{ value }}</span>
+                                <span
+                                    class="w-[140px] h-8 cursor-pointer hover:scale-105 transform rounded-md bg-black flex items-center justify-center  btn btn-info text-white copy-btn ml-auto"
+                                    @click.stop.prevent="copyTestingCode">
+                                    Copy
+                                </span>
+                                <input type="hidden" id="testing-code" :value="value">
+                            </div>
+
+                        </div>
+
+
+
+
+                        <br />
+                        <p class="text-sm md:text-lg" style="text-align: left; padding-left: 10px; font-weight: normal;">You can activate or
+                            upgrade your {{ site_name }} account by making the appropriate payments in {{crypto_name}} to our wallet address as shown above.
+
+                        </p>
+                        <p class="text-sm md:text-lg"  style="text-align: left; padding-left: 10px; font-weight: normal; margin-bottom: 20px;">
+                            After making payments, ensure you send your Name, Email address, Amount and Plan and to the
+                            agent number: <b>{{ con_trans }}</b> or email: <b>{{email}} </b>to confirm your payment.
+                            <br> Your {{ site_name }} account will be upgraded once payment has been confirmed.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div v-show="currentStep === 3 && payment_option === 2 && selectCard === true">
             <div class="w-full">
 
 
@@ -157,7 +271,7 @@
                             </li>
                             <li><span class="glyphicon glyphicon-ok"></span> &nbsp; {{ getAmount.b }}</li>
                         </ul>
-
+                        <br />
                         <p style="text-align: left; padding-left: 10px; font-weight: normal;">You can activate or
                             upgrade your {{ site_name }} account by making the appropriate payments to our East Africa
                             Agent via Mpesa.
@@ -173,7 +287,7 @@
                             <br> Your {{ site_name }} account will be upgraded once payment has been confirmed.
                         </p>
 
-                        <!--</form>---->
+
 
 
 
@@ -189,6 +303,7 @@
 <script>
 import axios from 'axios';
 import paystack from "vue3-paystack";
+import QrcodeVue from 'qrcode.vue'
 import { toRaw } from "vue"
 
 
@@ -198,7 +313,8 @@ export default {
     props: ['plans', 'subs'],
 
     components: {
-        paystack,
+        QrcodeVue
+
     },
     created() {
         this.user = window.user;
@@ -206,9 +322,16 @@ export default {
         this.mpesa_acct = window.mpesa_acct;
         this.con_trans = window.con_trans;
         this.site_name = window.app_name;
+        this.email = window.email;
+        this.crypto_name = window.crypto_name;
+        this.value = window.wallet_address;
     },
     data() {
         return {
+            crypto_name : "",
+            email : "",
+            value: '##############################',
+            size: 250,
             mpesa_name: "",
             mpesa_acct: "",
             con_trans: "",
@@ -232,8 +355,8 @@ export default {
                     value: 0
                 },
                 {
-                    name: "Pay with Mobile Money",
-                    image: "/img/mobile_money.jpg",
+                    name: "Pay with Crypto",
+                    image: "/img/crypto.jpg",
                     value: 1
                 },
                 {
@@ -316,144 +439,162 @@ export default {
     },
 
     methods: {
-        onSuccessfulPayment: function (response) {
-            this.sendUpgradeRequest(response.reference);
-        },
-        onCancelledPayment: function () {
-            console.log("Payment cancelled by user");
-        },
+        copyTestingCode() {
+            let testingCodeToCopy = document.querySelector('#testing-code')
+            testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
+            testingCodeToCopy.select()
 
-
-        makePaymentFlutterWave(selectedPlan, selectedDuration, payment_method) {
-            this.$launchFlutterwave({
-                tx_ref: this.reference,
-                amount: this.getAmount.a,
-                currency: this.plans[0].currency,
-                country: "NG",
-                payment_options: 'card,mobilemoney,ussd',
-                customer: {
-                    email: this.user.email,
-                    phonenumber: this.user.mobile,
-                    name: this.user.name,
-                },
-                callback: function (data,) {
-                    // specified callback function
-                    const body = {
-                        plan: toRaw(selectedPlan),
-                        duration: selectedDuration,
-                        payment_method: payment_method,
-                        transactionId: data.transaction_id,
-                        amount: data.amount,
-
-                    };
-
-                    axios.post(`/api/upgrade-package/${window.user.id}`, body).then((res) => {
-                        if (res.data.status == "success") {
-                            modal.close();
-                            window.location.assign('/dashboard')
-                        } else {
-                            alert("Something went wrong. Please try again")
-
-                            window.location.reload
-                        }
-                    }).catch((err) => {
-                        console.log(err);
-                    })
-                },
-                customizations: {
-                    title: this.site_name,
-                    description: 'Upgrade Plan',
-
-                }
-            })
-        },
-        sendUpgradeRequest(transactionId) {
-            const data = {
-                plan: this.selectedPlan,
-                duration: this.selectedDuration,
-                payment_method: this.payment_method,
-                transactionId: transactionId,
-                amount: this.getAmount.a,
-            };
-
-            axios.post(`/api/upgrade-package/${window.user.id}`, data).then((res) => {
-                if (res.data.status == "success") {
-                    window.location.assign('/dashboard')
-                } else {
-                    alert("Something went wrong. Please try again")
-                    window.location.reload
-                }
-            }).catch((err) => {
-                console.log(err);
-            })
-        },
-        selectPlan(plan, type) {
-            this.selectedPlan = plan;
-            this.selectedDuration = type;
-            this.setStep(3);
-            window.scrollTo(0, 0);
-        },
-        setStep(step) {
-            if (step != 2 && this.payment_option !== null) {
-                this.currentStep = step;
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successfully' : 'unsuccessful';
+                alert('Wallet Address was copied ' + msg);
+            } catch (err) {
+                alert('Oops, unable to copy');
             }
 
+            /* unselect the range */
+            testingCodeToCopy.setAttribute('type', 'hidden')
+            window.getSelection().removeAllRanges()
         },
-        // getPlans() {
-        //   axios
-        //     .get('/api/plans')
-        //     .then((res) => {
-        //       // assign state users with response data
-        //       this.plans = res.data.data;
+    
+    onSuccessfulPayment: function (response) {
+        this.sendUpgradeRequest(response.reference);
+    },
+    onCancelledPayment: function () {
+        console.log("Payment cancelled by user");
+    },
 
-        //     })
-        //     .catch((error) => {
-        //       console.log(error.res.data);
-        //     });
-        // },
-        // getSubs() {
-        //   axios
-        //     .get(`/api/subs/${window.user.id}`)
-        //     .then((res) => {
-        //       // assign state users with response data
-        //       this.subs = res.data.data;
-        //       console.log(res)
 
-        //     })
-        //     .catch((error) => {
-        //       console.log(error.res.data);
-        //     });
-        // },
-        previousStep() {
-            this.currentStep--;
-        },
-        nextStep() {
-            setTimeout(() => {
-                this.currentStep++;
-            }, 500);
+    makePaymentFlutterWave(selectedPlan, selectedDuration, payment_method) {
+        this.$launchFlutterwave({
+            tx_ref: this.reference,
+            amount: this.getAmount.a,
+            currency: this.plans[0].currency,
+            country: "NG",
+            payment_options: 'card,mobilemoney,ussd',
+            customer: {
+                email: this.user.email,
+                phonenumber: this.user.mobile,
+                name: this.user.name,
+            },
+            callback: function (data,) {
+                // specified callback function
+                const body = {
+                    plan: toRaw(selectedPlan),
+                    duration: selectedDuration,
+                    payment_method: payment_method,
+                    transactionId: data.transaction_id,
+                    amount: data.amount,
 
-        },
-        selectPaymentOption(value) {
-            if (value === 0 || 1) {
-                this.payment_option = value;
-                this.selectCard = true;
-                this.nextStep();
+                };
 
+                axios.post(`/api/upgrade-package/${window.user.id}`, body).then((res) => {
+                    if (res.data.status == "success") {
+                        modal.close();
+                        window.location.assign('/dashboard')
+                    } else {
+                        alert("Something went wrong. Please try again")
+
+                        window.location.reload
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                })
+            },
+            customizations: {
+                title: this.site_name,
+                description: 'Upgrade Plan',
+
+            }
+        })
+    },
+    sendUpgradeRequest(transactionId) {
+        const data = {
+            plan: this.selectedPlan,
+            duration: this.selectedDuration,
+            payment_method: this.payment_method,
+            transactionId: transactionId,
+            amount: this.getAmount.a,
+        };
+
+        axios.post(`/api/upgrade-package/${window.user.id}`, data).then((res) => {
+            if (res.data.status == "success") {
+                window.location.assign('/dashboard')
             } else {
-                this.payment_option = value;
-                this.selectCard = false;
-                this.payment_method = null;
-                this.nextStep();
+                alert("Something went wrong. Please try again")
+                window.location.reload
             }
-        },
-        selectPaymentMethod(value) {
-            this.payment_method = value;
-            this.selectCard = true;
-            this.nextStep();
+        }).catch((err) => {
+            console.log(err);
+        })
+    },
+    selectPlan(plan, type) {
+        this.selectedPlan = plan;
+        this.selectedDuration = type;
+        this.setStep(3);
+        window.scrollTo(0, 0);
+    },
+    setStep(step) {
+        if (step != 2 && this.payment_option !== null) {
+            this.currentStep = step;
         }
 
+    },
+    // getPlans() {
+    //   axios
+    //     .get('/api/plans')
+    //     .then((res) => {
+    //       // assign state users with response data
+    //       this.plans = res.data.data;
+
+    //     })
+    //     .catch((error) => {
+    //       console.log(error.res.data);
+    //     });
+    // },
+    // getSubs() {
+    //   axios
+    //     .get(`/api/subs/${window.user.id}`)
+    //     .then((res) => {
+    //       // assign state users with response data
+    //       this.subs = res.data.data;
+    //       console.log(res)
+
+    //     })
+    //     .catch((error) => {
+    //       console.log(error.res.data);
+    //     });
+    // },
+    previousStep() {
+        this.currentStep--;
+    },
+    nextStep() {
+        setTimeout(() => {
+            this.currentStep++;
+        }, 500);
 
     },
+    selectPaymentOption(value) {
+        if (value === 0 || 1) {
+            this.payment_option = value;
+            this.selectCard = true;
+            this.nextStep();
+
+        } else {
+            this.payment_option = value;
+            this.selectCard = false;
+            this.payment_method = null;
+            this.nextStep();
+        }
+    },
+    selectPaymentMethod(value) {
+        this.payment_method = value;
+        this.selectCard = true;
+        this.nextStep();
+    }
+
+
+},
 
 
 }

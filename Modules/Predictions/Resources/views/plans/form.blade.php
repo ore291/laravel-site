@@ -86,7 +86,7 @@
     </div>
 </div>
 
-<div class="row mb-3">
+{{-- <div class="row mb-3">
     <div class="col-12 col-md-6 col-lg-4">
         <div class="form-group">
             <?php
@@ -126,7 +126,7 @@
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control ')->attributes(["$required"]) }}
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="row mb-3">
     <div class="col-12 col-md-6 col-lg-4">

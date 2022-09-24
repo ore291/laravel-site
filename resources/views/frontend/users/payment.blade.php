@@ -16,6 +16,9 @@
         window.ng_bank_acct = '{{ setting('ng_bank_acct') }}';
         window.ng_bank_user = '{{ setting('ng_bank_user') }}';
         window.con_trans = '{{ setting('transfer_comfirm_number') }}';
+        window.email = '{{ setting('email')}}';
+        window.crypto_name = '{{ setting('crypto_name') }}';
+        window.wallet_address = '{{ setting('wallet_address') }}';
         window.app_name = '{{ setting('app_name') }}';
     </script>
     <div class="parent md:grid md:grid-cols-6">

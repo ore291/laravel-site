@@ -57,12 +57,7 @@
                                 <td> {{ $$module_name_singular->n_per_6months }}</td>
                                 <td> {{ $$module_name_singular->n_per_year }}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">Shilling</th>
-                                <td> {{ $$module_name_singular->k_per_month }}</td>
-                                <td> {{ $$module_name_singular->k_per_6months }}</td>
-                                <td> {{ $$module_name_singular->k_per_year }}</td>
-                            </tr>
+                           
                             <tr>
                                 <th scope="row">Dollars</th>
                                 <td> {{ $$module_name_singular->d_per_month }}</td>

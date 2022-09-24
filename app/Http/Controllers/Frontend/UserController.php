@@ -152,9 +152,11 @@ class UserController extends Controller
 
         $id = $request->session()->get('user_id');
 
-        //$ip = '102.135.32.0'; //For static IP address get
-        $ip = request()->ip(); //Dynamic IP address get
+        $ip = '62.173.32.0'; //For static IP address get
+        // $ip = request()->ip(); //Dynamic IP address get
         $location = \Location::get($ip);
+
+        $countryName = $location->countryName ?? "Nigeria";
 
         $$module_name_singular = $module_model::findOrFail($id);
         $plans = Plan::where('id', "!=", 1)->where('is_disabled', 0)->get();
@@ -176,10 +178,10 @@ class UserController extends Controller
 
         $africa = array("Ghana", "Rwanda", "Cameroon", "South Africa", "Zambia", "Zimbabwe", "Uganda", "Kenya", "Tanzania", "Cote D'ivoire", "Burkina Faso", "Senegal", "Mali", "Gabon", "Mauritius");
 
-        if ($location->countryName == "Nigeria") {
+        if ($countryName == "Nigeria") {
             $country_code = "ng";
             return view("frontend.$module_name.payment", compact('module_name', 'country_code', 'plans', 'module_name_singular', "$module_name_singular", 'module_icon', 'location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
-        } else if (in_array($location->countryName, $africa)) {
+        } else if (in_array($countryName, $africa)) {
             $country_code = "ea";
             return view("frontend.$module_name.payment", compact('module_name', 'plans', 'module_name_singular', "$module_name_singular", 'module_icon', 'country_code', 'location', 'module_action', 'module_title', 'body_class', 'userprofile', 'meta_page_type'));
         } else {
@@ -241,7 +243,7 @@ class UserController extends Controller
 
         $id2 = decode_id($id);
 
-        
+
 
         $module_title = $this->module_title;
         $module_name = $this->module_name;
