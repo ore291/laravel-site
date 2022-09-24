@@ -152,8 +152,8 @@ class UserController extends Controller
 
         $id = $request->session()->get('user_id');
 
-        $ip = '62.173.32.0'; //For static IP address get
-        // $ip = request()->ip(); //Dynamic IP address get
+        // $ip = '62.173.32.0'; //For static IP address get
+        $ip = request()->ip(); //Dynamic IP address get
         $location = \Location::get($ip);
 
         $countryName = $location->countryName ?? "Nigeria";
