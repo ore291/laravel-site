@@ -11,6 +11,15 @@
         <section class="container max-w-6xl mx-auto   py-1 mt-2 ">
             <div class="relative w-full">
                 <div class="owl-carousel ">
+                    <img src="{{ asset('img/slider/1.png') }}" class="block w-full rounded "
+                        alt="..."style="min-height:200px;">
+                    <img src="{{ asset('img/slider/2.png') }}" class="block w-full rounded "
+                        alt="..."style="min-height:200px;">
+                    <img src="{{ asset('img/slider/3.png') }}" class="block w-full rounded "
+                        alt="..."style="min-height:200px;">
+
+                </div>
+                {{-- <div class="owl-carousel ">
                     <img src="{{ asset('img/betfuse/1.png') }}" class="block w-full rounded "
                         alt="..."style="min-height:200px;">
                     <img src="{{ asset('img/betfuse/2.png') }}" class="block w-full rounded "
@@ -18,7 +27,7 @@
                     <img src="{{ asset('img/betfuse/3.png') }}" class="block w-full rounded "
                         alt="..."style="min-height:200px;">
 
-                </div>
+                </div> --}}
             </div>
         </section>
 
@@ -168,8 +177,8 @@
                     </div>
                     <div class="w-full flex items-center justify-center " id="heading"
                         style="width:100%; margin-bottom: 10px;">
-                        <a href="/pricing" class="text-center w-full text-white  mt-1"
-                            style=" background:#59147f;color:white; font-weight:600; font-size:100%;padding:10px;">Subscribe
+                        <a href="/pricing" class="text-center w-full text-white  mt-1 bg-secBg"
+                            style=" color:white; font-weight:600; font-size:100%;padding:10px;">Subscribe
                             to Premium plan to Get Access.</a>
                     </div>
 

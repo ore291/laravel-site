@@ -17,10 +17,10 @@ module.exports = {
             },
             colors: {
 
-                secBg: '#59147f',
-                secText: '#ffcf26',
-                oldsecBg: '#266992',
-                oldsecText: '#87CEFA',
+                fusesecBg: '#59147f',
+                fusesecText: '#ffcf26',
+                secBg: '#266992',
+                secText: '#87CEFA',
                
               }
         },
