@@ -151,7 +151,7 @@
                     `<select required class=" js-example-basic-single " 
             name="prediction[${i}][league]">
             @foreach ($leagues as $league)
-                <option class="elipsis" value="{{ $league->id }}">{{ $league->name }}
+                <option class="elipsis" value="{{ $league->id }}">{{ $league->short }}
                 </option>
             @endforeach
         </select>`,
@@ -204,7 +204,7 @@
             `<select required class=" js-example-basic-single " 
             name="prediction[${additional}][league]">
             @foreach ($leagues as $league)
-                <option class="elipsis" value="{{ $league->id }}">{{ $league->name }}
+                <option class="elipsis" value="{{ $league->id }}">{{ $league->short }}
                 </option>
             @endforeach
           </select>`,`<input required style="width: 200px" class="form-control" type="text" id="row-1-team-a"

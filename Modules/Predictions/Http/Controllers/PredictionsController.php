@@ -135,7 +135,9 @@ class PredictionsController extends Controller
         $module_action = 'Create';
 
         $categories = Category::pluck("name" , "id")->all();
-        $leagues = League::pluck("name" , "id")->all();
+        $leagues = League::all()->pluck("short" , "id");
+
+      
         // $module_model = $this->module_model;
         $module_name_singular = Str::singular($module_name);
         return view('predictions::add', compact('categories', 'leagues', 'module_action', 'module_title', 'module_name', 'module_name', 'module_icon', 'module_name_singular'));
@@ -205,11 +207,7 @@ class PredictionsController extends Controller
 
         $category = Category::findOrFail($$module_name_singular->category);
 
-        // $activities = Activity::where('subject_type', '=', $module_model)
-        //                         ->where('log_name', '=', $module_name)
-        //                         ->where('subject_id', '=', $id)
-        //                         ->latest()
-        //                         ->paginate();
+       
 
        
 
@@ -237,7 +235,8 @@ class PredictionsController extends Controller
 
         $$module_name_singular = $module_model::findOrFail($id);
         $categories = Category::pluck("name" , "id")->all();
-        $leagues = League::pluck("name" , "id")->all();
+        $leagues = League::all()->pluck("short" , "id");
+
 
       
 

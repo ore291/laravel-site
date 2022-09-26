@@ -35,9 +35,7 @@
         <div class="form-group">
             <?php
             $field_name = 'content';
-            $field_lable ='Plan Content'
-         
-        
+            $field_lable ='Plan Content'    
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required("required") !!}
             {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}

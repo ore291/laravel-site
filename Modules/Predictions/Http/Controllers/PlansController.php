@@ -257,6 +257,8 @@ class PlansController extends Controller
 
         $data = $request->all();
 
+      
+
         $$module_name_singular->update($data);
 
 
