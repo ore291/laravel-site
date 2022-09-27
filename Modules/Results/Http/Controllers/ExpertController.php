@@ -244,9 +244,6 @@ class ExpertController extends Controller
         $$module_name_singular = $module_model::findOrFail($id);
 
 
-
-
-
         return view(
             "results::$module_name.edit",
             compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "$module_name_singular")

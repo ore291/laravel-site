@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    Live Scores
+  {{ "Live Scores" }}
 @endsection
 
 @section('content')

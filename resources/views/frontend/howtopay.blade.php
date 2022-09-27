@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-  {{setting('app_name')  }}
+  {{ "How To Pay" }}
 @endsection
 
 @section('content')

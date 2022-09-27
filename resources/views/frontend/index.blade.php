@@ -58,7 +58,7 @@
                         </div>
                         <div class="grid grid-cols-3 divide-x-2 p-2">
                             <div class="flex items-center justify-center">
-                                <a href="{{ $expert->bet_site_link }}">
+                                <a href="{{ $expert->bet_ad_link }}">
                                     <img class="max-w-[180px] max-h-full" src="{{ $expert->image }}" alt="">
                                 </a>
                             </div>

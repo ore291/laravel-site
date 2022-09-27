@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    {{ setting('app_name') }}
+    {{ "Football Predictions" }}
 @endsection
 
 @section('content')
