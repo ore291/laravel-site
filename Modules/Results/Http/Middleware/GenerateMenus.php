@@ -21,7 +21,7 @@ class GenerateMenus
 
             // Prediction Dropdown
            
-            $articles_menu = $menu->add('<i class="nav-icon fas fa-display"></i> ' . __('Homepage Results'), [
+            $articles_menu = $menu->add('<i class="nav-icon fas fa-display"></i> ' . __('Homepage Content'), [
                 'class' => 'nav-group',
             ])
                 ->data([
@@ -72,6 +72,19 @@ class GenerateMenus
                     ->data([
                         'order'         => 83,
                         'activematches' => 'admin/results*',
+                        'permission'    => ['edit_categories'],
+                    ])
+                    ->link->attr([
+                        'class' => 'nav-link',
+                    ]);
+
+                $articles_menu->add('<i class="nav-icon fas fa-sitemap"></i> ' . __('View Expert Picks'), [
+                    'route' => 'backend.experts.index',
+                    'class' => 'nav-item',
+                ])
+                    ->data([
+                        'order'         => 83,
+                        'activematches' => 'admin/experts',
                         'permission'    => ['edit_categories'],
                     ])
                     ->link->attr([

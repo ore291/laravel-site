@@ -15,6 +15,7 @@ use Modules\Results\Entities\Results;
 use Modules\Predictions\Entities\Category;
 use Modules\Predictions\Entities\Prediction;
 use Modules\Predictions\Transformers\PredictionResource;
+use Modules\Results\Entities\Expert;
 
 class FrontendController extends Controller
 {
@@ -37,17 +38,20 @@ class FrontendController extends Controller
         $d_odd = Stats::where('name', 'odds')->first();
         $results = Results::latest('date')->take(4)->get();
 
-     
 
-        $upcoming_pred =  Prediction::where('sport_id', 1)->where('category', 22)->whereDate('date_t','>=', Carbon::today()->toDateString())->get();
-        
-        
+
+        $upcoming_pred =  Prediction::where('sport_id', 1)->where('category', 22)->whereDate('date_t', '>=', Carbon::today()->toDateString())->get();
+
+
         $results_pred =  Prediction::where('sport_id', 1)->where('score_a', '!=', '?')->where('score_b', '!=', '?')->whereDate('date_t', "<=", Carbon::today()->toDateString())->orderBy('date_t', 'desc')->limit(10)->get();
 
+        $experts = Expert::where('is_disabled', '!=', 1)->get();
+
+    
         $trending_pred =  Prediction::where('sport_id', 1)->where('category', 37)->whereDate('date_t', Carbon::today()->toDateString())->orderBy('date_t', 'desc')->get();
 
         // return view('dashboard', compact('body_class'));
-        return view('frontend.index', compact('body_class', 'results_pred', 'trending_pred', 'upcoming_pred', 'perc', 'd_odd','results' ));
+        return view('frontend.index', compact('body_class','experts', 'results_pred', 'trending_pred', 'upcoming_pred', 'perc', 'd_odd', 'results'));
     }
 
     /**
@@ -85,7 +89,7 @@ class FrontendController extends Controller
     {
         $body_class = '';
 
-      
+
 
         return view('frontend.live_scores', compact('body_class'));
     }
@@ -117,11 +121,11 @@ class FrontendController extends Controller
             'subject' => 'required',
             'message' => 'required'
         ]);
-  
+
         Contact::create($request->all());
-  
+
         return redirect()->back()
-                         ->with(['success' => 'Thank you for contacting us. we will reply shortly.']);
+            ->with(['success' => 'Thank you for contacting us. we will reply shortly.']);
     }
 
     /**
@@ -164,9 +168,9 @@ class FrontendController extends Controller
             ];
         }
 
-        $sport_categories = Category::where('sport', 1)->where('id', '!=', 22)->where('id' , '!=', 37)->whereRelation('plan', 'is_disabled', 0)->with('plan')->orderBy('tier', 'asc')->get();
+        $sport_categories = Category::where('sport', 1)->where('id', '!=', 22)->where('id', '!=', 37)->whereRelation('plan', 'is_disabled', 0)->with('plan')->orderBy('tier', 'asc')->get();
 
-      
+
 
 
 

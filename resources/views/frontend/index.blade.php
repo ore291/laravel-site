@@ -10,7 +10,7 @@
 
         <section class="container max-w-6xl mx-auto   py-1 mt-2 ">
             <div class="relative w-full">
-                <div class="owl-carousel ">
+                {{-- <div class="owl-carousel ">
                     <img src="{{ asset('img/slider/1.png') }}" class="block w-full rounded "
                         alt="..."style="min-height:200px;">
                     <img src="{{ asset('img/slider/2.png') }}" class="block w-full rounded "
@@ -18,8 +18,8 @@
                     <img src="{{ asset('img/slider/3.png') }}" class="block w-full rounded "
                         alt="..."style="min-height:200px;">
 
-                </div>
-                {{-- <div class="owl-carousel ">
+                </div> --}}
+                <div class="owl-carousel ">
                     <img src="{{ asset('img/betfuse/1.png') }}" class="block w-full rounded "
                         alt="..."style="min-height:200px;">
                     <img src="{{ asset('img/betfuse/2.png') }}" class="block w-full rounded "
@@ -27,7 +27,7 @@
                     <img src="{{ asset('img/betfuse/3.png') }}" class="block w-full rounded "
                         alt="..."style="min-height:200px;">
 
-                </div> --}}
+                </div>
             </div>
         </section>
 
@@ -43,6 +43,55 @@
             </div>
 
         </section>
+
+        @if ($experts->isNotEmpty())
+            <section
+                class="px-1 md:px-0 py-5 md:py-20 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-3 gap-y-14 place-content-center">
+
+                @foreach ($experts as $expert)
+                    <div style="background-color:{{ $expert->bg_color }};" class=" w-full relative">
+                        <div class="flex items-center justify-center p-3 border-b-2 border-white mx-4">
+                            <p class="text-white font-medium">
+                                Predictions Compiled by <a href="/login" class="underline pb-1">Expert
+                                    {{ $expert->expert_name }}</a>
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-3 divide-x-2 p-2">
+                            <div class="flex items-center justify-center">
+                                <a href="{{ $expert->bet_site_link }}">
+                                    <img class="max-w-[180px] max-h-full" src="{{ $expert->image }}" alt="">
+                                </a>
+                            </div>
+                            <div class="col-span-2 flex flex-col items-center justify-center divide-y-2 p-2">
+                                <h3 class=" border-b border-b-secBg text-white my-4">
+                                    Free Booking Code: {{ $expert->booking_no }}
+                                </h3>
+                                <a href="/login" class="w-full flex items-center justify-center text-center">
+                                    <span class="text-center"
+                                        style="color:#fff; padding:8px 10px; font-size:13px; display:inline-block !important;">
+                                        Full Booking Code: <i class="fa fa-lock"></i> <span class="text-center"
+                                            tooltip="Login to view full booking code">
+                                            <p class="m-0" style="color:red;"><small>Get access with Premium/<b><span
+                                                            class="bg-black text-white">{{ setting('app_name') }}<span
+                                                                style="color:yellow;">+</span></span></b></small></p>
+                                        </span>
+                                    </span>
+                                </a>
+
+                            </div>
+                            <div style="background-color:{{ $expert->bg_color }};"
+                                class="absolute w-auto h-10 border-t border-gray-50 right-0 -bottom-10 flex items-center justify-center p-2.5 text-white">
+                                <p>Total Odds: <span class="blink_me">{{ $expert->odds }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+
+
+            </section>
+        @endif
+
 
         @if (setting('home_page_1') !== null)
             <section class="my-5 md:my-12 p-1 lg:p-0 max-w-6xl mx-auto">
@@ -142,7 +191,8 @@
 
         <div class="w-full" id="accordion">
             <div class="fantasy_sectionMiddleInnerToggle">
-                <div class="" style="text-align: center !important;font-size: 30px; padding: 20px;font-weight: 600;">
+                <div class=""
+                    style="text-align: center !important;font-size: 30px; padding: 20px;font-weight: 600;">
                     Subscribe to Premium plan to have direct access to our Expert!</div>
 
                 <div class="fantasy_sectionMiddleCard" style="border-bottom: 6px solid #ffcf26;">

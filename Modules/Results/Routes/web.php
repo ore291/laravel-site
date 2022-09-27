@@ -70,3 +70,27 @@ Route::group(['namespace' => '\Modules\Results\Http\Controllers', 'as' => 'backe
     Route::resource("$module_name", "$controller_name");
 });
 
+
+Route::group(['namespace' => '\Modules\Results\Http\Controllers', 'as' => 'backend.', 'middleware' => ['web', 'auth', 'can:view_backend'], 'prefix' => 'admin'], function () {
+    /*
+    * These routes need view-backend permission
+    * (good if you want to allow more than one group in the backend,
+    * then limit the backend features by different roles or permissions)
+    *
+    * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
+    */
+
+    /*
+     *
+     *  Tags Routes
+     *
+     * ---------------------------------------------------------------------
+     */
+    $module_name = 'experts';
+    $controller_name = 'ExpertController';
+   
+    Route::get("$module_name", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
+    Route::get("$module_name/index_data", ['as' => "$module_name.index_data", 'uses' => "$controller_name@index_data"]);
+    Route::resource("$module_name", "$controller_name");
+});
+
