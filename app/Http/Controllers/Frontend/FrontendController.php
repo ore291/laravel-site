@@ -168,11 +168,13 @@ class FrontendController extends Controller
             ];
         }
 
+
+
         $sport_categories = Category::where('sport', 1)->where('id', '!=', 22)->where('id', '!=', 37)->whereRelation('plan', 'is_disabled', 0)->with('plan')->orderBy('tier', 'asc')->get();
 
 
 
-
+       
 
         return view('frontend.predictions', compact('body_class', 'user', 'subs', 'sport_categories'));
     }

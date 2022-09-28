@@ -1,15 +1,16 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    {{ "Football Predictions" }}
+  Football Predictions
 @endsection
 
 @section('content')
     <script>
+        console.log(@json($sport_categories));
         window.user = @json($user);
         window.subs = @json($subs);
         window.cats = @json($sport_categories);
-    </script>
+    </script> 
 
     <div id="football-pred" class="mb-5">
         <Football />

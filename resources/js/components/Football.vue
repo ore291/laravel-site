@@ -1,9 +1,9 @@
 
 <template>
-  <div class="max-w-6xl mx-auto bg-gray-100 p-1 md:p-5 py-14">
+  <div class="max-w-6xl mx-auto bg-gray-100 p-1 md:p-5 py-14" v-cloak>
     <h1 class="text-center text-3xl font-semibold mb-8">FOOTBALL</h1>
     <div class="flex justify-between bg-white mx-2 items-center px-1 md:px-2">
-      <h4 class="font-semibold text-sm md:text-2xl" id="infoTable">{{ cats[category - 1].name }} Predictions</h4>
+      <h4 class="font-semibold text-sm md:text-2xl" id="infoTable">{{ getCategory(category).name }} Predictions</h4>
       <div class="cat-toggle p-1">
         <button class="btn btn-sm btn-primary flex items-center space-x-1"
           style="background: #000; color: #ee5253; border-color: #000" @click="() => (show = !show)">
@@ -21,21 +21,27 @@
         ">
         <div v-for="cat in cats" :key="cat.id">
           <div @click="changeCategory(cat.id)" v-if="cat.tier === 1" :class="{ '!bg-black': category === cat.id }"
-
-          :style="{backgroundColor : category === cat.id ? '#000' : '#666666'}"
-            class="
+            :style="{ backgroundColor: category === cat.id ? '#000' : '#666666' }" class="
         
-        
+          min-h-[70px]
            hover:bg-black
             text-white
             p-1
-            flex
-            items-start
+            flex flex-col
+            items-center
             justify-between
             cursor-pointer
             h-full
           ">
             <p class="text-sm font-medium">{{ cat.name }}</p>
+            <span class="text-xs text-[gold] font-semibold border-y">
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                <path fill-rule="evenodd"
+                  d="M14.5 1A4.5 4.5 0 0010 5.5V9H3a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-1.5V5.5a3 3 0 116 0v2.75a.75.75 0 001.5 0V5.5A4.5 4.5 0 0014.5 1z"
+                  clip-rule="evenodd" />
+              </svg>
+
+            </span>
             <span class="text-xs font-semibold"> Free </span>
           </div>
           <div @click="changeCategory(cat.id)"
@@ -245,7 +251,8 @@
                   </svg>
 
 
-                </span></td>
+                </span>
+              </td>
             </tr>
 
           </tbody>
@@ -316,13 +323,13 @@ export default {
           this.loading = false;
         }
       } else {
-        if (cat <= 3) {
+        if (this.getCategory(cat).tier == 1) {
           console.log('what is happening here', data)
           const res = await axios.post("/api/predictions/football", data);
           this.predictions = res.data.data;
           this.loading = false;
 
-        } else if (cat > 3 && this.user === null && this.user_subs === null) {
+        } else if (this.getCategory(cat).tier != 1 && this.user === null && this.user_subs === null) {
           console.log('here1');
           localStorage.setItem('category', 1);
           this.category = 1;
@@ -330,13 +337,13 @@ export default {
         }
 
 
-        else if (cat > 3 && this.user_subs.sub.plan_id < tier || this.today.isBetween(this.user_subs.sub.start_date, this.user_subs.sub.end_date) === false) {
+        else if (this.getCategory(cat).tier != 1 && this.user_subs.sub.plan_id < tier || this.today.isBetween(this.user_subs.sub.start_date, this.user_subs.sub.end_date) === false) {
 
 
           localStorage.setItem('category', 1);
           this.category = 1;
           window.location.assign('/payment')
-        } else if (cat > 3 && this.user_subs.sub.plan_id >= tier || this.today.isBetween(this.user_subs.sub.start_date, this.user_subs.sub.end_date)) {
+        } else if (this.getCategory(cat).tier != 1 && this.user_subs.sub.plan_id >= tier || this.today.isBetween(this.user_subs.sub.start_date, this.user_subs.sub.end_date)) {
 
           console.log('here6');
 
@@ -352,7 +359,7 @@ export default {
     changeCategory(category) {
       localStorage.setItem('category', category)
       this.category = category;
-      this.getPredictions(category, 0, this.cats[category - 1].tier)
+      this.getPredictions(category, 0, this.getCategory(category).tier)
     },
 
     selectedTier(id) {
@@ -370,9 +377,12 @@ export default {
         return moment().add(n, "days").format("MMM DD");
       }
     },
+    getCategory(id) {
+      return this.cats.find(cat => cat.id == id)
+    },
     setActiveDate(n) {
       this.activeDay = n;
-      this.getPredictions(parseInt(localStorage.getItem('category')), n, this.cats[this.category - 1].tier)
+      this.getPredictions(parseInt(localStorage.getItem('category')), n, this.getCategory(this.category).tier)
     },
     setOtherActiveDate(n) {
       this.otherActiveDay = n;
@@ -410,6 +420,8 @@ export default {
     today() {
       return moment();
     },
+
+
 
 
   },
